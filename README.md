@@ -220,6 +220,8 @@ The committed golden example uses synthetic data.
 
 ## Project identity
 
+The formal project identity specification is documented in [`docs/PROJECT_IDENTITY.md`](docs/PROJECT_IDENTITY.md).
+
 | Attribute | Definition |
 |---|---|
 | Project | GOUTAMIND Document Intelligence |
