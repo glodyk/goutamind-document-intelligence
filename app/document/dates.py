@@ -1,7 +1,8 @@
 """Attach a date role to each date found on a line (DATA_MODEL 17B).
 
 The role comes only from a label printed just before the date on the same
-line. No label, or an unlisted one, gives ``UNKNOWN``. Birth dates are
+line. No label, or an unlisted one, gives ``UNKNOWN``. A recognised label is
+kept in ``source_label`` even when it maps to no role. Birth dates are
 recognised so they can be *skipped*: this slice does not copy them into
 document metadata (personal data, ADR-08).
 """
@@ -21,15 +22,16 @@ def labelled_dates(text: str, numeric_order: NumericOrder | None = None) -> list
     for match in find_dates(text, numeric_order):
         window = text[max(previous_end, match.start - DATE_LABEL_WINDOW) : match.start]
         role = DateRole.UNKNOWN
+        label_text: str | None = None
         best = -1
         for pattern, label_role in DATE_LABELS:
             for label in pattern.finditer(window):
                 if label.start() > best:  # the label closest to the date wins
-                    best, role = label.start(), label_role
+                    best, role, label_text = label.start(), label_role, label.group(0)
         previous_end = match.end
         if role is DateRole.BIRTH:
             continue
-        results.append(replace(match.temporal, date_role=role))
+        results.append(replace(match.temporal, date_role=role, source_label=label_text))
     return results
 
 

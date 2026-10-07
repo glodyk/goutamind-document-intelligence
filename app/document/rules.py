@@ -154,10 +154,15 @@ MAX_CHUNK_LINES = 12
 
 # Date labels -> DATA_MODEL 17B date_role. Matched against the text just
 # before a date on the same line. Labels that are not listed give UNKNOWN.
+# The matched label is always kept on the Temporal Value (source_label).
 DATE_LABELS: tuple[tuple[re.Pattern[str], DateRole], ...] = (
     (re.compile(r"(TGL\.?|TANGGAL|TTL)\s*LAHIR|UMUR\s*/\s*TTL|LAHIR\s*/\s*UMUR", re.I), DateRole.BIRTH),
-    (re.compile(r"(TGL\.?|TANGGAL)\s*(MASUK|ADMISI)", re.I), DateRole.ADMISSION),
-    (re.compile(r"(TGL\.?|TANGGAL)\s*(KELUAR|PULANG|KRS)", re.I), DateRole.DISCHARGE),
+    # "Masuk" / "Keluar" (date in / out) are printed on emergency and outpatient
+    # documents too. ADMISSION means inpatient admission (ADR-REQ-003), which a
+    # label alone cannot establish, so these stay UNKNOWN with the label kept.
+    # "Encounter start/end" has no date_role yet (unresolved).
+    (re.compile(r"(TGL\.?|TANGGAL)\s*(MASUK|ADMISI)", re.I), DateRole.UNKNOWN),
+    (re.compile(r"(TGL\.?|TANGGAL)\s*(KELUAR|PULANG|KRS)", re.I), DateRole.UNKNOWN),
     (re.compile(r"(TGL\.?|TANGGAL)\s*(REG(R)?ISTRASI|DAFTAR)", re.I), DateRole.REGISTRATION),
     (re.compile(r"(TGL\.?|TANGGAL)\s*ORDER", re.I), DateRole.ORDER),
     (re.compile(r"(TGL\.?|TANGGAL)\s*ENTRI", re.I), DateRole.ENTRY),

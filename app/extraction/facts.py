@@ -11,9 +11,11 @@ Only patterns that can be read without interpretation are extracted:
   lines inside a PROCEDURE section.
 - MEDICATION: prescription lines starting with "R/". The line text is kept
   whole; dose, route and medication_context are not parsed (ADR-06).
-- Events: admission, discharge and arrival dates on *clinical* documents
-  only. Claim anchors (SEP, INA-CBG, billing) never produce Events
-  (DATA_MODEL 31).
+- Events: arrival dates ("Waktu Datang") on *clinical* documents only.
+  Claim anchors (SEP, INA-CBG, billing) never produce Events (DATA_MODEL 31).
+  No ADMISSION / DISCHARGE event is produced: ADMISSION means inpatient
+  admission (ADR-REQ-003) and a printed "Tanggal Masuk" does not establish
+  that; such dates stay on the Document with their label.
 
 Every Fact and Event is a SOURCE_FACT with at least one Evidence item.
 ``coding_system`` is set only when the source names it next to the label.
@@ -53,8 +55,6 @@ PRESCRIPTION_LINE = re.compile(r"^R/\s*(?P<text>\S.*)$")
 NOT_DOCUMENTED_MARK = "-"
 
 EVENT_FOR_ROLE: dict[DateRole, EventType] = {
-    DateRole.ADMISSION: EventType.ADMISSION,
-    DateRole.DISCHARGE: EventType.DISCHARGE,
     # SERVICE is only produced by arrival labels ("Waktu Datang", "Jam Datang").
     DateRole.SERVICE: EventType.PATIENT_ARRIVAL,
 }

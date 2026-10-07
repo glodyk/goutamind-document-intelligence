@@ -86,6 +86,7 @@ class TemporalValue:
     date_role: DateRole = DateRole.UNKNOWN
     timezone: str | None = None
     ambiguity: str | None = None  # IMPLEMENTATION: why the value was not resolved
+    source_label: str | None = None  # IMPLEMENTATION: label printed before the date
 
 
 @dataclass(slots=True)
