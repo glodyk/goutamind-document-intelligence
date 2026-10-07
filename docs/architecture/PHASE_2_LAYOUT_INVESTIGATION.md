@@ -43,7 +43,7 @@ extraction is built. Concretely:
 | Finding | What was seen (OBSERVED) | Layout information that would be needed (INFERRED) |
 |---|---|---|
 | OBS-003 untitled continuation pages | Sample I: 9 untitled pages after a CPPT attached to it by `CONTINUATION`. By manual reading they look like separate medication/order printouts, each with its own header block. | Something that tells "same form, next page" from "different form, no title": a header/footer or layout signature. |
-| OBS-004 wrong document attribution | Sample I, last page (an admission order without a title in the text layer) attached to the preceding service recap; a diagnosis on it became a Fact of a `SERVICE_RECAP`. | Same as OBS-003. A layout change between a tabular recap page and a form page. |
+| OBS-004 wrong document attribution | Sample I, last page (an inpatient plan letter whose title is printed at the bottom of the page, outside the lines the title rule reads) attached to the preceding service recap; a diagnosis on it became a Fact of a `SERVICE_RECAP`. | Same as OBS-003. A layout change between a tabular recap page and a form page. |
 | OBS-008 label/value split by table layout | Discharge summary: admission/discharge labels and their values come out on different text lines. | Positions: label and value drawn in the same visual row or cell. |
 | OBS-009 two-column lines | One extracted line holds two label/value pairs from neighbouring columns; Evidence `source_text` carries both. | Horizontal positions and gaps to split a visual line into column segments. |
 | OBS-010 wrapped prescription lines | Some "R/" item names wrap onto the next line; the Fact value is truncated. | Indentation and vertical spacing to tell a wrapped continuation from a new item. |
@@ -429,61 +429,149 @@ additive alternative (OPEN Q6, for when retrieval is designed).
 PROPOSED. A throwaway measurement, not an implementation: no change to
 `app/` or `pipeline/`, no dependency, outputs and labels kept outside Git
 (`samples_private/`, `outputs/`). Only aggregate numbers are reported.
+**Not to be run until the owner confirms the ground truth.**
+
+### Framing: logical document first (DECIDED, owner review)
+
+> Identify the document first. Record its pages second.
+> Physical page location is evidence provenance, not document identity.
+
+The experiment does **not** ask "where do page boundaries fall?" and then
+group pages into documents. It asks whether the evidence available in the
+PDF identifies the same logical documents a person identifies, and only then
+records which pages hold each document's evidence.
 
 ```text
-E0  PDF inventory per page: page box, rotation, fonts used, image draws
-    (Do + matrix), marked content, tagged structure, outline
+Primary:    physical document evidence
+                    ↓
+            logical document identity
+                    ↓
+            member_page_refs (provenance; may be non-contiguous)
+
+Secondary:  page-boundary precision / recall (operational check only)
+```
+
+Page-boundary metrics stay useful for diagnosing the segmenter, but they do
+not define a logical document. A page sequence that happens to split
+correctly can still assign the wrong identity, and a document can be
+identified correctly from pages that are not adjacent.
+
+### Steps
+
+```text
+E0  PDF inventory: page box, rotation, fonts used, image draws (Do +
+    matrix), marked content, tagged structure, outline
         ↓
 E1  Extract text runs + coordinates (pypdf visitor_text)
     → coverage check against today's extracted text
         ↓
 E2  Group runs into visual lines; split lines at large horizontal gaps
         ↓
-E3  Detect header/footer bands (text repeated across pages in the top /
-    bottom of the page, digits masked); detect column segments
+E3  Detect header/footer bands (text repeated in the top / bottom of pages,
+    digits masked) and column segments
         ↓
-E4  Build a page signature (header digest, footer digest, column
-    positions, font set, image placement, page size); compare consecutive pages
+E4  Collect document identity signals as evidence: title, marker, printed
+    counter, header/form identity (for example an order or transaction
+    number in a header block), footer/form code, closing signature block,
+    internal section sequence, layout signature, image placement
         ↓
-E5  Evaluate boundary candidates with the rules of 10.2 against a
-    hand-labelled page map; evaluate label/value and "R/" line reconstruction
+E5  Form logical document hypotheses from those signals; record each
+    hypothesis's member_page_refs and identification basis; compare with
+    the logical document ground truth. Evaluate label/value and "R/" line
+    reconstruction on their own labelled sets
 ```
+
+E0–E3 produce physical evidence. E4–E5 are where identity is decided, and
+they work from that evidence, not from page order. Rules stay deterministic
+and ordered as in section 10.2; there is no score.
 
 ### Ground truth needed first
 
-A page map per sample, made by a person and kept in `samples_private/`:
-for each page, the document it belongs to and its type. The same for a small
-set of label/value pairs (the OBS-008 discharge-summary fields and the
-OBS-009 two-column lines) and the "R/" items in Sample I. Without the page
-map, only "suspected wrong" counts are available, as in Phase 1.
+A **logical document ground truth** per sample, made by a person and kept
+outside Git. One record per logical document:
+
+```text
+logical_document_id
+document_type
+document_role
+identification_basis      the documentary evidence for its identity
+member_page_refs          provenance, recorded after identification
+status                    DRAFT | OPEN / NEEDS HUMAN GROUND TRUTH | CONFIRMED
+notes                     relationships to other documents, ambiguity
+```
+
+Documents whose identity is still OPEN are reported separately and are not
+counted as right or wrong. Relationships between documents (for example a
+referral letter and its consent/refusal form, linked by one referral event)
+are recorded as relationships, not merged into one document.
+
+Separate small labelled sets are needed for label/value pairs (OBS-008
+discharge-summary fields, OBS-009 two-column lines) and for the "R/" items of
+Sample I.
 
 ### Metrics
 
-| Metric | Definition | Phase 1 baseline (OBSERVED) |
+Primary (logical document identity):
+
+| Metric | Definition |
+|---|---|
+| Documents recovered | ground-truth documents (not OPEN) for which one hypothesis has the same `member_page_refs` |
+| Merged documents | ground-truth documents whose evidence ended up inside another document's hypothesis |
+| Split documents | ground-truth documents spread over more than one hypothesis |
+| Spurious documents | hypotheses that match no ground-truth document |
+| Type agreement | recovered documents with the same `document_type` |
+| Identity basis agreement | recovered documents whose basis cites the same kind of evidence as the ground truth (for example a form identity rather than "continuation") |
+| OPEN documents | reported separately: what the hypotheses say about them, without scoring |
+
+Secondary (operational):
+
+| Metric | Definition |
+|---|---|
+| Page-boundary precision / recall | over page transitions, derived from `member_page_refs` |
+| Page assignment accuracy | pages whose document matches the ground truth / pages with physical evidence |
+| Weak-basis pages | pages assigned only by `CONTINUATION` |
+
+Physical layout:
+
+| Metric | Definition |
+|---|---|
+| Label/value pairing correctness | correctly paired / labelled pairs |
+| Mixed-field lines | lines or segments holding fields from two columns |
+| "R/" line reconstruction | items whose full name is reconstructed / items; plus wrong joins |
+| Run coverage (E1) | characters in positioned runs / characters in today's text |
+
+### Phase 1 baseline against the draft ground truth (OBSERVED)
+
+The PR #1 pipeline, compared with the draft logical document ground truth
+(DRAFT, not yet confirmed):
+
+| | Sample E | Sample I |
 |---|---|---|
-| Page assignment accuracy | pages in the correct document / all non-blank pages | Sample E: all pages right by manual reading. Sample I: about 10 of 35 non-blank pages suspected wrong |
-| Suspected wrong assignments | pages a reviewer marks as wrong | Sample E: 0. Sample I: about 10 |
-| Continuation pages | pages with basis `CONTINUATION` (weak basis) | Sample E: 3. Sample I: 18 |
-| Boundary precision / recall | over page transitions (17 in E, 37 in I): predicted "new document starts" vs the page map | to be computed from the page map |
-| False splits of correct continuations | correct continuation pages turned into new documents | Sample E: 3 at risk. Sample I: about 8 at risk |
-| Label/value pairing correctness | correctly paired / labelled pairs | Phase 1: OBS-008 pairs not paired |
-| Mixed-field lines | lines or segments holding fields from two columns | to be counted on representation 1 and 2 |
-| "R/" line reconstruction | items whose full name is reconstructed / items; plus wrong joins | Sample I: 42 "R/" lines, some truncated (count needs labelling) |
-| Run coverage (E1) | characters in positioned runs / characters in today's text | unknown |
+| Ground-truth documents (excluding OPEN) | 9 | 14 |
+| Documents recovered | 9 | 12 |
+| Not recovered | 0 | 2: the CPPT (its hypothesis also holds the pages of the OPEN medication/order printouts) and the inpatient plan letter (OBS-004) |
+| Merged documents | 0 | 1: the inpatient plan letter, absorbed by the hypothesis that holds the second service recap |
+| Type agreement among recovered | 9 of 9 | 8 of 12 (the four image-only documents are `UNKNOWN`) |
+| OPEN documents | 0 | 8: seven medication/order printout candidates and the second service recap |
+| Weak-basis pages (secondary) | 3 | 18 |
 
 ### What would count as a useful result (PROPOSED)
 
-- Sample E: no page moves; no false split.
-- Sample I: fewer suspected wrong assignments, with no false split of the
-  correct continuation pages.
+- Sample E: all 9 documents still recovered; none merged, split or spurious.
+- Sample I: the two documents not recovered today are recovered, with an identity basis that
+  cites document evidence rather than continuation, and no new split of the
+  documents recovered today.
+- OPEN documents: the hypotheses and their evidence are reported for the
+  owner's reading, not scored.
 - OBS-008 pairs and OBS-009 lines separated correctly on the labelled set.
 - Wrapped "R/" items joined with no wrong joins.
 - E1 coverage close to complete. If coverage is poor, the result is "pypdf
   is not enough", and the next question is a dependency decision (Q7), not
   more heuristics.
 
-A negative result is also a result: if signatures do not separate the pages,
-the recommendation in section 7 changes and is reported as such.
+A negative result is also a result: if the identity signals do not recover
+those two documents, the recommendation in section 7 changes and is
+reported as such.
 
 Two bundles from one hospital are not enough to judge hospital-agnostic
 rules. The Phase 1 recommendation to add at least one bundle from another
@@ -500,7 +588,7 @@ These are questions, not ADRs. Each names what would answer it.
 | Q1 | Coordinate convention for `bbox`: unit, origin, which page box, how rotation is applied, normalised or absolute. | E0/E1 results; must be settled before any `bbox` is persisted. |
 | Q2 | How regions reference elements, and how two representations of one page coexist (identity, which one feeds Facts, no double counting). | E2/E3 results. DATA_MODEL 42 already sets the principle. |
 | Q3 | Should a page assignment carry several signals, including conflicting ones, instead of one `basis`? | E5: how often signals conflict. Extends ADR-REQ-001 B; does not reopen it. |
-| Q4 | Are Sample I pages 23–31 one document or nine? | The hand-labelled page map (owner / domain reading). |
+| Q4 | Which logical documents do the medication/order printouts in Sample I represent? (Working hypothesis: seven, each with its own order number; OPEN.) | The logical document ground truth (owner / domain reading). |
 | Q5 | Does a page ever hold two forms, or a document start mid-page? (ADR-01) | E3/E4 on the samples; still not observed. |
 | Q6 | Should content continuing across a page break be linked (chunk relation) or stay split? (OBS-016) | Retrieval design; not a layout question. |
 | Q7 | If pypdf positions are insufficient, which library, under which licence? | E1 coverage. |
