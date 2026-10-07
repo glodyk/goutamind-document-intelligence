@@ -1,0 +1,141 @@
+SourceFile: synthetic_claim_bundle.pdf (file-aa9d7c3ab22c)
+  status: INGESTED   media_type: application/pdf
+  digest: sha256:aa9d7c3ab22c2f2f…   ingested_at: 2025-01-01T00:00:00+00:00
+  pages: 16
+
+Pages:
+  p1   CONTENT  DIGITAL_TEXT NATIVE_TEXT text=EXTRACTED     lines=10  images=0  -> doc-001
+  p2   CONTENT  DIGITAL_TEXT NATIVE_TEXT text=EXTRACTED     lines=4   images=0  -> doc-002
+  p3   CONTENT  DIGITAL_TEXT NATIVE_TEXT text=EXTRACTED     lines=12  images=0  -> doc-003
+  p4   CONTENT  DIGITAL_TEXT NATIVE_TEXT text=EXTRACTED     lines=5   images=0  -> doc-003
+  p5   BLANK    UNKNOWN      UNKNOWN     text=NOT_AVAILABLE lines=0   images=0  -> (no document)
+  p6   CONTENT  UNKNOWN      UNKNOWN     text=NOT_AVAILABLE lines=0   images=1  -> doc-004
+  p7   BLANK    UNKNOWN      UNKNOWN     text=NOT_AVAILABLE lines=0   images=0  -> (no document)
+  p8   CONTENT  DIGITAL_TEXT NATIVE_TEXT text=EXTRACTED     lines=5   images=0  -> doc-005
+  p9   CONTENT  DIGITAL_TEXT NATIVE_TEXT text=EXTRACTED     lines=3   images=0  -> doc-005
+  p10  CONTENT  DIGITAL_TEXT NATIVE_TEXT text=EXTRACTED     lines=4   images=0  -> doc-006
+  p11  CONTENT  DIGITAL_TEXT NATIVE_TEXT text=EXTRACTED     lines=4   images=0  -> doc-007
+  p12  CONTENT  DIGITAL_TEXT NATIVE_TEXT text=EXTRACTED     lines=3   images=0  -> doc-007
+  p13  CONTENT  DIGITAL_TEXT NATIVE_TEXT text=EXTRACTED     lines=7   images=0  -> doc-008
+  p14  CONTENT  DIGITAL_TEXT NATIVE_TEXT text=EXTRACTED     lines=2   images=0  -> doc-009
+  p15  BLANK    UNKNOWN      UNKNOWN     text=NOT_AVAILABLE lines=0   images=0  -> (no document)
+  p16  CONTENT  DIGITAL_TEXT NATIVE_TEXT text=EXTRACTED     lines=2   images=0  -> doc-010
+
+Documents:
+  1. INA_CBG_OUTPUT  (doc-001)
+     pages: 1   roles: CLAIM_CODING   basis: TITLE
+     page basis: p1=TITLE
+     printed page counters: 1/1
+     title: "Berkas Klaim Individual Pasien 06/02/2025"
+     completeness_status: UNKNOWN
+     sections[chunks]: GENERIC[1]
+     date UNKNOWN      ? (UNKNOWN, AMBIGUOUS_DAY_MONTH_ORDER, raw "06/02/2025")
+     date ADMISSION    ? (UNKNOWN, AMBIGUOUS_DAY_MONTH_ORDER, raw "03/02/2025")
+     date DISCHARGE    ? (UNKNOWN, AMBIGUOUS_DAY_MONTH_ORDER, raw "05/02/2025")
+  2. SEP  (doc-002)
+     pages: 2   roles: ADMINISTRATIVE   basis: MARKER
+     page basis: p2=MARKER
+     completeness_status: UNKNOWN
+     sections[chunks]: GENERIC[1]
+     date UNKNOWN      2025-02-03 (DATE, raw "2025-02-03")
+  3. MEDICAL_RESUME  (doc-003)
+     pages: 3-4   roles: CLINICAL   basis: TITLE
+     page basis: p3=TITLE, p4=PAGE_COUNTER
+     printed page counters: 1/2, 2/2
+     title: "RESUME MEDIS"
+     completeness_status: UNKNOWN
+     sections[chunks]: GENERIC[1], HISTORY[1], DIAGNOSIS[1], PROCEDURE[1], MEDICATION[1]
+     date ADMISSION    2025-02-03T08:15 (EXACT_DATETIME, raw "3 Februari 2025 08:15 WIB")
+     date DISCHARGE    2025-02-05 (DATE, raw "5 Februari 2025")
+     date UNKNOWN      2025-09 (MONTH, raw "September 2025")
+  4. UNKNOWN  (doc-004)
+     pages: 6   roles: -   basis: IMAGE_PAGE
+     page basis: p6=IMAGE_PAGE
+     completeness_status: UNKNOWN
+     sections[chunks]: (none: no text)
+  5. LABORATORY  (doc-005)
+     pages: 8-9   roles: DIAGNOSTIC   basis: PAGE_COUNTER
+     page basis: p8=PAGE_COUNTER, p9=PAGE_COUNTER
+     printed page counters: 1/2, 2/2
+     completeness_status: UNKNOWN
+     sections[chunks]: GENERIC[1], LABORATORY_RESULT[1], LABORATORY_RESULT[1]
+     date ORDER        ? (UNKNOWN, AMBIGUOUS_DAY_MONTH_ORDER, raw "03/02/2025 09:00")
+  6. LABORATORY  (doc-006)
+     pages: 10   roles: DIAGNOSTIC   basis: PAGE_COUNTER
+     page basis: p10=PAGE_COUNTER
+     printed page counters: 1/1
+     completeness_status: UNKNOWN
+     sections[chunks]: GENERIC[1], LABORATORY_RESULT[1]
+  7. ASSESSMENT  (doc-007)
+     pages: 11-12   roles: CLINICAL   basis: TITLE
+     page basis: p11=TITLE, p12=CONTINUATION
+     title: "ASESMEN AWAL GAWAT DARURAT"
+     completeness_status: UNKNOWN
+     sections[chunks]: ASSESSMENT[1], PHYSICAL_EXAMINATION[2], DISPOSITION[1]
+     date SERVICE      2025-02-03 (DATE, raw "3 Februari 2025")
+  8. SERVICE_RECAP  (doc-008)
+     pages: 13   roles: FINANCIAL   basis: TITLE
+     page basis: p13=TITLE
+     title: "NOTA REKAP PELAYANAN"
+     completeness_status: UNKNOWN
+     sections[chunks]: BILLING_DETAIL[1]
+     date DISCHARGE    2025-02-05 (DATE, raw "5 Februari 2025")
+  9. OTHER  (doc-009)
+     pages: 14   roles: -   basis: TITLE
+     page basis: p14=TITLE
+     title: "TRIASE"
+     completeness_status: UNKNOWN
+     sections[chunks]: GENERIC[1]
+     date SERVICE      2025-02-03T07:55 (EXACT_DATETIME, raw "3 Februari 2025, 07:55 WIB")
+  10. UNKNOWN  (doc-010)
+     pages: 16   roles: -   basis: UNTITLED_START
+     page basis: p16=UNTITLED_START
+     completeness_status: UNKNOWN
+     sections[chunks]: GENERIC[1]
+
+Evidence:
+  evidence-001 -> page 1 (file-aa9d7c3ab22c) doc-001 TEXT NATIVE_TEXT [document_boundary]  "Berkas Klaim Individual Pasien 06/02/2025"
+  evidence-002 -> page 2 (file-aa9d7c3ab22c) doc-002 TEXT NATIVE_TEXT [document_boundary]  "No.SEP : 0000SINTETIS0001"
+  evidence-003 -> page 3 (file-aa9d7c3ab22c) doc-003 TEXT NATIVE_TEXT [document_boundary]  "RESUME MEDIS"
+  evidence-004 -> page 6 (file-aa9d7c3ab22c) doc-004 IMAGE_REGION UNKNOWN [document_boundary]
+  evidence-005 -> page 8 (file-aa9d7c3ab22c) doc-005 TEXT NATIVE_TEXT [document_boundary]  "Pemeriksaan Hasil Satuan Nilai Rujukan"
+  evidence-006 -> page 10 (file-aa9d7c3ab22c) doc-006 TEXT NATIVE_TEXT [document_boundary]  "Pemeriksaan Hasil Satuan Nilai Rujukan"
+  evidence-007 -> page 11 (file-aa9d7c3ab22c) doc-007 TEXT NATIVE_TEXT [document_boundary]  "ASESMEN AWAL GAWAT DARURAT"
+  evidence-008 -> page 13 (file-aa9d7c3ab22c) doc-008 TEXT NATIVE_TEXT [document_boundary]  "NOTA REKAP PELAYANAN"
+  evidence-009 -> page 14 (file-aa9d7c3ab22c) doc-009 TEXT NATIVE_TEXT [document_boundary]  "TRIASE"
+  evidence-010 -> page 1 (file-aa9d7c3ab22c) doc-001 TEXT NATIVE_TEXT [fact]  "Diagnosa Utama : K35.8 Acute appendicitis, other and unspecified"
+  evidence-011 -> page 1 (file-aa9d7c3ab22c) doc-001 TEXT NATIVE_TEXT [fact]  "Diagnosa Sekunder : -"
+  evidence-012 -> page 1 (file-aa9d7c3ab22c) doc-001 TEXT NATIVE_TEXT [fact]  "Prosedur : 47.09 Other appendectomy"
+  evidence-013 -> page 1 (file-aa9d7c3ab22c) doc-001 TEXT NATIVE_TEXT [fact]  "99.21 Injection of antibiotic"
+  evidence-014 -> page 2 (file-aa9d7c3ab22c) doc-002 TEXT NATIVE_TEXT [fact]  "Diagnosa Awal : R10.4 - Abdominal pain"
+  evidence-015 -> page 3 (file-aa9d7c3ab22c) doc-003 TEXT NATIVE_TEXT [fact]  "Tanggal Masuk : 3 Februari 2025 08:15 WIB"
+  evidence-016 -> page 3 (file-aa9d7c3ab22c) doc-003 TEXT NATIVE_TEXT [fact]  "Tanggal Keluar : 5 Februari 2025"
+  evidence-017 -> page 3 (file-aa9d7c3ab22c) doc-003 TEXT NATIVE_TEXT [fact]  "K35.8 Acute appendicitis"
+  evidence-018 -> page 3 (file-aa9d7c3ab22c) doc-003 TEXT NATIVE_TEXT [fact]  "47.09 Other appendectomy"
+  evidence-019 -> page 4 (file-aa9d7c3ab22c) doc-003 TEXT NATIVE_TEXT [fact]  "R/ CEFTRIAXONE 1 g INJEKSI 2x1"
+  evidence-020 -> page 4 (file-aa9d7c3ab22c) doc-003 TEXT NATIVE_TEXT [fact]  "R/ DISPOSABLE SYRINGE 5 ml"
+  evidence-021 -> page 11 (file-aa9d7c3ab22c) doc-007 TEXT NATIVE_TEXT [fact]  "Waktu Datang : 3 Februari 2025"
+  evidence-022 -> page 14 (file-aa9d7c3ab22c) doc-009 TEXT NATIVE_TEXT [fact]  "Waktu Datang : 3 Februari 2025, 07:55 WIB"
+
+Facts:
+  fact-001 DIAGNOSIS diagnosis_code='K35.8' [PRESENT, SOURCE_FACT] label="Diagnosa Utama" (doc-001) -> evidence-010 -> page 1 -> file-aa9d7c3ab22c
+  fact-002 DIAGNOSIS diagnosis_code=None [NOT_DOCUMENTED, SOURCE_FACT] label="Diagnosa Sekunder" (doc-001) -> evidence-011 -> page 1 -> file-aa9d7c3ab22c
+  fact-003 PROCEDURE procedure_code='47.09' [PRESENT, SOURCE_FACT] label="Prosedur" (doc-001) -> evidence-012 -> page 1 -> file-aa9d7c3ab22c
+  fact-004 PROCEDURE procedure_code='99.21' [PRESENT, SOURCE_FACT] label="Prosedur" (doc-001) -> evidence-013 -> page 1 -> file-aa9d7c3ab22c
+  fact-005 DIAGNOSIS diagnosis_code='R10.4' [PRESENT, SOURCE_FACT] label="Diagnosa Awal" (doc-002) -> evidence-014 -> page 2 -> file-aa9d7c3ab22c
+  fact-006 DIAGNOSIS diagnosis_code='K35.8' [PRESENT, SOURCE_FACT] label="DIAGNOSA" (doc-003) -> evidence-017 -> page 3 -> file-aa9d7c3ab22c
+  fact-007 PROCEDURE procedure_code='47.09' [PRESENT, SOURCE_FACT] label="PROSEDUR" (doc-003) -> evidence-018 -> page 3 -> file-aa9d7c3ab22c
+  fact-008 MEDICATION medication_text='CEFTRIAXONE 1 g INJEKSI 2x1' [PRESENT, SOURCE_FACT] label="R/" (doc-003) -> evidence-019 -> page 4 -> file-aa9d7c3ab22c
+  fact-009 MEDICATION medication_text='DISPOSABLE SYRINGE 5 ml' [PRESENT, SOURCE_FACT] label="R/" (doc-003) -> evidence-020 -> page 4 -> file-aa9d7c3ab22c
+
+Events:
+  event-001 ADMISSION 2025-02-03T08:15 (EXACT_DATETIME, raw "3 Februari 2025 08:15 WIB") pathway=UNKNOWN stage=UNKNOWN (doc-003) -> evidence-015
+  event-002 DISCHARGE 2025-02-05 (DATE, raw "5 Februari 2025") pathway=UNKNOWN stage=UNKNOWN (doc-003) -> evidence-016
+  event-003 PATIENT_ARRIVAL 2025-02-03 (DATE, raw "3 Februari 2025") pathway=UNKNOWN stage=UNKNOWN (doc-007) -> evidence-021
+  event-004 PATIENT_ARRIVAL 2025-02-03T07:55 (EXACT_DATETIME, raw "3 Februari 2025, 07:55 WIB") pathway=UNKNOWN stage=UNKNOWN (doc-009) -> evidence-022
+
+Summary:
+  documents: 10  ASSESSMENT=1, INA_CBG_OUTPUT=1, LABORATORY=2, MEDICAL_RESUME=1, OTHER=1, SEP=1, SERVICE_RECAP=1, UNKNOWN=2
+  pages without document: [5, 7, 15]
+  facts: 9  DIAGNOSIS=4, MEDICATION=2, PROCEDURE=3
+  events: 4   evidence: 22

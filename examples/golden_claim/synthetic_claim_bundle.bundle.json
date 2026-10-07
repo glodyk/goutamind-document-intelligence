@@ -1,0 +1,2586 @@
+{
+  "bundle_id": "bundle-001",
+  "schema_version": "0.1-r1-slice",
+  "extraction_version": "slice-1",
+  "source_files": [
+    {
+      "source_file_id": "file-aa9d7c3ab22c",
+      "source_reference": "synthetic_claim_bundle.pdf",
+      "media_type": "application/pdf",
+      "content_digest": "sha256:aa9d7c3ab22c2f2f6bd666660d057be266222a457d8e6524365c7166bd6d9b0f",
+      "ingested_at": "2025-01-01T00:00:00+00:00",
+      "ingestion_status": "INGESTED",
+      "page_count": 16,
+      "error": null,
+      "pages": [
+        {
+          "page_id": "page-001",
+          "source_file_id": "file-aa9d7c3ab22c",
+          "page_number": 1,
+          "page_kind": "CONTENT",
+          "modality": "DIGITAL_TEXT",
+          "extraction_method": "NATIVE_TEXT",
+          "text_status": "EXTRACTED",
+          "text": "KEMENTERIAN KESEHATAN (CONTOH SINTETIS)\nBerkas Klaim Individual Pasien 06/02/2025\nNama RS : RS SINTETIS\nTanggal Masuk : 03/02/2025\nTanggal Keluar : 05/02/2025\nDiagnosa Utama : K35.8 Acute appendicitis, other and unspecified\nDiagnosa Sekunder : -\nProsedur : 47.09 Other appendectomy\n99.21 Injection of antibiotic\nLembar 1 / 1\n",
+          "image_count": 0,
+          "elements": [
+            {
+              "element_id": "el-001",
+              "page_id": "page-001",
+              "page_number": 1,
+              "element_type": "TEXT",
+              "extraction_method": "NATIVE_TEXT",
+              "text": "KEMENTERIAN KESEHATAN (CONTOH SINTETIS)",
+              "bbox": null,
+              "extraction_confidence": null,
+              "line_index": 0
+            },
+            {
+              "element_id": "el-002",
+              "page_id": "page-001",
+              "page_number": 1,
+              "element_type": "TEXT",
+              "extraction_method": "NATIVE_TEXT",
+              "text": "Berkas Klaim Individual Pasien 06/02/2025",
+              "bbox": null,
+              "extraction_confidence": null,
+              "line_index": 1
+            },
+            {
+              "element_id": "el-003",
+              "page_id": "page-001",
+              "page_number": 1,
+              "element_type": "TEXT",
+              "extraction_method": "NATIVE_TEXT",
+              "text": "Nama RS : RS SINTETIS",
+              "bbox": null,
+              "extraction_confidence": null,
+              "line_index": 2
+            },
+            {
+              "element_id": "el-004",
+              "page_id": "page-001",
+              "page_number": 1,
+              "element_type": "TEXT",
+              "extraction_method": "NATIVE_TEXT",
+              "text": "Tanggal Masuk : 03/02/2025",
+              "bbox": null,
+              "extraction_confidence": null,
+              "line_index": 3
+            },
+            {
+              "element_id": "el-005",
+              "page_id": "page-001",
+              "page_number": 1,
+              "element_type": "TEXT",
+              "extraction_method": "NATIVE_TEXT",
+              "text": "Tanggal Keluar : 05/02/2025",
+              "bbox": null,
+              "extraction_confidence": null,
+              "line_index": 4
+            },
+            {
+              "element_id": "el-006",
+              "page_id": "page-001",
+              "page_number": 1,
+              "element_type": "TEXT",
+              "extraction_method": "NATIVE_TEXT",
+              "text": "Diagnosa Utama : K35.8 Acute appendicitis, other and unspecified",
+              "bbox": null,
+              "extraction_confidence": null,
+              "line_index": 5
+            },
+            {
+              "element_id": "el-007",
+              "page_id": "page-001",
+              "page_number": 1,
+              "element_type": "TEXT",
+              "extraction_method": "NATIVE_TEXT",
+              "text": "Diagnosa Sekunder : -",
+              "bbox": null,
+              "extraction_confidence": null,
+              "line_index": 6
+            },
+            {
+              "element_id": "el-008",
+              "page_id": "page-001",
+              "page_number": 1,
+              "element_type": "TEXT",
+              "extraction_method": "NATIVE_TEXT",
+              "text": "Prosedur : 47.09 Other appendectomy",
+              "bbox": null,
+              "extraction_confidence": null,
+              "line_index": 7
+            },
+            {
+              "element_id": "el-009",
+              "page_id": "page-001",
+              "page_number": 1,
+              "element_type": "TEXT",
+              "extraction_method": "NATIVE_TEXT",
+              "text": "99.21 Injection of antibiotic",
+              "bbox": null,
+              "extraction_confidence": null,
+              "line_index": 8
+            },
+            {
+              "element_id": "el-010",
+              "page_id": "page-001",
+              "page_number": 1,
+              "element_type": "TEXT",
+              "extraction_method": "NATIVE_TEXT",
+              "text": "Lembar 1 / 1",
+              "bbox": null,
+              "extraction_confidence": null,
+              "line_index": 9
+            }
+          ],
+          "error": null
+        },
+        {
+          "page_id": "page-002",
+          "source_file_id": "file-aa9d7c3ab22c",
+          "page_number": 2,
+          "page_kind": "CONTENT",
+          "modality": "DIGITAL_TEXT",
+          "extraction_method": "NATIVE_TEXT",
+          "text_status": "EXTRACTED",
+          "text": "No.SEP : 0000SINTETIS0001\nTgl.SEP : 2025-02-03\nNama Peserta : PASIEN SINTETIS\nDiagnosa Awal : R10.4 - Abdominal pain\n",
+          "image_count": 0,
+          "elements": [
+            {
+              "element_id": "el-011",
+              "page_id": "page-002",
+              "page_number": 2,
+              "element_type": "TEXT",
+              "extraction_method": "NATIVE_TEXT",
+              "text": "No.SEP : 0000SINTETIS0001",
+              "bbox": null,
+              "extraction_confidence": null,
+              "line_index": 0
+            },
+            {
+              "element_id": "el-012",
+              "page_id": "page-002",
+              "page_number": 2,
+              "element_type": "TEXT",
+              "extraction_method": "NATIVE_TEXT",
+              "text": "Tgl.SEP : 2025-02-03",
+              "bbox": null,
+              "extraction_confidence": null,
+              "line_index": 1
+            },
+            {
+              "element_id": "el-013",
+              "page_id": "page-002",
+              "page_number": 2,
+              "element_type": "TEXT",
+              "extraction_method": "NATIVE_TEXT",
+              "text": "Nama Peserta : PASIEN SINTETIS",
+              "bbox": null,
+              "extraction_confidence": null,
+              "line_index": 2
+            },
+            {
+              "element_id": "el-014",
+              "page_id": "page-002",
+              "page_number": 2,
+              "element_type": "TEXT",
+              "extraction_method": "NATIVE_TEXT",
+              "text": "Diagnosa Awal : R10.4 - Abdominal pain",
+              "bbox": null,
+              "extraction_confidence": null,
+              "line_index": 3
+            }
+          ],
+          "error": null
+        },
+        {
+          "page_id": "page-003",
+          "source_file_id": "file-aa9d7c3ab22c",
+          "page_number": 3,
+          "page_kind": "CONTENT",
+          "modality": "DIGITAL_TEXT",
+          "extraction_method": "NATIVE_TEXT",
+          "text_status": "EXTRACTED",
+          "text": "RS SINTETIS\nRESUME MEDIS\nNama : PASIEN SINTETIS\nTanggal Masuk : 3 Februari 2025 08:15 WIB\nTanggal Keluar : 5 Februari 2025\nANAMNESIS\nNyeri perut kanan bawah sejak 1 hari\nDIAGNOSA\nK35.8 Acute appendicitis\nPROSEDUR\n47.09 Other appendectomy\nHalaman 1 of 2\n",
+          "image_count": 0,
+          "elements": [
+            {
+              "element_id": "el-015",
+              "page_id": "page-003",
+              "page_number": 3,
+              "element_type": "TEXT",
+              "extraction_method": "NATIVE_TEXT",
+              "text": "RS SINTETIS",
+              "bbox": null,
+              "extraction_confidence": null,
+              "line_index": 0
+            },
+            {
+              "element_id": "el-016",
+              "page_id": "page-003",
+              "page_number": 3,
+              "element_type": "TEXT",
+              "extraction_method": "NATIVE_TEXT",
+              "text": "RESUME MEDIS",
+              "bbox": null,
+              "extraction_confidence": null,
+              "line_index": 1
+            },
+            {
+              "element_id": "el-017",
+              "page_id": "page-003",
+              "page_number": 3,
+              "element_type": "TEXT",
+              "extraction_method": "NATIVE_TEXT",
+              "text": "Nama : PASIEN SINTETIS",
+              "bbox": null,
+              "extraction_confidence": null,
+              "line_index": 2
+            },
+            {
+              "element_id": "el-018",
+              "page_id": "page-003",
+              "page_number": 3,
+              "element_type": "TEXT",
+              "extraction_method": "NATIVE_TEXT",
+              "text": "Tanggal Masuk : 3 Februari 2025 08:15 WIB",
+              "bbox": null,
+              "extraction_confidence": null,
+              "line_index": 3
+            },
+            {
+              "element_id": "el-019",
+              "page_id": "page-003",
+              "page_number": 3,
+              "element_type": "TEXT",
+              "extraction_method": "NATIVE_TEXT",
+              "text": "Tanggal Keluar : 5 Februari 2025",
+              "bbox": null,
+              "extraction_confidence": null,
+              "line_index": 4
+            },
+            {
+              "element_id": "el-020",
+              "page_id": "page-003",
+              "page_number": 3,
+              "element_type": "TEXT",
+              "extraction_method": "NATIVE_TEXT",
+              "text": "ANAMNESIS",
+              "bbox": null,
+              "extraction_confidence": null,
+              "line_index": 5
+            },
+            {
+              "element_id": "el-021",
+              "page_id": "page-003",
+              "page_number": 3,
+              "element_type": "TEXT",
+              "extraction_method": "NATIVE_TEXT",
+              "text": "Nyeri perut kanan bawah sejak 1 hari",
+              "bbox": null,
+              "extraction_confidence": null,
+              "line_index": 6
+            },
+            {
+              "element_id": "el-022",
+              "page_id": "page-003",
+              "page_number": 3,
+              "element_type": "TEXT",
+              "extraction_method": "NATIVE_TEXT",
+              "text": "DIAGNOSA",
+              "bbox": null,
+              "extraction_confidence": null,
+              "line_index": 7
+            },
+            {
+              "element_id": "el-023",
+              "page_id": "page-003",
+              "page_number": 3,
+              "element_type": "TEXT",
+              "extraction_method": "NATIVE_TEXT",
+              "text": "K35.8 Acute appendicitis",
+              "bbox": null,
+              "extraction_confidence": null,
+              "line_index": 8
+            },
+            {
+              "element_id": "el-024",
+              "page_id": "page-003",
+              "page_number": 3,
+              "element_type": "TEXT",
+              "extraction_method": "NATIVE_TEXT",
+              "text": "PROSEDUR",
+              "bbox": null,
+              "extraction_confidence": null,
+              "line_index": 9
+            },
+            {
+              "element_id": "el-025",
+              "page_id": "page-003",
+              "page_number": 3,
+              "element_type": "TEXT",
+              "extraction_method": "NATIVE_TEXT",
+              "text": "47.09 Other appendectomy",
+              "bbox": null,
+              "extraction_confidence": null,
+              "line_index": 10
+            },
+            {
+              "element_id": "el-026",
+              "page_id": "page-003",
+              "page_number": 3,
+              "element_type": "TEXT",
+              "extraction_method": "NATIVE_TEXT",
+              "text": "Halaman 1 of 2",
+              "bbox": null,
+              "extraction_confidence": null,
+              "line_index": 11
+            }
+          ],
+          "error": null
+        },
+        {
+          "page_id": "page-004",
+          "source_file_id": "file-aa9d7c3ab22c",
+          "page_number": 4,
+          "page_kind": "CONTENT",
+          "modality": "DIGITAL_TEXT",
+          "extraction_method": "NATIVE_TEXT",
+          "text_status": "EXTRACTED",
+          "text": "RESEP\nR/ CEFTRIAXONE 1 g INJEKSI 2x1\nR/ DISPOSABLE SYRINGE 5 ml\nKontrol : September 2025\nHalaman 2 of 2\n",
+          "image_count": 0,
+          "elements": [
+            {
+              "element_id": "el-027",
+              "page_id": "page-004",
+              "page_number": 4,
+              "element_type": "TEXT",
+              "extraction_method": "NATIVE_TEXT",
+              "text": "RESEP",
+              "bbox": null,
+              "extraction_confidence": null,
+              "line_index": 0
+            },
+            {
+              "element_id": "el-028",
+              "page_id": "page-004",
+              "page_number": 4,
+              "element_type": "TEXT",
+              "extraction_method": "NATIVE_TEXT",
+              "text": "R/ CEFTRIAXONE 1 g INJEKSI 2x1",
+              "bbox": null,
+              "extraction_confidence": null,
+              "line_index": 1
+            },
+            {
+              "element_id": "el-029",
+              "page_id": "page-004",
+              "page_number": 4,
+              "element_type": "TEXT",
+              "extraction_method": "NATIVE_TEXT",
+              "text": "R/ DISPOSABLE SYRINGE 5 ml",
+              "bbox": null,
+              "extraction_confidence": null,
+              "line_index": 2
+            },
+            {
+              "element_id": "el-030",
+              "page_id": "page-004",
+              "page_number": 4,
+              "element_type": "TEXT",
+              "extraction_method": "NATIVE_TEXT",
+              "text": "Kontrol : September 2025",
+              "bbox": null,
+              "extraction_confidence": null,
+              "line_index": 3
+            },
+            {
+              "element_id": "el-031",
+              "page_id": "page-004",
+              "page_number": 4,
+              "element_type": "TEXT",
+              "extraction_method": "NATIVE_TEXT",
+              "text": "Halaman 2 of 2",
+              "bbox": null,
+              "extraction_confidence": null,
+              "line_index": 4
+            }
+          ],
+          "error": null
+        },
+        {
+          "page_id": "page-005",
+          "source_file_id": "file-aa9d7c3ab22c",
+          "page_number": 5,
+          "page_kind": "BLANK",
+          "modality": "UNKNOWN",
+          "extraction_method": "UNKNOWN",
+          "text_status": "NOT_AVAILABLE",
+          "text": "",
+          "image_count": 0,
+          "elements": [],
+          "error": null
+        },
+        {
+          "page_id": "page-006",
+          "source_file_id": "file-aa9d7c3ab22c",
+          "page_number": 6,
+          "page_kind": "CONTENT",
+          "modality": "UNKNOWN",
+          "extraction_method": "UNKNOWN",
+          "text_status": "NOT_AVAILABLE",
+          "text": "",
+          "image_count": 1,
+          "elements": [
+            {
+              "element_id": "el-032",
+              "page_id": "page-006",
+              "page_number": 6,
+              "element_type": "IMAGE",
+              "extraction_method": "UNKNOWN",
+              "text": null,
+              "bbox": null,
+              "extraction_confidence": null,
+              "line_index": null
+            }
+          ],
+          "error": null
+        },
+        {
+          "page_id": "page-007",
+          "source_file_id": "file-aa9d7c3ab22c",
+          "page_number": 7,
+          "page_kind": "BLANK",
+          "modality": "UNKNOWN",
+          "extraction_method": "UNKNOWN",
+          "text_status": "NOT_AVAILABLE",
+          "text": "",
+          "image_count": 0,
+          "elements": [],
+          "error": null
+        },
+        {
+          "page_id": "page-008",
+          "source_file_id": "file-aa9d7c3ab22c",
+          "page_number": 8,
+          "page_kind": "CONTENT",
+          "modality": "DIGITAL_TEXT",
+          "extraction_method": "NATIVE_TEXT",
+          "text_status": "EXTRACTED",
+          "text": "Pasien : PASIEN SINTETIS\nTgl. Order : 03/02/2025 09:00\nPemeriksaan Hasil Satuan Nilai Rujukan\nHemoglobin 13.1 g/dL 12.0 - 16.0\nHalaman 1 of 2\n",
+          "image_count": 0,
+          "elements": [
+            {
+              "element_id": "el-033",
+              "page_id": "page-008",
+              "page_number": 8,
+              "element_type": "TEXT",
+              "extraction_method": "NATIVE_TEXT",
+              "text": "Pasien : PASIEN SINTETIS",
+              "bbox": null,
+              "extraction_confidence": null,
+              "line_index": 0
+            },
+            {
+              "element_id": "el-034",
+              "page_id": "page-008",
+              "page_number": 8,
+              "element_type": "TEXT",
+              "extraction_method": "NATIVE_TEXT",
+              "text": "Tgl. Order : 03/02/2025 09:00",
+              "bbox": null,
+              "extraction_confidence": null,
+              "line_index": 1
+            },
+            {
+              "element_id": "el-035",
+              "page_id": "page-008",
+              "page_number": 8,
+              "element_type": "TEXT",
+              "extraction_method": "NATIVE_TEXT",
+              "text": "Pemeriksaan Hasil Satuan Nilai Rujukan",
+              "bbox": null,
+              "extraction_confidence": null,
+              "line_index": 2
+            },
+            {
+              "element_id": "el-036",
+              "page_id": "page-008",
+              "page_number": 8,
+              "element_type": "TEXT",
+              "extraction_method": "NATIVE_TEXT",
+              "text": "Hemoglobin 13.1 g/dL 12.0 - 16.0",
+              "bbox": null,
+              "extraction_confidence": null,
+              "line_index": 3
+            },
+            {
+              "element_id": "el-037",
+              "page_id": "page-008",
+              "page_number": 8,
+              "element_type": "TEXT",
+              "extraction_method": "NATIVE_TEXT",
+              "text": "Halaman 1 of 2",
+              "bbox": null,
+              "extraction_confidence": null,
+              "line_index": 4
+            }
+          ],
+          "error": null
+        },
+        {
+          "page_id": "page-009",
+          "source_file_id": "file-aa9d7c3ab22c",
+          "page_number": 9,
+          "page_kind": "CONTENT",
+          "modality": "DIGITAL_TEXT",
+          "extraction_method": "NATIVE_TEXT",
+          "text_status": "EXTRACTED",
+          "text": "Pemeriksaan Hasil Satuan Nilai Rujukan\nLeukosit 14.2 10^3/uL 4.0 - 10.0\nHalaman 2 of 2\n",
+          "image_count": 0,
+          "elements": [
+            {
+              "element_id": "el-038",
+              "page_id": "page-009",
+              "page_number": 9,
+              "element_type": "TEXT",
+              "extraction_method": "NATIVE_TEXT",
+              "text": "Pemeriksaan Hasil Satuan Nilai Rujukan",
+              "bbox": null,
+              "extraction_confidence": null,
+              "line_index": 0
+            },
+            {
+              "element_id": "el-039",
+              "page_id": "page-009",
+              "page_number": 9,
+              "element_type": "TEXT",
+              "extraction_method": "NATIVE_TEXT",
+              "text": "Leukosit 14.2 10^3/uL 4.0 - 10.0",
+              "bbox": null,
+              "extraction_confidence": null,
+              "line_index": 1
+            },
+            {
+              "element_id": "el-040",
+              "page_id": "page-009",
+              "page_number": 9,
+              "element_type": "TEXT",
+              "extraction_method": "NATIVE_TEXT",
+              "text": "Halaman 2 of 2",
+              "bbox": null,
+              "extraction_confidence": null,
+              "line_index": 2
+            }
+          ],
+          "error": null
+        },
+        {
+          "page_id": "page-010",
+          "source_file_id": "file-aa9d7c3ab22c",
+          "page_number": 10,
+          "page_kind": "CONTENT",
+          "modality": "DIGITAL_TEXT",
+          "extraction_method": "NATIVE_TEXT",
+          "text_status": "EXTRACTED",
+          "text": "Pasien : PASIEN SINTETIS\nPemeriksaan Hasil Satuan Nilai Rujukan\nCRP 48 mg/L < 5\nHalaman 1 of 1\n",
+          "image_count": 0,
+          "elements": [
+            {
+              "element_id": "el-041",
+              "page_id": "page-010",
+              "page_number": 10,
+              "element_type": "TEXT",
+              "extraction_method": "NATIVE_TEXT",
+              "text": "Pasien : PASIEN SINTETIS",
+              "bbox": null,
+              "extraction_confidence": null,
+              "line_index": 0
+            },
+            {
+              "element_id": "el-042",
+              "page_id": "page-010",
+              "page_number": 10,
+              "element_type": "TEXT",
+              "extraction_method": "NATIVE_TEXT",
+              "text": "Pemeriksaan Hasil Satuan Nilai Rujukan",
+              "bbox": null,
+              "extraction_confidence": null,
+              "line_index": 1
+            },
+            {
+              "element_id": "el-043",
+              "page_id": "page-010",
+              "page_number": 10,
+              "element_type": "TEXT",
+              "extraction_method": "NATIVE_TEXT",
+              "text": "CRP 48 mg/L < 5",
+              "bbox": null,
+              "extraction_confidence": null,
+              "line_index": 2
+            },
+            {
+              "element_id": "el-044",
+              "page_id": "page-010",
+              "page_number": 10,
+              "element_type": "TEXT",
+              "extraction_method": "NATIVE_TEXT",
+              "text": "Halaman 1 of 1",
+              "bbox": null,
+              "extraction_confidence": null,
+              "line_index": 3
+            }
+          ],
+          "error": null
+        },
+        {
+          "page_id": "page-011",
+          "source_file_id": "file-aa9d7c3ab22c",
+          "page_number": 11,
+          "page_kind": "CONTENT",
+          "modality": "DIGITAL_TEXT",
+          "extraction_method": "NATIVE_TEXT",
+          "text_status": "EXTRACTED",
+          "text": "ASESMEN AWAL GAWAT DARURAT\nWaktu Datang : 3 Februari 2025\nPEMERIKSAAN FISIK\nTD : 120/80 mmHg\n",
+          "image_count": 0,
+          "elements": [
+            {
+              "element_id": "el-045",
+              "page_id": "page-011",
+              "page_number": 11,
+              "element_type": "TEXT",
+              "extraction_method": "NATIVE_TEXT",
+              "text": "ASESMEN AWAL GAWAT DARURAT",
+              "bbox": null,
+              "extraction_confidence": null,
+              "line_index": 0
+            },
+            {
+              "element_id": "el-046",
+              "page_id": "page-011",
+              "page_number": 11,
+              "element_type": "TEXT",
+              "extraction_method": "NATIVE_TEXT",
+              "text": "Waktu Datang : 3 Februari 2025",
+              "bbox": null,
+              "extraction_confidence": null,
+              "line_index": 1
+            },
+            {
+              "element_id": "el-047",
+              "page_id": "page-011",
+              "page_number": 11,
+              "element_type": "TEXT",
+              "extraction_method": "NATIVE_TEXT",
+              "text": "PEMERIKSAAN FISIK",
+              "bbox": null,
+              "extraction_confidence": null,
+              "line_index": 2
+            },
+            {
+              "element_id": "el-048",
+              "page_id": "page-011",
+              "page_number": 11,
+              "element_type": "TEXT",
+              "extraction_method": "NATIVE_TEXT",
+              "text": "TD : 120/80 mmHg",
+              "bbox": null,
+              "extraction_confidence": null,
+              "line_index": 3
+            }
+          ],
+          "error": null
+        },
+        {
+          "page_id": "page-012",
+          "source_file_id": "file-aa9d7c3ab22c",
+          "page_number": 12,
+          "page_kind": "CONTENT",
+          "modality": "DIGITAL_TEXT",
+          "extraction_method": "NATIVE_TEXT",
+          "text_status": "EXTRACTED",
+          "text": "Nyeri tekan McBurney (+)\nTINDAK LANJUT\nRawat Inap\n",
+          "image_count": 0,
+          "elements": [
+            {
+              "element_id": "el-049",
+              "page_id": "page-012",
+              "page_number": 12,
+              "element_type": "TEXT",
+              "extraction_method": "NATIVE_TEXT",
+              "text": "Nyeri tekan McBurney (+)",
+              "bbox": null,
+              "extraction_confidence": null,
+              "line_index": 0
+            },
+            {
+              "element_id": "el-050",
+              "page_id": "page-012",
+              "page_number": 12,
+              "element_type": "TEXT",
+              "extraction_method": "NATIVE_TEXT",
+              "text": "TINDAK LANJUT",
+              "bbox": null,
+              "extraction_confidence": null,
+              "line_index": 1
+            },
+            {
+              "element_id": "el-051",
+              "page_id": "page-012",
+              "page_number": 12,
+              "element_type": "TEXT",
+              "extraction_method": "NATIVE_TEXT",
+              "text": "Rawat Inap",
+              "bbox": null,
+              "extraction_confidence": null,
+              "line_index": 2
+            }
+          ],
+          "error": null
+        },
+        {
+          "page_id": "page-013",
+          "source_file_id": "file-aa9d7c3ab22c",
+          "page_number": 13,
+          "page_kind": "CONTENT",
+          "modality": "DIGITAL_TEXT",
+          "extraction_method": "NATIVE_TEXT",
+          "text_status": "EXTRACTED",
+          "text": "NOTA REKAP PELAYANAN\nTgl KRS : 5 Februari 2025\nLABORATORIUM\nHemoglobin Rp 25,000.00\nRADIOLOGI\nUSG Abdomen Rp 150,000.00\nGRAND TOTAL Rp 175,000.00\n",
+          "image_count": 0,
+          "elements": [
+            {
+              "element_id": "el-052",
+              "page_id": "page-013",
+              "page_number": 13,
+              "element_type": "TEXT",
+              "extraction_method": "NATIVE_TEXT",
+              "text": "NOTA REKAP PELAYANAN",
+              "bbox": null,
+              "extraction_confidence": null,
+              "line_index": 0
+            },
+            {
+              "element_id": "el-053",
+              "page_id": "page-013",
+              "page_number": 13,
+              "element_type": "TEXT",
+              "extraction_method": "NATIVE_TEXT",
+              "text": "Tgl KRS : 5 Februari 2025",
+              "bbox": null,
+              "extraction_confidence": null,
+              "line_index": 1
+            },
+            {
+              "element_id": "el-054",
+              "page_id": "page-013",
+              "page_number": 13,
+              "element_type": "TEXT",
+              "extraction_method": "NATIVE_TEXT",
+              "text": "LABORATORIUM",
+              "bbox": null,
+              "extraction_confidence": null,
+              "line_index": 2
+            },
+            {
+              "element_id": "el-055",
+              "page_id": "page-013",
+              "page_number": 13,
+              "element_type": "TEXT",
+              "extraction_method": "NATIVE_TEXT",
+              "text": "Hemoglobin Rp 25,000.00",
+              "bbox": null,
+              "extraction_confidence": null,
+              "line_index": 3
+            },
+            {
+              "element_id": "el-056",
+              "page_id": "page-013",
+              "page_number": 13,
+              "element_type": "TEXT",
+              "extraction_method": "NATIVE_TEXT",
+              "text": "RADIOLOGI",
+              "bbox": null,
+              "extraction_confidence": null,
+              "line_index": 4
+            },
+            {
+              "element_id": "el-057",
+              "page_id": "page-013",
+              "page_number": 13,
+              "element_type": "TEXT",
+              "extraction_method": "NATIVE_TEXT",
+              "text": "USG Abdomen Rp 150,000.00",
+              "bbox": null,
+              "extraction_confidence": null,
+              "line_index": 5
+            },
+            {
+              "element_id": "el-058",
+              "page_id": "page-013",
+              "page_number": 13,
+              "element_type": "TEXT",
+              "extraction_method": "NATIVE_TEXT",
+              "text": "GRAND TOTAL Rp 175,000.00",
+              "bbox": null,
+              "extraction_confidence": null,
+              "line_index": 6
+            }
+          ],
+          "error": null
+        },
+        {
+          "page_id": "page-014",
+          "source_file_id": "file-aa9d7c3ab22c",
+          "page_number": 14,
+          "page_kind": "CONTENT",
+          "modality": "DIGITAL_TEXT",
+          "extraction_method": "NATIVE_TEXT",
+          "text_status": "EXTRACTED",
+          "text": "TRIASE\nWaktu Datang : 3 Februari 2025, 07:55 WIB\n",
+          "image_count": 0,
+          "elements": [
+            {
+              "element_id": "el-059",
+              "page_id": "page-014",
+              "page_number": 14,
+              "element_type": "TEXT",
+              "extraction_method": "NATIVE_TEXT",
+              "text": "TRIASE",
+              "bbox": null,
+              "extraction_confidence": null,
+              "line_index": 0
+            },
+            {
+              "element_id": "el-060",
+              "page_id": "page-014",
+              "page_number": 14,
+              "element_type": "TEXT",
+              "extraction_method": "NATIVE_TEXT",
+              "text": "Waktu Datang : 3 Februari 2025, 07:55 WIB",
+              "bbox": null,
+              "extraction_confidence": null,
+              "line_index": 1
+            }
+          ],
+          "error": null
+        },
+        {
+          "page_id": "page-015",
+          "source_file_id": "file-aa9d7c3ab22c",
+          "page_number": 15,
+          "page_kind": "BLANK",
+          "modality": "UNKNOWN",
+          "extraction_method": "UNKNOWN",
+          "text_status": "NOT_AVAILABLE",
+          "text": "",
+          "image_count": 0,
+          "elements": [],
+          "error": null
+        },
+        {
+          "page_id": "page-016",
+          "source_file_id": "file-aa9d7c3ab22c",
+          "page_number": 16,
+          "page_kind": "CONTENT",
+          "modality": "DIGITAL_TEXT",
+          "extraction_method": "NATIVE_TEXT",
+          "text_status": "EXTRACTED",
+          "text": "Catatan tambahan tanpa judul\nIsi sintetis\n",
+          "image_count": 0,
+          "elements": [
+            {
+              "element_id": "el-061",
+              "page_id": "page-016",
+              "page_number": 16,
+              "element_type": "TEXT",
+              "extraction_method": "NATIVE_TEXT",
+              "text": "Catatan tambahan tanpa judul",
+              "bbox": null,
+              "extraction_confidence": null,
+              "line_index": 0
+            },
+            {
+              "element_id": "el-062",
+              "page_id": "page-016",
+              "page_number": 16,
+              "element_type": "TEXT",
+              "extraction_method": "NATIVE_TEXT",
+              "text": "Isi sintetis",
+              "bbox": null,
+              "extraction_confidence": null,
+              "line_index": 1
+            }
+          ],
+          "error": null
+        }
+      ]
+    }
+  ],
+  "documents": [
+    {
+      "document_id": "doc-001",
+      "document_type": "INA_CBG_OUTPUT",
+      "document_role": [
+        "CLAIM_CODING"
+      ],
+      "document_title": "Berkas Klaim Individual Pasien 06/02/2025",
+      "page_refs": [
+        {
+          "source_file_id": "file-aa9d7c3ab22c",
+          "page_number": 1,
+          "page_id": "page-001"
+        }
+      ],
+      "boundary_basis": "TITLE",
+      "page_bases": {
+        "1": "TITLE"
+      },
+      "source_facility": "UNKNOWN",
+      "document_date": null,
+      "dates": [
+        {
+          "value": null,
+          "precision": "UNKNOWN",
+          "raw_text": "06/02/2025",
+          "date_role": "UNKNOWN",
+          "timezone": null,
+          "ambiguity": "AMBIGUOUS_DAY_MONTH_ORDER"
+        },
+        {
+          "value": null,
+          "precision": "UNKNOWN",
+          "raw_text": "03/02/2025",
+          "date_role": "ADMISSION",
+          "timezone": null,
+          "ambiguity": "AMBIGUOUS_DAY_MONTH_ORDER"
+        },
+        {
+          "value": null,
+          "precision": "UNKNOWN",
+          "raw_text": "05/02/2025",
+          "date_role": "DISCHARGE",
+          "timezone": null,
+          "ambiguity": "AMBIGUOUS_DAY_MONTH_ORDER"
+        }
+      ],
+      "completeness_status": "UNKNOWN",
+      "page_counters": [
+        "1/1"
+      ],
+      "classification_confidence": null,
+      "duplicate_of": null,
+      "sections": [
+        {
+          "section_id": "section-001",
+          "document_id": "doc-001",
+          "section_type": "GENERIC",
+          "title": null,
+          "page_start": 1,
+          "page_end": 1,
+          "chunks": [
+            {
+              "chunk_id": "chunk-001",
+              "section_id": "section-001",
+              "document_id": "doc-001",
+              "chunk_type": "GENERIC",
+              "text": "KEMENTERIAN KESEHATAN (CONTOH SINTETIS)\nBerkas Klaim Individual Pasien 06/02/2025\nNama RS : RS SINTETIS\nTanggal Masuk : 03/02/2025\nTanggal Keluar : 05/02/2025\nDiagnosa Utama : K35.8 Acute appendicitis, other and unspecified\nDiagnosa Sekunder : -\nProsedur : 47.09 Other appendectomy\n99.21 Injection of antibiotic\nLembar 1 / 1",
+              "page_number": 1,
+              "page_id": "page-001",
+              "element_refs": [
+                "el-001",
+                "el-002",
+                "el-003",
+                "el-004",
+                "el-005",
+                "el-006",
+                "el-007",
+                "el-008",
+                "el-009",
+                "el-010"
+              ],
+              "fact_refs": [
+                "fact-001",
+                "fact-002",
+                "fact-003",
+                "fact-004"
+              ],
+              "event_refs": []
+            }
+          ]
+        }
+      ],
+      "evidence_refs": [
+        "evidence-001"
+      ],
+      "page_range": "1"
+    },
+    {
+      "document_id": "doc-002",
+      "document_type": "SEP",
+      "document_role": [
+        "ADMINISTRATIVE"
+      ],
+      "document_title": null,
+      "page_refs": [
+        {
+          "source_file_id": "file-aa9d7c3ab22c",
+          "page_number": 2,
+          "page_id": "page-002"
+        }
+      ],
+      "boundary_basis": "MARKER",
+      "page_bases": {
+        "2": "MARKER"
+      },
+      "source_facility": "UNKNOWN",
+      "document_date": null,
+      "dates": [
+        {
+          "value": "2025-02-03",
+          "precision": "DATE",
+          "raw_text": "2025-02-03",
+          "date_role": "UNKNOWN",
+          "timezone": null,
+          "ambiguity": null
+        }
+      ],
+      "completeness_status": "UNKNOWN",
+      "page_counters": [],
+      "classification_confidence": null,
+      "duplicate_of": null,
+      "sections": [
+        {
+          "section_id": "section-002",
+          "document_id": "doc-002",
+          "section_type": "GENERIC",
+          "title": null,
+          "page_start": 2,
+          "page_end": 2,
+          "chunks": [
+            {
+              "chunk_id": "chunk-002",
+              "section_id": "section-002",
+              "document_id": "doc-002",
+              "chunk_type": "GENERIC",
+              "text": "No.SEP : 0000SINTETIS0001\nTgl.SEP : 2025-02-03\nNama Peserta : PASIEN SINTETIS\nDiagnosa Awal : R10.4 - Abdominal pain",
+              "page_number": 2,
+              "page_id": "page-002",
+              "element_refs": [
+                "el-011",
+                "el-012",
+                "el-013",
+                "el-014"
+              ],
+              "fact_refs": [
+                "fact-005"
+              ],
+              "event_refs": []
+            }
+          ]
+        }
+      ],
+      "evidence_refs": [
+        "evidence-002"
+      ],
+      "page_range": "2"
+    },
+    {
+      "document_id": "doc-003",
+      "document_type": "MEDICAL_RESUME",
+      "document_role": [
+        "CLINICAL"
+      ],
+      "document_title": "RESUME MEDIS",
+      "page_refs": [
+        {
+          "source_file_id": "file-aa9d7c3ab22c",
+          "page_number": 3,
+          "page_id": "page-003"
+        },
+        {
+          "source_file_id": "file-aa9d7c3ab22c",
+          "page_number": 4,
+          "page_id": "page-004"
+        }
+      ],
+      "boundary_basis": "TITLE",
+      "page_bases": {
+        "3": "TITLE",
+        "4": "PAGE_COUNTER"
+      },
+      "source_facility": "UNKNOWN",
+      "document_date": null,
+      "dates": [
+        {
+          "value": "2025-02-03T08:15",
+          "precision": "EXACT_DATETIME",
+          "raw_text": "3 Februari 2025 08:15 WIB",
+          "date_role": "ADMISSION",
+          "timezone": "WIB",
+          "ambiguity": null
+        },
+        {
+          "value": "2025-02-05",
+          "precision": "DATE",
+          "raw_text": "5 Februari 2025",
+          "date_role": "DISCHARGE",
+          "timezone": null,
+          "ambiguity": null
+        },
+        {
+          "value": "2025-09",
+          "precision": "MONTH",
+          "raw_text": "September 2025",
+          "date_role": "UNKNOWN",
+          "timezone": null,
+          "ambiguity": null
+        }
+      ],
+      "completeness_status": "UNKNOWN",
+      "page_counters": [
+        "1/2",
+        "2/2"
+      ],
+      "classification_confidence": null,
+      "duplicate_of": null,
+      "sections": [
+        {
+          "section_id": "section-003",
+          "document_id": "doc-003",
+          "section_type": "GENERIC",
+          "title": null,
+          "page_start": 3,
+          "page_end": 3,
+          "chunks": [
+            {
+              "chunk_id": "chunk-003",
+              "section_id": "section-003",
+              "document_id": "doc-003",
+              "chunk_type": "GENERIC",
+              "text": "RS SINTETIS\nRESUME MEDIS\nNama : PASIEN SINTETIS\nTanggal Masuk : 3 Februari 2025 08:15 WIB\nTanggal Keluar : 5 Februari 2025",
+              "page_number": 3,
+              "page_id": "page-003",
+              "element_refs": [
+                "el-015",
+                "el-016",
+                "el-017",
+                "el-018",
+                "el-019"
+              ],
+              "fact_refs": [],
+              "event_refs": [
+                "event-001",
+                "event-002"
+              ]
+            }
+          ]
+        },
+        {
+          "section_id": "section-004",
+          "document_id": "doc-003",
+          "section_type": "HISTORY",
+          "title": "ANAMNESIS",
+          "page_start": 3,
+          "page_end": 3,
+          "chunks": [
+            {
+              "chunk_id": "chunk-004",
+              "section_id": "section-004",
+              "document_id": "doc-003",
+              "chunk_type": "HISTORY",
+              "text": "ANAMNESIS\nNyeri perut kanan bawah sejak 1 hari",
+              "page_number": 3,
+              "page_id": "page-003",
+              "element_refs": [
+                "el-020",
+                "el-021"
+              ],
+              "fact_refs": [],
+              "event_refs": []
+            }
+          ]
+        },
+        {
+          "section_id": "section-005",
+          "document_id": "doc-003",
+          "section_type": "DIAGNOSIS",
+          "title": "DIAGNOSA",
+          "page_start": 3,
+          "page_end": 3,
+          "chunks": [
+            {
+              "chunk_id": "chunk-005",
+              "section_id": "section-005",
+              "document_id": "doc-003",
+              "chunk_type": "DIAGNOSIS",
+              "text": "DIAGNOSA\nK35.8 Acute appendicitis",
+              "page_number": 3,
+              "page_id": "page-003",
+              "element_refs": [
+                "el-022",
+                "el-023"
+              ],
+              "fact_refs": [
+                "fact-006"
+              ],
+              "event_refs": []
+            }
+          ]
+        },
+        {
+          "section_id": "section-006",
+          "document_id": "doc-003",
+          "section_type": "PROCEDURE",
+          "title": "PROSEDUR",
+          "page_start": 3,
+          "page_end": 3,
+          "chunks": [
+            {
+              "chunk_id": "chunk-006",
+              "section_id": "section-006",
+              "document_id": "doc-003",
+              "chunk_type": "PROCEDURE",
+              "text": "PROSEDUR\n47.09 Other appendectomy\nHalaman 1 of 2",
+              "page_number": 3,
+              "page_id": "page-003",
+              "element_refs": [
+                "el-024",
+                "el-025",
+                "el-026"
+              ],
+              "fact_refs": [
+                "fact-007"
+              ],
+              "event_refs": []
+            }
+          ]
+        },
+        {
+          "section_id": "section-007",
+          "document_id": "doc-003",
+          "section_type": "MEDICATION",
+          "title": "RESEP",
+          "page_start": 4,
+          "page_end": 4,
+          "chunks": [
+            {
+              "chunk_id": "chunk-007",
+              "section_id": "section-007",
+              "document_id": "doc-003",
+              "chunk_type": "MEDICATION",
+              "text": "RESEP\nR/ CEFTRIAXONE 1 g INJEKSI 2x1\nR/ DISPOSABLE SYRINGE 5 ml\nKontrol : September 2025\nHalaman 2 of 2",
+              "page_number": 4,
+              "page_id": "page-004",
+              "element_refs": [
+                "el-027",
+                "el-028",
+                "el-029",
+                "el-030",
+                "el-031"
+              ],
+              "fact_refs": [
+                "fact-008",
+                "fact-009"
+              ],
+              "event_refs": []
+            }
+          ]
+        }
+      ],
+      "evidence_refs": [
+        "evidence-003"
+      ],
+      "page_range": "3-4"
+    },
+    {
+      "document_id": "doc-004",
+      "document_type": "UNKNOWN",
+      "document_role": [],
+      "document_title": null,
+      "page_refs": [
+        {
+          "source_file_id": "file-aa9d7c3ab22c",
+          "page_number": 6,
+          "page_id": "page-006"
+        }
+      ],
+      "boundary_basis": "IMAGE_PAGE",
+      "page_bases": {
+        "6": "IMAGE_PAGE"
+      },
+      "source_facility": "UNKNOWN",
+      "document_date": null,
+      "dates": [],
+      "completeness_status": "UNKNOWN",
+      "page_counters": [],
+      "classification_confidence": null,
+      "duplicate_of": null,
+      "sections": [],
+      "evidence_refs": [
+        "evidence-004"
+      ],
+      "page_range": "6"
+    },
+    {
+      "document_id": "doc-005",
+      "document_type": "LABORATORY",
+      "document_role": [
+        "DIAGNOSTIC"
+      ],
+      "document_title": null,
+      "page_refs": [
+        {
+          "source_file_id": "file-aa9d7c3ab22c",
+          "page_number": 8,
+          "page_id": "page-008"
+        },
+        {
+          "source_file_id": "file-aa9d7c3ab22c",
+          "page_number": 9,
+          "page_id": "page-009"
+        }
+      ],
+      "boundary_basis": "PAGE_COUNTER",
+      "page_bases": {
+        "8": "PAGE_COUNTER",
+        "9": "PAGE_COUNTER"
+      },
+      "source_facility": "UNKNOWN",
+      "document_date": null,
+      "dates": [
+        {
+          "value": null,
+          "precision": "UNKNOWN",
+          "raw_text": "03/02/2025 09:00",
+          "date_role": "ORDER",
+          "timezone": null,
+          "ambiguity": "AMBIGUOUS_DAY_MONTH_ORDER"
+        }
+      ],
+      "completeness_status": "UNKNOWN",
+      "page_counters": [
+        "1/2",
+        "2/2"
+      ],
+      "classification_confidence": null,
+      "duplicate_of": null,
+      "sections": [
+        {
+          "section_id": "section-008",
+          "document_id": "doc-005",
+          "section_type": "GENERIC",
+          "title": null,
+          "page_start": 8,
+          "page_end": 8,
+          "chunks": [
+            {
+              "chunk_id": "chunk-008",
+              "section_id": "section-008",
+              "document_id": "doc-005",
+              "chunk_type": "GENERIC",
+              "text": "Pasien : PASIEN SINTETIS\nTgl. Order : 03/02/2025 09:00",
+              "page_number": 8,
+              "page_id": "page-008",
+              "element_refs": [
+                "el-033",
+                "el-034"
+              ],
+              "fact_refs": [],
+              "event_refs": []
+            }
+          ]
+        },
+        {
+          "section_id": "section-009",
+          "document_id": "doc-005",
+          "section_type": "LABORATORY_RESULT",
+          "title": "Pemeriksaan Hasil Satuan Nilai Rujukan",
+          "page_start": 8,
+          "page_end": 8,
+          "chunks": [
+            {
+              "chunk_id": "chunk-009",
+              "section_id": "section-009",
+              "document_id": "doc-005",
+              "chunk_type": "LABORATORY_RESULT",
+              "text": "Pemeriksaan Hasil Satuan Nilai Rujukan\nHemoglobin 13.1 g/dL 12.0 - 16.0\nHalaman 1 of 2",
+              "page_number": 8,
+              "page_id": "page-008",
+              "element_refs": [
+                "el-035",
+                "el-036",
+                "el-037"
+              ],
+              "fact_refs": [],
+              "event_refs": []
+            }
+          ]
+        },
+        {
+          "section_id": "section-010",
+          "document_id": "doc-005",
+          "section_type": "LABORATORY_RESULT",
+          "title": "Pemeriksaan Hasil Satuan Nilai Rujukan",
+          "page_start": 9,
+          "page_end": 9,
+          "chunks": [
+            {
+              "chunk_id": "chunk-010",
+              "section_id": "section-010",
+              "document_id": "doc-005",
+              "chunk_type": "LABORATORY_RESULT",
+              "text": "Pemeriksaan Hasil Satuan Nilai Rujukan\nLeukosit 14.2 10^3/uL 4.0 - 10.0\nHalaman 2 of 2",
+              "page_number": 9,
+              "page_id": "page-009",
+              "element_refs": [
+                "el-038",
+                "el-039",
+                "el-040"
+              ],
+              "fact_refs": [],
+              "event_refs": []
+            }
+          ]
+        }
+      ],
+      "evidence_refs": [
+        "evidence-005"
+      ],
+      "page_range": "8-9"
+    },
+    {
+      "document_id": "doc-006",
+      "document_type": "LABORATORY",
+      "document_role": [
+        "DIAGNOSTIC"
+      ],
+      "document_title": null,
+      "page_refs": [
+        {
+          "source_file_id": "file-aa9d7c3ab22c",
+          "page_number": 10,
+          "page_id": "page-010"
+        }
+      ],
+      "boundary_basis": "PAGE_COUNTER",
+      "page_bases": {
+        "10": "PAGE_COUNTER"
+      },
+      "source_facility": "UNKNOWN",
+      "document_date": null,
+      "dates": [],
+      "completeness_status": "UNKNOWN",
+      "page_counters": [
+        "1/1"
+      ],
+      "classification_confidence": null,
+      "duplicate_of": null,
+      "sections": [
+        {
+          "section_id": "section-011",
+          "document_id": "doc-006",
+          "section_type": "GENERIC",
+          "title": null,
+          "page_start": 10,
+          "page_end": 10,
+          "chunks": [
+            {
+              "chunk_id": "chunk-011",
+              "section_id": "section-011",
+              "document_id": "doc-006",
+              "chunk_type": "GENERIC",
+              "text": "Pasien : PASIEN SINTETIS",
+              "page_number": 10,
+              "page_id": "page-010",
+              "element_refs": [
+                "el-041"
+              ],
+              "fact_refs": [],
+              "event_refs": []
+            }
+          ]
+        },
+        {
+          "section_id": "section-012",
+          "document_id": "doc-006",
+          "section_type": "LABORATORY_RESULT",
+          "title": "Pemeriksaan Hasil Satuan Nilai Rujukan",
+          "page_start": 10,
+          "page_end": 10,
+          "chunks": [
+            {
+              "chunk_id": "chunk-012",
+              "section_id": "section-012",
+              "document_id": "doc-006",
+              "chunk_type": "LABORATORY_RESULT",
+              "text": "Pemeriksaan Hasil Satuan Nilai Rujukan\nCRP 48 mg/L < 5\nHalaman 1 of 1",
+              "page_number": 10,
+              "page_id": "page-010",
+              "element_refs": [
+                "el-042",
+                "el-043",
+                "el-044"
+              ],
+              "fact_refs": [],
+              "event_refs": []
+            }
+          ]
+        }
+      ],
+      "evidence_refs": [
+        "evidence-006"
+      ],
+      "page_range": "10"
+    },
+    {
+      "document_id": "doc-007",
+      "document_type": "ASSESSMENT",
+      "document_role": [
+        "CLINICAL"
+      ],
+      "document_title": "ASESMEN AWAL GAWAT DARURAT",
+      "page_refs": [
+        {
+          "source_file_id": "file-aa9d7c3ab22c",
+          "page_number": 11,
+          "page_id": "page-011"
+        },
+        {
+          "source_file_id": "file-aa9d7c3ab22c",
+          "page_number": 12,
+          "page_id": "page-012"
+        }
+      ],
+      "boundary_basis": "TITLE",
+      "page_bases": {
+        "11": "TITLE",
+        "12": "CONTINUATION"
+      },
+      "source_facility": "UNKNOWN",
+      "document_date": null,
+      "dates": [
+        {
+          "value": "2025-02-03",
+          "precision": "DATE",
+          "raw_text": "3 Februari 2025",
+          "date_role": "SERVICE",
+          "timezone": null,
+          "ambiguity": null
+        }
+      ],
+      "completeness_status": "UNKNOWN",
+      "page_counters": [],
+      "classification_confidence": null,
+      "duplicate_of": null,
+      "sections": [
+        {
+          "section_id": "section-013",
+          "document_id": "doc-007",
+          "section_type": "ASSESSMENT",
+          "title": "ASESMEN AWAL GAWAT DARURAT",
+          "page_start": 11,
+          "page_end": 11,
+          "chunks": [
+            {
+              "chunk_id": "chunk-013",
+              "section_id": "section-013",
+              "document_id": "doc-007",
+              "chunk_type": "ASSESSMENT",
+              "text": "ASESMEN AWAL GAWAT DARURAT\nWaktu Datang : 3 Februari 2025",
+              "page_number": 11,
+              "page_id": "page-011",
+              "element_refs": [
+                "el-045",
+                "el-046"
+              ],
+              "fact_refs": [],
+              "event_refs": [
+                "event-003"
+              ]
+            }
+          ]
+        },
+        {
+          "section_id": "section-014",
+          "document_id": "doc-007",
+          "section_type": "PHYSICAL_EXAMINATION",
+          "title": "PEMERIKSAAN FISIK",
+          "page_start": 11,
+          "page_end": 12,
+          "chunks": [
+            {
+              "chunk_id": "chunk-014",
+              "section_id": "section-014",
+              "document_id": "doc-007",
+              "chunk_type": "PHYSICAL_EXAMINATION",
+              "text": "PEMERIKSAAN FISIK\nTD : 120/80 mmHg",
+              "page_number": 11,
+              "page_id": "page-011",
+              "element_refs": [
+                "el-047",
+                "el-048"
+              ],
+              "fact_refs": [],
+              "event_refs": []
+            },
+            {
+              "chunk_id": "chunk-015",
+              "section_id": "section-014",
+              "document_id": "doc-007",
+              "chunk_type": "PHYSICAL_EXAMINATION",
+              "text": "Nyeri tekan McBurney (+)",
+              "page_number": 12,
+              "page_id": "page-012",
+              "element_refs": [
+                "el-049"
+              ],
+              "fact_refs": [],
+              "event_refs": []
+            }
+          ]
+        },
+        {
+          "section_id": "section-015",
+          "document_id": "doc-007",
+          "section_type": "DISPOSITION",
+          "title": "TINDAK LANJUT",
+          "page_start": 12,
+          "page_end": 12,
+          "chunks": [
+            {
+              "chunk_id": "chunk-016",
+              "section_id": "section-015",
+              "document_id": "doc-007",
+              "chunk_type": "DISPOSITION",
+              "text": "TINDAK LANJUT\nRawat Inap",
+              "page_number": 12,
+              "page_id": "page-012",
+              "element_refs": [
+                "el-050",
+                "el-051"
+              ],
+              "fact_refs": [],
+              "event_refs": []
+            }
+          ]
+        }
+      ],
+      "evidence_refs": [
+        "evidence-007"
+      ],
+      "page_range": "11-12"
+    },
+    {
+      "document_id": "doc-008",
+      "document_type": "SERVICE_RECAP",
+      "document_role": [
+        "FINANCIAL"
+      ],
+      "document_title": "NOTA REKAP PELAYANAN",
+      "page_refs": [
+        {
+          "source_file_id": "file-aa9d7c3ab22c",
+          "page_number": 13,
+          "page_id": "page-013"
+        }
+      ],
+      "boundary_basis": "TITLE",
+      "page_bases": {
+        "13": "TITLE"
+      },
+      "source_facility": "UNKNOWN",
+      "document_date": null,
+      "dates": [
+        {
+          "value": "2025-02-05",
+          "precision": "DATE",
+          "raw_text": "5 Februari 2025",
+          "date_role": "DISCHARGE",
+          "timezone": null,
+          "ambiguity": null
+        }
+      ],
+      "completeness_status": "UNKNOWN",
+      "page_counters": [],
+      "classification_confidence": null,
+      "duplicate_of": null,
+      "sections": [
+        {
+          "section_id": "section-016",
+          "document_id": "doc-008",
+          "section_type": "BILLING_DETAIL",
+          "title": null,
+          "page_start": 13,
+          "page_end": 13,
+          "chunks": [
+            {
+              "chunk_id": "chunk-017",
+              "section_id": "section-016",
+              "document_id": "doc-008",
+              "chunk_type": "BILLING_DETAIL",
+              "text": "NOTA REKAP PELAYANAN\nTgl KRS : 5 Februari 2025\nLABORATORIUM\nHemoglobin Rp 25,000.00\nRADIOLOGI\nUSG Abdomen Rp 150,000.00\nGRAND TOTAL Rp 175,000.00",
+              "page_number": 13,
+              "page_id": "page-013",
+              "element_refs": [
+                "el-052",
+                "el-053",
+                "el-054",
+                "el-055",
+                "el-056",
+                "el-057",
+                "el-058"
+              ],
+              "fact_refs": [],
+              "event_refs": []
+            }
+          ]
+        }
+      ],
+      "evidence_refs": [
+        "evidence-008"
+      ],
+      "page_range": "13"
+    },
+    {
+      "document_id": "doc-009",
+      "document_type": "OTHER",
+      "document_role": [],
+      "document_title": "TRIASE",
+      "page_refs": [
+        {
+          "source_file_id": "file-aa9d7c3ab22c",
+          "page_number": 14,
+          "page_id": "page-014"
+        }
+      ],
+      "boundary_basis": "TITLE",
+      "page_bases": {
+        "14": "TITLE"
+      },
+      "source_facility": "UNKNOWN",
+      "document_date": null,
+      "dates": [
+        {
+          "value": "2025-02-03T07:55",
+          "precision": "EXACT_DATETIME",
+          "raw_text": "3 Februari 2025, 07:55 WIB",
+          "date_role": "SERVICE",
+          "timezone": "WIB",
+          "ambiguity": null
+        }
+      ],
+      "completeness_status": "UNKNOWN",
+      "page_counters": [],
+      "classification_confidence": null,
+      "duplicate_of": null,
+      "sections": [
+        {
+          "section_id": "section-017",
+          "document_id": "doc-009",
+          "section_type": "GENERIC",
+          "title": null,
+          "page_start": 14,
+          "page_end": 14,
+          "chunks": [
+            {
+              "chunk_id": "chunk-018",
+              "section_id": "section-017",
+              "document_id": "doc-009",
+              "chunk_type": "GENERIC",
+              "text": "TRIASE\nWaktu Datang : 3 Februari 2025, 07:55 WIB",
+              "page_number": 14,
+              "page_id": "page-014",
+              "element_refs": [
+                "el-059",
+                "el-060"
+              ],
+              "fact_refs": [],
+              "event_refs": [
+                "event-004"
+              ]
+            }
+          ]
+        }
+      ],
+      "evidence_refs": [
+        "evidence-009"
+      ],
+      "page_range": "14"
+    },
+    {
+      "document_id": "doc-010",
+      "document_type": "UNKNOWN",
+      "document_role": [],
+      "document_title": null,
+      "page_refs": [
+        {
+          "source_file_id": "file-aa9d7c3ab22c",
+          "page_number": 16,
+          "page_id": "page-016"
+        }
+      ],
+      "boundary_basis": "UNTITLED_START",
+      "page_bases": {
+        "16": "UNTITLED_START"
+      },
+      "source_facility": "UNKNOWN",
+      "document_date": null,
+      "dates": [],
+      "completeness_status": "UNKNOWN",
+      "page_counters": [],
+      "classification_confidence": null,
+      "duplicate_of": null,
+      "sections": [
+        {
+          "section_id": "section-018",
+          "document_id": "doc-010",
+          "section_type": "GENERIC",
+          "title": null,
+          "page_start": 16,
+          "page_end": 16,
+          "chunks": [
+            {
+              "chunk_id": "chunk-019",
+              "section_id": "section-018",
+              "document_id": "doc-010",
+              "chunk_type": "GENERIC",
+              "text": "Catatan tambahan tanpa judul\nIsi sintetis",
+              "page_number": 16,
+              "page_id": "page-016",
+              "element_refs": [
+                "el-061",
+                "el-062"
+              ],
+              "fact_refs": [],
+              "event_refs": []
+            }
+          ]
+        }
+      ],
+      "evidence_refs": [],
+      "page_range": "16"
+    }
+  ],
+  "evidence": [
+    {
+      "evidence_id": "evidence-001",
+      "source_file_id": "file-aa9d7c3ab22c",
+      "page_id": "page-001",
+      "page_number": 1,
+      "extraction_method": "NATIVE_TEXT",
+      "content_kind": "TEXT",
+      "purpose": "document_boundary",
+      "document_id": "doc-001",
+      "document_type": "INA_CBG_OUTPUT",
+      "section_id": null,
+      "chunk_id": null,
+      "element_id": "el-002",
+      "source_text": "Berkas Klaim Individual Pasien 06/02/2025",
+      "bbox": null,
+      "confidence": null,
+      "sensitivity": "UNKNOWN",
+      "redaction_state": "ORIGINAL"
+    },
+    {
+      "evidence_id": "evidence-002",
+      "source_file_id": "file-aa9d7c3ab22c",
+      "page_id": "page-002",
+      "page_number": 2,
+      "extraction_method": "NATIVE_TEXT",
+      "content_kind": "TEXT",
+      "purpose": "document_boundary",
+      "document_id": "doc-002",
+      "document_type": "SEP",
+      "section_id": null,
+      "chunk_id": null,
+      "element_id": "el-011",
+      "source_text": "No.SEP : 0000SINTETIS0001",
+      "bbox": null,
+      "confidence": null,
+      "sensitivity": "UNKNOWN",
+      "redaction_state": "ORIGINAL"
+    },
+    {
+      "evidence_id": "evidence-003",
+      "source_file_id": "file-aa9d7c3ab22c",
+      "page_id": "page-003",
+      "page_number": 3,
+      "extraction_method": "NATIVE_TEXT",
+      "content_kind": "TEXT",
+      "purpose": "document_boundary",
+      "document_id": "doc-003",
+      "document_type": "MEDICAL_RESUME",
+      "section_id": null,
+      "chunk_id": null,
+      "element_id": "el-016",
+      "source_text": "RESUME MEDIS",
+      "bbox": null,
+      "confidence": null,
+      "sensitivity": "UNKNOWN",
+      "redaction_state": "ORIGINAL"
+    },
+    {
+      "evidence_id": "evidence-004",
+      "source_file_id": "file-aa9d7c3ab22c",
+      "page_id": "page-006",
+      "page_number": 6,
+      "extraction_method": "UNKNOWN",
+      "content_kind": "IMAGE_REGION",
+      "purpose": "document_boundary",
+      "document_id": "doc-004",
+      "document_type": "UNKNOWN",
+      "section_id": null,
+      "chunk_id": null,
+      "element_id": "el-032",
+      "source_text": null,
+      "bbox": null,
+      "confidence": null,
+      "sensitivity": "UNKNOWN",
+      "redaction_state": "ORIGINAL"
+    },
+    {
+      "evidence_id": "evidence-005",
+      "source_file_id": "file-aa9d7c3ab22c",
+      "page_id": "page-008",
+      "page_number": 8,
+      "extraction_method": "NATIVE_TEXT",
+      "content_kind": "TEXT",
+      "purpose": "document_boundary",
+      "document_id": "doc-005",
+      "document_type": "LABORATORY",
+      "section_id": null,
+      "chunk_id": null,
+      "element_id": "el-035",
+      "source_text": "Pemeriksaan Hasil Satuan Nilai Rujukan",
+      "bbox": null,
+      "confidence": null,
+      "sensitivity": "UNKNOWN",
+      "redaction_state": "ORIGINAL"
+    },
+    {
+      "evidence_id": "evidence-006",
+      "source_file_id": "file-aa9d7c3ab22c",
+      "page_id": "page-010",
+      "page_number": 10,
+      "extraction_method": "NATIVE_TEXT",
+      "content_kind": "TEXT",
+      "purpose": "document_boundary",
+      "document_id": "doc-006",
+      "document_type": "LABORATORY",
+      "section_id": null,
+      "chunk_id": null,
+      "element_id": "el-042",
+      "source_text": "Pemeriksaan Hasil Satuan Nilai Rujukan",
+      "bbox": null,
+      "confidence": null,
+      "sensitivity": "UNKNOWN",
+      "redaction_state": "ORIGINAL"
+    },
+    {
+      "evidence_id": "evidence-007",
+      "source_file_id": "file-aa9d7c3ab22c",
+      "page_id": "page-011",
+      "page_number": 11,
+      "extraction_method": "NATIVE_TEXT",
+      "content_kind": "TEXT",
+      "purpose": "document_boundary",
+      "document_id": "doc-007",
+      "document_type": "ASSESSMENT",
+      "section_id": null,
+      "chunk_id": null,
+      "element_id": "el-045",
+      "source_text": "ASESMEN AWAL GAWAT DARURAT",
+      "bbox": null,
+      "confidence": null,
+      "sensitivity": "UNKNOWN",
+      "redaction_state": "ORIGINAL"
+    },
+    {
+      "evidence_id": "evidence-008",
+      "source_file_id": "file-aa9d7c3ab22c",
+      "page_id": "page-013",
+      "page_number": 13,
+      "extraction_method": "NATIVE_TEXT",
+      "content_kind": "TEXT",
+      "purpose": "document_boundary",
+      "document_id": "doc-008",
+      "document_type": "SERVICE_RECAP",
+      "section_id": null,
+      "chunk_id": null,
+      "element_id": "el-052",
+      "source_text": "NOTA REKAP PELAYANAN",
+      "bbox": null,
+      "confidence": null,
+      "sensitivity": "UNKNOWN",
+      "redaction_state": "ORIGINAL"
+    },
+    {
+      "evidence_id": "evidence-009",
+      "source_file_id": "file-aa9d7c3ab22c",
+      "page_id": "page-014",
+      "page_number": 14,
+      "extraction_method": "NATIVE_TEXT",
+      "content_kind": "TEXT",
+      "purpose": "document_boundary",
+      "document_id": "doc-009",
+      "document_type": "OTHER",
+      "section_id": null,
+      "chunk_id": null,
+      "element_id": "el-059",
+      "source_text": "TRIASE",
+      "bbox": null,
+      "confidence": null,
+      "sensitivity": "UNKNOWN",
+      "redaction_state": "ORIGINAL"
+    },
+    {
+      "evidence_id": "evidence-010",
+      "source_file_id": "file-aa9d7c3ab22c",
+      "page_id": "page-001",
+      "page_number": 1,
+      "extraction_method": "NATIVE_TEXT",
+      "content_kind": "TEXT",
+      "purpose": "fact",
+      "document_id": "doc-001",
+      "document_type": "INA_CBG_OUTPUT",
+      "section_id": "section-001",
+      "chunk_id": "chunk-001",
+      "element_id": "el-006",
+      "source_text": "Diagnosa Utama : K35.8 Acute appendicitis, other and unspecified",
+      "bbox": null,
+      "confidence": null,
+      "sensitivity": "UNKNOWN",
+      "redaction_state": "ORIGINAL"
+    },
+    {
+      "evidence_id": "evidence-011",
+      "source_file_id": "file-aa9d7c3ab22c",
+      "page_id": "page-001",
+      "page_number": 1,
+      "extraction_method": "NATIVE_TEXT",
+      "content_kind": "TEXT",
+      "purpose": "fact",
+      "document_id": "doc-001",
+      "document_type": "INA_CBG_OUTPUT",
+      "section_id": "section-001",
+      "chunk_id": "chunk-001",
+      "element_id": "el-007",
+      "source_text": "Diagnosa Sekunder : -",
+      "bbox": null,
+      "confidence": null,
+      "sensitivity": "UNKNOWN",
+      "redaction_state": "ORIGINAL"
+    },
+    {
+      "evidence_id": "evidence-012",
+      "source_file_id": "file-aa9d7c3ab22c",
+      "page_id": "page-001",
+      "page_number": 1,
+      "extraction_method": "NATIVE_TEXT",
+      "content_kind": "TEXT",
+      "purpose": "fact",
+      "document_id": "doc-001",
+      "document_type": "INA_CBG_OUTPUT",
+      "section_id": "section-001",
+      "chunk_id": "chunk-001",
+      "element_id": "el-008",
+      "source_text": "Prosedur : 47.09 Other appendectomy",
+      "bbox": null,
+      "confidence": null,
+      "sensitivity": "UNKNOWN",
+      "redaction_state": "ORIGINAL"
+    },
+    {
+      "evidence_id": "evidence-013",
+      "source_file_id": "file-aa9d7c3ab22c",
+      "page_id": "page-001",
+      "page_number": 1,
+      "extraction_method": "NATIVE_TEXT",
+      "content_kind": "TEXT",
+      "purpose": "fact",
+      "document_id": "doc-001",
+      "document_type": "INA_CBG_OUTPUT",
+      "section_id": "section-001",
+      "chunk_id": "chunk-001",
+      "element_id": "el-009",
+      "source_text": "99.21 Injection of antibiotic",
+      "bbox": null,
+      "confidence": null,
+      "sensitivity": "UNKNOWN",
+      "redaction_state": "ORIGINAL"
+    },
+    {
+      "evidence_id": "evidence-014",
+      "source_file_id": "file-aa9d7c3ab22c",
+      "page_id": "page-002",
+      "page_number": 2,
+      "extraction_method": "NATIVE_TEXT",
+      "content_kind": "TEXT",
+      "purpose": "fact",
+      "document_id": "doc-002",
+      "document_type": "SEP",
+      "section_id": "section-002",
+      "chunk_id": "chunk-002",
+      "element_id": "el-014",
+      "source_text": "Diagnosa Awal : R10.4 - Abdominal pain",
+      "bbox": null,
+      "confidence": null,
+      "sensitivity": "UNKNOWN",
+      "redaction_state": "ORIGINAL"
+    },
+    {
+      "evidence_id": "evidence-015",
+      "source_file_id": "file-aa9d7c3ab22c",
+      "page_id": "page-003",
+      "page_number": 3,
+      "extraction_method": "NATIVE_TEXT",
+      "content_kind": "TEXT",
+      "purpose": "fact",
+      "document_id": "doc-003",
+      "document_type": "MEDICAL_RESUME",
+      "section_id": "section-003",
+      "chunk_id": "chunk-003",
+      "element_id": "el-018",
+      "source_text": "Tanggal Masuk : 3 Februari 2025 08:15 WIB",
+      "bbox": null,
+      "confidence": null,
+      "sensitivity": "UNKNOWN",
+      "redaction_state": "ORIGINAL"
+    },
+    {
+      "evidence_id": "evidence-016",
+      "source_file_id": "file-aa9d7c3ab22c",
+      "page_id": "page-003",
+      "page_number": 3,
+      "extraction_method": "NATIVE_TEXT",
+      "content_kind": "TEXT",
+      "purpose": "fact",
+      "document_id": "doc-003",
+      "document_type": "MEDICAL_RESUME",
+      "section_id": "section-003",
+      "chunk_id": "chunk-003",
+      "element_id": "el-019",
+      "source_text": "Tanggal Keluar : 5 Februari 2025",
+      "bbox": null,
+      "confidence": null,
+      "sensitivity": "UNKNOWN",
+      "redaction_state": "ORIGINAL"
+    },
+    {
+      "evidence_id": "evidence-017",
+      "source_file_id": "file-aa9d7c3ab22c",
+      "page_id": "page-003",
+      "page_number": 3,
+      "extraction_method": "NATIVE_TEXT",
+      "content_kind": "TEXT",
+      "purpose": "fact",
+      "document_id": "doc-003",
+      "document_type": "MEDICAL_RESUME",
+      "section_id": "section-005",
+      "chunk_id": "chunk-005",
+      "element_id": "el-023",
+      "source_text": "K35.8 Acute appendicitis",
+      "bbox": null,
+      "confidence": null,
+      "sensitivity": "UNKNOWN",
+      "redaction_state": "ORIGINAL"
+    },
+    {
+      "evidence_id": "evidence-018",
+      "source_file_id": "file-aa9d7c3ab22c",
+      "page_id": "page-003",
+      "page_number": 3,
+      "extraction_method": "NATIVE_TEXT",
+      "content_kind": "TEXT",
+      "purpose": "fact",
+      "document_id": "doc-003",
+      "document_type": "MEDICAL_RESUME",
+      "section_id": "section-006",
+      "chunk_id": "chunk-006",
+      "element_id": "el-025",
+      "source_text": "47.09 Other appendectomy",
+      "bbox": null,
+      "confidence": null,
+      "sensitivity": "UNKNOWN",
+      "redaction_state": "ORIGINAL"
+    },
+    {
+      "evidence_id": "evidence-019",
+      "source_file_id": "file-aa9d7c3ab22c",
+      "page_id": "page-004",
+      "page_number": 4,
+      "extraction_method": "NATIVE_TEXT",
+      "content_kind": "TEXT",
+      "purpose": "fact",
+      "document_id": "doc-003",
+      "document_type": "MEDICAL_RESUME",
+      "section_id": "section-007",
+      "chunk_id": "chunk-007",
+      "element_id": "el-028",
+      "source_text": "R/ CEFTRIAXONE 1 g INJEKSI 2x1",
+      "bbox": null,
+      "confidence": null,
+      "sensitivity": "UNKNOWN",
+      "redaction_state": "ORIGINAL"
+    },
+    {
+      "evidence_id": "evidence-020",
+      "source_file_id": "file-aa9d7c3ab22c",
+      "page_id": "page-004",
+      "page_number": 4,
+      "extraction_method": "NATIVE_TEXT",
+      "content_kind": "TEXT",
+      "purpose": "fact",
+      "document_id": "doc-003",
+      "document_type": "MEDICAL_RESUME",
+      "section_id": "section-007",
+      "chunk_id": "chunk-007",
+      "element_id": "el-029",
+      "source_text": "R/ DISPOSABLE SYRINGE 5 ml",
+      "bbox": null,
+      "confidence": null,
+      "sensitivity": "UNKNOWN",
+      "redaction_state": "ORIGINAL"
+    },
+    {
+      "evidence_id": "evidence-021",
+      "source_file_id": "file-aa9d7c3ab22c",
+      "page_id": "page-011",
+      "page_number": 11,
+      "extraction_method": "NATIVE_TEXT",
+      "content_kind": "TEXT",
+      "purpose": "fact",
+      "document_id": "doc-007",
+      "document_type": "ASSESSMENT",
+      "section_id": "section-013",
+      "chunk_id": "chunk-013",
+      "element_id": "el-046",
+      "source_text": "Waktu Datang : 3 Februari 2025",
+      "bbox": null,
+      "confidence": null,
+      "sensitivity": "UNKNOWN",
+      "redaction_state": "ORIGINAL"
+    },
+    {
+      "evidence_id": "evidence-022",
+      "source_file_id": "file-aa9d7c3ab22c",
+      "page_id": "page-014",
+      "page_number": 14,
+      "extraction_method": "NATIVE_TEXT",
+      "content_kind": "TEXT",
+      "purpose": "fact",
+      "document_id": "doc-009",
+      "document_type": "OTHER",
+      "section_id": "section-017",
+      "chunk_id": "chunk-018",
+      "element_id": "el-060",
+      "source_text": "Waktu Datang : 3 Februari 2025, 07:55 WIB",
+      "bbox": null,
+      "confidence": null,
+      "sensitivity": "UNKNOWN",
+      "redaction_state": "ORIGINAL"
+    }
+  ],
+  "facts": [
+    {
+      "fact_id": "fact-001",
+      "fact_type": "DIAGNOSIS",
+      "subject": "patient",
+      "attribute": "diagnosis_code",
+      "value": "K35.8",
+      "provenance": "SOURCE_FACT",
+      "evidence_refs": [
+        "evidence-010"
+      ],
+      "availability_status": "PRESENT",
+      "raw_value_text": "K35.8",
+      "source_label": "Diagnosa Utama",
+      "coding_system": null,
+      "unit": null,
+      "temporal_information": null,
+      "confidence": null,
+      "document_id": "doc-001",
+      "chunk_id": "chunk-001",
+      "derived_from_refs": [],
+      "inference_basis_refs": []
+    },
+    {
+      "fact_id": "fact-002",
+      "fact_type": "DIAGNOSIS",
+      "subject": "patient",
+      "attribute": "diagnosis_code",
+      "value": null,
+      "provenance": "SOURCE_FACT",
+      "evidence_refs": [
+        "evidence-011"
+      ],
+      "availability_status": "NOT_DOCUMENTED",
+      "raw_value_text": "-",
+      "source_label": "Diagnosa Sekunder",
+      "coding_system": null,
+      "unit": null,
+      "temporal_information": null,
+      "confidence": null,
+      "document_id": "doc-001",
+      "chunk_id": "chunk-001",
+      "derived_from_refs": [],
+      "inference_basis_refs": []
+    },
+    {
+      "fact_id": "fact-003",
+      "fact_type": "PROCEDURE",
+      "subject": "patient",
+      "attribute": "procedure_code",
+      "value": "47.09",
+      "provenance": "SOURCE_FACT",
+      "evidence_refs": [
+        "evidence-012"
+      ],
+      "availability_status": "PRESENT",
+      "raw_value_text": "47.09",
+      "source_label": "Prosedur",
+      "coding_system": null,
+      "unit": null,
+      "temporal_information": null,
+      "confidence": null,
+      "document_id": "doc-001",
+      "chunk_id": "chunk-001",
+      "derived_from_refs": [],
+      "inference_basis_refs": []
+    },
+    {
+      "fact_id": "fact-004",
+      "fact_type": "PROCEDURE",
+      "subject": "patient",
+      "attribute": "procedure_code",
+      "value": "99.21",
+      "provenance": "SOURCE_FACT",
+      "evidence_refs": [
+        "evidence-013"
+      ],
+      "availability_status": "PRESENT",
+      "raw_value_text": "99.21",
+      "source_label": "Prosedur",
+      "coding_system": null,
+      "unit": null,
+      "temporal_information": null,
+      "confidence": null,
+      "document_id": "doc-001",
+      "chunk_id": "chunk-001",
+      "derived_from_refs": [],
+      "inference_basis_refs": []
+    },
+    {
+      "fact_id": "fact-005",
+      "fact_type": "DIAGNOSIS",
+      "subject": "patient",
+      "attribute": "diagnosis_code",
+      "value": "R10.4",
+      "provenance": "SOURCE_FACT",
+      "evidence_refs": [
+        "evidence-014"
+      ],
+      "availability_status": "PRESENT",
+      "raw_value_text": "R10.4",
+      "source_label": "Diagnosa Awal",
+      "coding_system": null,
+      "unit": null,
+      "temporal_information": null,
+      "confidence": null,
+      "document_id": "doc-002",
+      "chunk_id": "chunk-002",
+      "derived_from_refs": [],
+      "inference_basis_refs": []
+    },
+    {
+      "fact_id": "fact-006",
+      "fact_type": "DIAGNOSIS",
+      "subject": "patient",
+      "attribute": "diagnosis_code",
+      "value": "K35.8",
+      "provenance": "SOURCE_FACT",
+      "evidence_refs": [
+        "evidence-017"
+      ],
+      "availability_status": "PRESENT",
+      "raw_value_text": "K35.8",
+      "source_label": "DIAGNOSA",
+      "coding_system": null,
+      "unit": null,
+      "temporal_information": null,
+      "confidence": null,
+      "document_id": "doc-003",
+      "chunk_id": "chunk-005",
+      "derived_from_refs": [],
+      "inference_basis_refs": []
+    },
+    {
+      "fact_id": "fact-007",
+      "fact_type": "PROCEDURE",
+      "subject": "patient",
+      "attribute": "procedure_code",
+      "value": "47.09",
+      "provenance": "SOURCE_FACT",
+      "evidence_refs": [
+        "evidence-018"
+      ],
+      "availability_status": "PRESENT",
+      "raw_value_text": "47.09",
+      "source_label": "PROSEDUR",
+      "coding_system": null,
+      "unit": null,
+      "temporal_information": null,
+      "confidence": null,
+      "document_id": "doc-003",
+      "chunk_id": "chunk-006",
+      "derived_from_refs": [],
+      "inference_basis_refs": []
+    },
+    {
+      "fact_id": "fact-008",
+      "fact_type": "MEDICATION",
+      "subject": "patient",
+      "attribute": "medication_text",
+      "value": "CEFTRIAXONE 1 g INJEKSI 2x1",
+      "provenance": "SOURCE_FACT",
+      "evidence_refs": [
+        "evidence-019"
+      ],
+      "availability_status": "PRESENT",
+      "raw_value_text": "CEFTRIAXONE 1 g INJEKSI 2x1",
+      "source_label": "R/",
+      "coding_system": null,
+      "unit": null,
+      "temporal_information": null,
+      "confidence": null,
+      "document_id": "doc-003",
+      "chunk_id": "chunk-007",
+      "derived_from_refs": [],
+      "inference_basis_refs": []
+    },
+    {
+      "fact_id": "fact-009",
+      "fact_type": "MEDICATION",
+      "subject": "patient",
+      "attribute": "medication_text",
+      "value": "DISPOSABLE SYRINGE 5 ml",
+      "provenance": "SOURCE_FACT",
+      "evidence_refs": [
+        "evidence-020"
+      ],
+      "availability_status": "PRESENT",
+      "raw_value_text": "DISPOSABLE SYRINGE 5 ml",
+      "source_label": "R/",
+      "coding_system": null,
+      "unit": null,
+      "temporal_information": null,
+      "confidence": null,
+      "document_id": "doc-003",
+      "chunk_id": "chunk-007",
+      "derived_from_refs": [],
+      "inference_basis_refs": []
+    }
+  ],
+  "events": [
+    {
+      "event_id": "event-001",
+      "event_type": "ADMISSION",
+      "description": "ADMISSION date stated in MEDICAL_RESUME",
+      "temporal_value": {
+        "value": "2025-02-03T08:15",
+        "precision": "EXACT_DATETIME",
+        "raw_text": "3 Februari 2025 08:15 WIB",
+        "date_role": "ADMISSION",
+        "timezone": "WIB",
+        "ambiguity": null
+      },
+      "provenance": "SOURCE_FACT",
+      "evidence_refs": [
+        "evidence-015"
+      ],
+      "care_pathway": "UNKNOWN",
+      "care_stage": "UNKNOWN",
+      "document_id": "doc-003",
+      "chunk_id": "chunk-003",
+      "derived_from_refs": [],
+      "inference_basis_refs": []
+    },
+    {
+      "event_id": "event-002",
+      "event_type": "DISCHARGE",
+      "description": "DISCHARGE date stated in MEDICAL_RESUME",
+      "temporal_value": {
+        "value": "2025-02-05",
+        "precision": "DATE",
+        "raw_text": "5 Februari 2025",
+        "date_role": "DISCHARGE",
+        "timezone": null,
+        "ambiguity": null
+      },
+      "provenance": "SOURCE_FACT",
+      "evidence_refs": [
+        "evidence-016"
+      ],
+      "care_pathway": "UNKNOWN",
+      "care_stage": "UNKNOWN",
+      "document_id": "doc-003",
+      "chunk_id": "chunk-003",
+      "derived_from_refs": [],
+      "inference_basis_refs": []
+    },
+    {
+      "event_id": "event-003",
+      "event_type": "PATIENT_ARRIVAL",
+      "description": "PATIENT_ARRIVAL date stated in ASSESSMENT",
+      "temporal_value": {
+        "value": "2025-02-03",
+        "precision": "DATE",
+        "raw_text": "3 Februari 2025",
+        "date_role": "SERVICE",
+        "timezone": null,
+        "ambiguity": null
+      },
+      "provenance": "SOURCE_FACT",
+      "evidence_refs": [
+        "evidence-021"
+      ],
+      "care_pathway": "UNKNOWN",
+      "care_stage": "UNKNOWN",
+      "document_id": "doc-007",
+      "chunk_id": "chunk-013",
+      "derived_from_refs": [],
+      "inference_basis_refs": []
+    },
+    {
+      "event_id": "event-004",
+      "event_type": "PATIENT_ARRIVAL",
+      "description": "PATIENT_ARRIVAL date stated in OTHER",
+      "temporal_value": {
+        "value": "2025-02-03T07:55",
+        "precision": "EXACT_DATETIME",
+        "raw_text": "3 Februari 2025, 07:55 WIB",
+        "date_role": "SERVICE",
+        "timezone": "WIB",
+        "ambiguity": null
+      },
+      "provenance": "SOURCE_FACT",
+      "evidence_refs": [
+        "evidence-022"
+      ],
+      "care_pathway": "UNKNOWN",
+      "care_stage": "UNKNOWN",
+      "document_id": "doc-009",
+      "chunk_id": "chunk-018",
+      "derived_from_refs": [],
+      "inference_basis_refs": []
+    }
+  ],
+  "canonical_claim": null,
+  "source_discrepancies": [],
+  "timeline": [],
+  "narrative": null,
+  "intelligence": []
+}
