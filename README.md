@@ -1,190 +1,324 @@
 # GOUTAMIND Document Intelligence
 
-> **Evidence-driven document intelligence for heterogeneous healthcare claim documents.**
->
 > **From healthcare documents to evidence-linked claim intelligence.**
 
-## What is this project?
+**GOUTAMIND Document Intelligence** is an evidence-driven document intelligence project for understanding heterogeneous healthcare claim documents.
 
-**GOUTAMIND Document Intelligence** is a document intelligence foundation for understanding heterogeneous healthcare claim-document bundles.
+Healthcare claims rarely arrive as clean, structured data. A single claim may contain emergency records, inpatient notes, diagnostic reports, medication records, administrative documents, billing information, and claim outputs — often combined into heterogeneous PDF bundles from different hospitals.
 
-It is designed for claim packages in which a single PDF may contain multiple logical documents—such as SEP, INA-CBG output, medical resume, assessment, CPPT, laboratory, radiology, prescription, billing, and supporting documents—and where document layouts vary across hospitals.
+The challenge is not simply extracting text from PDFs.
 
-The project transforms the **physical document representation** into a structured, traceable representation of:
+The challenge is to understand **what each document represents, where information came from, how facts relate to clinical events, and how every derived insight can remain traceable to its source evidence.**
 
-`Document Bundle → Document → Section → Chunk → Fact / Event → Evidence`
+---
 
-The central design principle is:
+## The Problem
 
-> **Do not normalize the hospital layout. Normalize the meaning of the information.**
+A healthcare claim document bundle may contain:
 
-The system preserves the relationship between extracted information and its source so that downstream users can understand **what was found, where it came from, and how certain or precise the representation is**.
+- multiple logical documents inside a single PDF;
+- different document layouts between hospitals;
+- scanned and digitally generated pages;
+- tables, forms, and image-based content;
+- clinical and administrative information mixed together;
+- repeated information with different levels of temporal precision;
+- documents whose physical order does not represent clinical event order.
 
-## Why does it exist?
+Therefore:
 
-Healthcare claim documents are heterogeneous in both structure and meaning. A PDF is not necessarily one logical document, page order is not clinical event order, and the same clinical or administrative information may appear in several sources with different precision or even conflicting values.
+> **PDF extraction is not the same as document understanding.**
 
-A useful intelligence layer therefore needs to:
-- understand logical documents inside physical PDF bundles;
-- preserve source and page context;
-- distinguish facts from evidence;
-- preserve temporal precision instead of inventing precision;
-- represent missingness explicitly;
-- keep source-derived information distinguishable from derived, inferred, and model-generated information;
-- provide a stable semantic foundation that is independent of hospital-specific layouts.
+A reliable intelligence layer needs to preserve the relationship between the original document and every piece of information derived from it.
 
-## Primary goal
+---
 
-Build a **reliable, evidence-driven foundation for healthcare claim document understanding** without losing the relationship between structured information and its original source.
+## The Approach
 
-## Secondary goals
+This project follows an **evidence-first architecture**.
 
-1. Identify logical documents within heterogeneous PDF bundles.
-2. Represent sections and semantically coherent chunks.
-3. Extract structured facts and clinical events.
-4. Preserve evidence and provenance down to the physical source.
-5. Reconstruct information without confusing document order with clinical event order.
-6. Preserve temporal precision and ambiguity.
-7. Represent missing or unavailable information explicitly.
-8. Preserve conflicting source information rather than silently choosing a winner.
-9. Prepare structured information for downstream claim review and intelligence.
-10. Support human review and auditability rather than replace human judgment.
+```mermaid
+flowchart TD
+    A[Healthcare Claim Documents] --> B[Document Understanding]
+    B --> C[Document Structure]
+    C --> D[Evidence]
+    D --> E[Facts & Events]
+    E --> F[Clinical Timeline]
+    F --> G[Claim Intelligence]
 
-## Architecture
+    D -. traceability .-> A
+```
+
+The long-term architecture is:
 
 ```text
 PDF / Document Bundle
-        ↓
+        │
+        ▼
 Document Understanding
-        ↓
+        │
+        ▼
 Canonical Clinical Claim
-        ↓
+        │
+        ▼
 Evidence
-        ↓
+        │
+        ▼
 Clinical Timeline
-        ↓
+        │
+        ▼
 Narrative
-        ↓
+        │
+        ▼
 Claim Intelligence
 ```
 
-The current repository implements only the **document-understanding foundation**. Canonical claim, clinical timeline, narrative, and claim intelligence are planned downstream layers.
+The current implementation focuses on establishing the foundations of this architecture before introducing more advanced intelligence layers.
 
-### Relationship to GOUTAMIND, DESKON, and CLAIRE
+---
+
+## Core Semantic Model
+
+The project separates the physical document structure from the semantic information derived from it.
 
 ```text
-                         GOUTAMIND
-                             │
-             ┌───────────────┴───────────────┐
-             │                               │
-     Document Intelligence            Claim Intelligence
-             │                               │
-             ▼                               ▼
-   This repository                      CLAIRE
-             │
-             ▼
-          DESKON
- Claim Review / Verification
+Claim Document Bundle
+        │
+        ├── Document
+        │     ├── Section
+        │     │     └── Chunk
+        │     │
+        │     └── Evidence
+        │
+        └── Facts / Events
+                │
+                └── Evidence
 ```
 
-This diagram describes the **target architectural relationship**, not the current implementation. DESKON and CLAIRE integrations are not implemented in this repository yet.
+The goal is not to force every hospital into the same document layout.
 
-## What is implemented now?
+Instead:
 
-The current project is an **early architecture / first vertical slice**, not a production-ready claim intelligence system.
+> **Normalize meaning, not layout.**
 
-Implemented:
-- PDF ingestion and physical source representation;
-- `SourceFile`, `Page`, and `DocumentElement`;
-- logical `Document`, `Section`, and `Chunk`;
-- evidence as a first-class representation;
-- deterministic source facts and events;
-- page-to-document assignment provenance;
-- explicit `UNKNOWN` document classification;
-- temporal precision preservation;
-- explicit extraction status;
-- human-readable page-assignment diagnostics;
-- synthetic golden-claim fixture and regression tests.
+Different hospitals may produce very different documents while representing the same underlying clinical or administrative concepts.
 
-The current slice intentionally does **not** implement OCR, LLM extraction, embeddings, RAG, database/API/UI, canonical claim generation, timeline generation, narrative generation, fraud/risk scoring, or autonomous claim decisions.
+---
 
-## Core design principles
+## Evidence First
 
-### 1. Evidence is first-class
+Evidence is treated as a first-class part of the system.
 
-A fact is not enough. The system should be able to trace it back to its source document, page, and extracted element.
+Every important derived fact should be traceable back to its source.
 
-### 2. Source is not the same as interpretation
+```text
+Source Document
+      │
+      ▼
+Source Page
+      │
+      ▼
+Document Element
+      │
+      ▼
+Evidence
+      │
+      ▼
+Fact / Event
+      │
+      ▼
+Clinical Interpretation
+```
 
-The architecture distinguishes:
+This allows downstream users to ask:
+
+- Where did this information come from?
+- Which document contains it?
+- Which page contains it?
+- Was it directly extracted or derived?
+- What level of temporal precision was available?
+- Is the information missing, unknown, or explicitly documented?
+
+The system therefore distinguishes between:
+
 - `SOURCE_FACT`
 - `DERIVED_FACT`
 - `INFERRED_FACT`
 - `MODEL_OUTPUT`
 
-A model-generated conclusion must never silently become a source fact.
+AI or machine learning may assist interpretation, but the model is not treated as the source of truth.
 
-### 3. Document order is not clinical order
+> **The source is the evidence.  
+> The model interprets the evidence.  
+> The system preserves the distinction.**
 
-The order of pages in a PDF is a physical property. Clinical events must be reconstructed from their temporal and semantic evidence.
+---
 
-### 4. Never invent precision
+## Clinical Time Is Not Document Order
 
-If a source provides only a month, the representation remains month-level. If a date is ambiguous, it remains ambiguous.
+One of the fundamental design principles is:
 
-### 5. Missingness is meaningful
+> **Document order is not necessarily clinical event order.**
 
-`NOT_FOUND`, `NOT_DOCUMENTED`, `NOT_APPLICABLE`, `EXPLICITLY_NEGATED`, and `UNKNOWN` are not interchangeable.
+A PDF may contain documents arranged according to administrative or scanning order rather than the actual patient journey.
 
-### 6. Preserve disagreement
+The project therefore preserves temporal information with explicit precision, including:
 
-When sources disagree, the system should preserve the competing source facts and evidence rather than silently overwrite one with another.
+- exact datetime;
+- date;
+- month;
+- year;
+- unknown.
 
-### 7. Hospital-specific layouts stay upstream
+The system should not invent temporal precision that does not exist in the source.
 
-Hospital-specific extraction rules may be necessary at the document-understanding boundary. They should not leak into the canonical semantic model unless there is a genuine domain reason.
+---
 
-### 8. Human-in-the-loop
+## Current Capabilities
 
-The project is intended to strengthen claim review and verification. It is not designed to replace clinical, coding, or claim-review judgment.
+The current vertical slice establishes the first layer of the document intelligence pipeline.
 
-## Non-goals
+Current foundations include:
 
-This repository is not intended to:
-- make autonomous clinical decisions;
-- replace claim verifiers or clinical reviewers;
-- determine fraud by itself;
-- silently infer undocumented clinical facts;
-- force every hospital into one PDF template;
-- use an LLM as the source of truth;
-- treat embeddings or retrieval as the primary extraction mechanism;
-- become a hospital-specific document template collection.
+- PDF document reading;
+- page representation;
+- document segmentation;
+- document taxonomy;
+- section and chunk representation;
+- deterministic fact extraction;
+- deterministic event extraction;
+- evidence representation;
+- evidence provenance;
+- temporal precision preservation;
+- explicit missingness semantics;
+- page-to-document assignment provenance.
 
-## Current status
+The current implementation deliberately uses deterministic methods for the foundational layer.
 
-**Status: Early Architecture / First Vertical Slice**
+---
 
-The architecture is being developed through evidence-driven stress testing against representative healthcare claim-document bundles.
+## Current Focus
 
-The project follows a deliberate loop:
+The next architectural challenge is **layout-aware document understanding**.
+
+Early experiments showed that healthcare documents cannot always be reliably understood from plain text order alone.
+
+Important signals include:
+
+- page counters;
+- document titles and markers;
+- headers and footers;
+- page layout;
+- coordinates and bounding boxes;
+- columns and regions;
+- label/value relationships;
+- continuation pages;
+- scanned/image pages;
+- document boundary signals.
+
+The project is therefore investigating how physical layout can be represented before moving further into canonical clinical extraction and downstream intelligence.
+
+---
+
+## Architecture Roadmap
 
 ```text
-Observed problem
-      ↓
-Explicit architecture decision
-      ↓
-Minimal implementation
-      ↓
-Regression test
-      ↓
-Real-PDF re-run
-      ↓
-New evidence
-      ↓
-Next architecture decision
+PHASE 1
+Physical Document Understanding
+        │
+        ▼
+PHASE 2
+Layout-Aware Document Understanding
+        │
+        ▼
+PHASE 3
+Canonical Clinical Claim
+        │
+        ▼
+PHASE 4
+Clinical Timeline
+        │
+        ▼
+PHASE 5
+Evidence-Linked Narrative
+        │
+        ▼
+PHASE 6
+Claim Intelligence
 ```
 
-Current architecture decisions and unresolved questions are documented in [`docs/DATA_MODEL.md`](docs/DATA_MODEL.md) and [`docs/findings/SLICE_01_FINDINGS.md`](docs/findings/SLICE_01_FINDINGS.md).
+Each phase is intended to be **evidence-driven and architecture-reviewed** before the next layer is introduced.
+
+---
+
+## Design Principles
+
+### 1. Evidence First
+
+Important information must remain traceable to its source.
+
+### 2. Preserve Before Normalizing
+
+Preserve the source representation before deriving normalized meaning.
+
+### 3. Normalize Meaning, Not Layout
+
+Hospital-specific document layouts should not define the semantic model.
+
+### 4. Uncertainty Is Data
+
+Unknown, missing, ambiguous, and inferred information must remain explicit.
+
+### 5. Clinical Time Is Independent of Document Order
+
+Page order and clinical event order are different concepts.
+
+### 6. Human Reviewability
+
+Derived information should remain understandable and auditable by human reviewers.
+
+### 7. AI Is Downstream of Evidence
+
+Advanced AI, machine learning, or LLM-based capabilities should operate on structured and traceable evidence rather than replacing the evidence layer.
+
+---
+
+## What This Project Is Not
+
+This repository is currently **not**:
+
+- a production claim verification system;
+- a fraud detection engine;
+- a clinical decision support system;
+- an LLM chatbot;
+- a RAG application;
+- a production OCR platform;
+- a replacement for human claim reviewers.
+
+These may become downstream applications of the document intelligence layer, but they are outside the current scope.
+
+---
+
+## Project Status
+
+**Early Architecture / First Vertical Slice**
+
+The project is intentionally being developed incrementally.
+
+The current priority is not to add more AI capabilities as quickly as possible, but to establish a reliable foundation where:
+
+```text
+Document
+   ↓
+Evidence
+   ↓
+Fact / Event
+   ↓
+Interpretation
+```
+
+remains traceable and reviewable at every stage.
+
+---
 
 ## Quick start
 
@@ -209,36 +343,71 @@ Private samples should remain outside Git tracking, for example in `samples_priv
 
 The committed golden example uses synthetic data.
 
+---
+
+## Repository Structure
+
+```text
+goutamind-document-intelligence/
+│
+├── app/
+│   ├── document/
+│   ├── extraction/
+│   ├── evidence/
+│   ├── timeline/
+│   └── intelligence/
+│
+├── docs/
+│   ├── ARCHITECTURE.md
+│   ├── DATA_MODEL.md
+│   ├── EVIDENCE_LINEAGE.md
+│   ├── DOCUMENT_TAXONOMY.md
+│   ├── PROJECT_IDENTITY.md
+│   ├── ROADMAP.md
+│   └── findings/
+│
+├── examples/
+├── schemas/
+├── scripts/
+├── tests/
+│
+├── README.md
+├── LICENSE
+└── pyproject.toml
+```
+
+---
+
 ## Documentation
 
-- [`docs/ARCHITECTURE.md`](docs/ARCHITECTURE.md) — architecture overview.
-- [`docs/DOCUMENT_TAXONOMY.md`](docs/DOCUMENT_TAXONOMY.md) — document and semantic taxonomy.
-- [`docs/DATA_MODEL.md`](docs/DATA_MODEL.md) — conceptual data model and architecture decisions.
-- [`docs/EVIDENCE_LINEAGE.md`](docs/EVIDENCE_LINEAGE.md) — evidence lineage.
-- [`docs/ROADMAP.md`](docs/ROADMAP.md) — project roadmap.
-- [`docs/findings/SLICE_01_FINDINGS.md`](docs/findings/SLICE_01_FINDINGS.md) — findings from the first vertical slice and real-PDF stress testing.
-
-## Project identity
-
-The formal project identity specification is documented in [`docs/PROJECT_IDENTITY.md`](docs/PROJECT_IDENTITY.md).
-
-| Attribute | Definition |
+| Document | Purpose |
 |---|---|
-| Project | GOUTAMIND Document Intelligence |
-| Domain | Healthcare document intelligence |
-| Primary input | Heterogeneous healthcare claim-document bundles |
-| Primary output | Structured, evidence-linked document information |
-| Core concern | Traceability, provenance, temporal fidelity, and semantic consistency |
-| Primary users | Claim-review, verification, analytics, and healthcare data teams |
-| Current stage | Early Architecture / First Vertical Slice |
-| Brand | GOUTAMIND Healthcare Data × AI × Automation |
-| Future downstream systems | DESKON and CLAIRE |
-| Primary language | Python |
+| `ARCHITECTURE.md` | System architecture and design decisions |
+| `DATA_MODEL.md` | Core semantic data model |
+| `EVIDENCE_LINEAGE.md` | Evidence and provenance model |
+| `DOCUMENT_TAXONOMY.md` | Healthcare document taxonomy |
+| `PROJECT_IDENTITY.md` | Project identity and scope |
+| `ROADMAP.md` | Development roadmap |
+| `findings/` | Findings from document experiments and architectural investigations |
 
-## License
+---
 
-See [`LICENSE`](LICENSE).
+## Project Philosophy
+
+Healthcare document intelligence should not begin with:
+
+> **"What can AI generate from this document?"**
+
+It should begin with:
+
+> **"What evidence exists, where did it come from, and what can we reliably derive from it?"**
+
+That principle defines the foundation of this project.
+
+---
 
 ## Maintainer
 
-Maintained by **Dody Goutama / GOUTAMIND**.
+**Dody Goutama**
+
+**GOUTAMIND**
