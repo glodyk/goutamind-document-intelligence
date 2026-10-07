@@ -320,6 +320,31 @@ remains traceable and reviewable at every stage.
 
 ---
 
+## Quick start
+
+Requires Python 3.12+.
+
+```bash
+python -m venv .venv && source .venv/bin/activate   # Windows: .venv\Scripts\activate
+pip install -e ".[dev]"
+
+python -m pytest
+
+python -m pipeline.run examples/golden_claim/synthetic_claim_bundle.pdf
+```
+
+The run writes a JSON bundle, a human-readable inspection report, and a page-assignment diagnostic to `outputs/` (git-ignored).
+
+## Private healthcare claim documents
+
+Real claim bundles can contain sensitive patient information and must never be committed to the repository.
+
+Private samples should remain outside Git tracking, for example in `samples_private/`. Use `--no-source-text` when an inspection report must be shared for review.
+
+The committed golden example uses synthetic data.
+
+---
+
 ## Repository Structure
 
 ```text

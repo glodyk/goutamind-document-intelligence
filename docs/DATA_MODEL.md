@@ -11,6 +11,11 @@
 This revision (r1) keeps every concept, section number and field of baseline 0.1.
 Changes are **additive**. Nothing was removed or renamed.
 
+> **Slice-1 decisions `[S1]`.** Four decisions taken after running the first
+> vertical slice (PR #1 review) are applied as small additive notes in
+> sections 7, 11A, 13 and 17B, marked `[S1, ADR-REQ-00n]`. Appendix C
+> lists what changed, why, the observed evidence and what stays open.
+
 New material is marked with a tag:
 
 - `[GAP-n]` points to the gap register in Appendix A (gaps found by
@@ -381,10 +386,29 @@ Proposed additions `[r1]`:
 
 ```text
 page_refs[]            (GAP-1)  list of {source_file_id, page_number}
+                                [S1, ADR-REQ-001] each entry also carries
+                                page_id, basis, evidence_ref (see below)
 dates[]                (GAP-6)  list of Temporal Values with date_role
 duplicate_of           (GAP-9)  optional document_id
 completeness_status    (see section 41)
 ```
+
+Page membership provenance `[S1, ADR-REQ-001, decided]`: assigning a
+page to a Document is an inference by the segmenter, so each
+`page_refs[]` entry records **why** the page is there:
+
+```text
+page_id        the Page (section 5A)
+basis          the rule that placed it: TITLE | MARKER | PAGE_COUNTER |
+               CONTINUATION | IMAGE_PAGE | EXTRACTION_FAILED | UNTITLED_START
+evidence_ref   the Evidence that rule used (title line, marker line,
+               counter line, image region, or for CONTINUATION /
+               UNTITLED_START the line the page starts with)
+```
+
+`basis` is provenance, not confidence; no numeric score is attached
+until there is a basis for calibrating one. `page_refs[]` stays the
+authoritative list.
 
 Compatibility: `page_range` is retained as a convenience for the
 common contiguous case. When a Document is non-contiguous,
@@ -426,7 +450,12 @@ SERVICE_RECAP
 REFERRAL
 SUPPORTING_DOCUMENT
 OTHER
+UNKNOWN                [S1, ADR-REQ-002]
 ```
+
+`[S1, ADR-REQ-002, decided]` `UNKNOWN` = the type could not be
+classified. `OTHER` = the document was recognised but its type is not
+in this list. `OTHER` is never a fallback for "not classified".
 
 This list is extensible. Candidate additions observed in the audit
 are proposals for `DOCUMENT_TAXONOMY.md`, not decisions here.
@@ -601,6 +630,15 @@ UNKNOWN
 
 `extraction_method` applies to Page, DocumentElement and Evidence.
 
+`[S1, ADR-REQ-004, decided]` `extraction_method` says **how** a
+representation was obtained. A separate `text_status` on Page
+(`EXTRACTED | NOT_AVAILABLE | FAILED`) says **whether** a text
+representation exists. A page whose text was not extracted (for example
+an image-only page without OCR) has `extraction_method = UNKNOWN` and
+`text_status = NOT_AVAILABLE`; `NO_TEXT` is used only when the content is
+known to be non-textual. `MIXED` modality is not assigned until it can be
+shown from the page.
+
 Rules:
 
 - text from `OCR`, `HANDWRITING_RECOGNITION` or
@@ -748,6 +786,11 @@ simplest projection.
 Examples of `event_type`: `PATIENT_ARRIVAL`, `TRIAGE`, `ASSESSMENT`,
 `INVESTIGATION`, `MEDICATION`, `PROCEDURE`, `ADMISSION`, `TRANSFER`,
 `REFERRAL`, `DISCHARGE`.
+
+`[S1, ADR-REQ-003, decided]` `ADMISSION` means **inpatient admission**.
+A printed "Tanggal Masuk" / "Tanggal Keluar" (date in / out) does not by
+itself establish an inpatient stay, so it never produces an `ADMISSION`
+or `DISCHARGE` event, notably on emergency and outpatient documents.
 
 An event may originate from multiple documents. An event is a
 *clinical or service occurrence*, distinct from the *act of printing
@@ -947,6 +990,12 @@ UNKNOWN
 ```
 
 A `PRINT` or `ENTRY` date must not be used as a clinical event time.
+
+`[S1, ADR-REQ-003, decided]` `ADMISSION` (and its counterpart
+`DISCHARGE`) refer to an inpatient stay. Dates printed under "Masuk" /
+"Keluar" labels keep `date_role = UNKNOWN` and the printed label, until
+the stay is shown to be inpatient. A role for "start / end of any
+encounter" does not exist yet and is left unresolved (ADR-05).
 
 `[ADR-05]` Date role vocabulary, and the policy for ambiguous numeric
 dates (adapter configuration vs flagged-unknown).
@@ -2076,3 +2125,15 @@ Each is **open**. Text in this document gives a proposed shape only.
 | ADR-13 | `panel`/`specimen` vocabulary; panels as entities. |
 | ADR-14 | Naming conventions: singular/plural field names (for example `document_role[]`), `document_type` vs `doc_type` usage, capitalization of enum values, field naming across Evidence and Document. No rename is made in this revision. |
 | ADR-15 | `DOCUMENT_TAXONOMY.md` section 8 defines SEGMENT (major semantic part / document identity) as distinct from CHUNK. This document has no Segment. Is a Segment the same as a Document, a Section, or a separate level? Not resolved here; no Segment entity is introduced. |
+
+# Appendix C. Decisions from vertical slice 1 `[S1]`
+
+Decided in the PR #1 review on the basis of running the slice on one
+synthetic and two real bundles. Evidence: `docs/findings/SLICE_01_FINDINGS.md`.
+
+| Decision | What changed | Why | Observed evidence | Still unresolved |
+|---|---|---|---|---|
+| ADR-REQ-001 (Option B) | `page_refs[]` entries carry `page_id`, `basis`, `evidence_ref` (section 7). | Page-to-document assignment is an inference and had no provenance. | OBS-003, OBS-004: untitled pages attached by continuation, some wrongly; 18 of 38 pages of one bundle rest on continuation alone. | ADR-01 (page in several documents, document starting mid-page). A basis does not tell a right continuation from a wrong one. |
+| ADR-REQ-002 (Option A) | `document_type` gains `UNKNOWN` (section 7). | "Not classified" and "known but unlisted" are different. | Six documents across the runs could not be classified (image-only, untitled). | Types for forms seen but unlisted (triage, admission order, single-clinician medication order); ownership of the list (ADR-14). |
+| ADR-REQ-003 (Option B) | `ADMISSION` = inpatient admission (sections 13, 17B). | An emergency visit produced ADMISSION/DISCHARGE events from its resume labels. | OBS-017: emergency visit declared as outpatient, resume prints "Tanggal Masuk/Keluar". | Vocabulary for encounter start/end (ADR-05); how an inpatient stay is established (ADR-03). |
+| ADR-REQ-004 (Option B) | `text_status` beside `extraction_method` (section 11A). | `NO_TEXT` would declare an un-OCR'd page non-textual. | OBS-005, OBS-013: image-only pages; 34 of 49 text pages also embed images. | Rest of ADR-11 (per-component confidence, non-textual evidence supporting Facts); meaning of `MIXED`. |
