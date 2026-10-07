@@ -4,46 +4,109 @@
 
 Evidence-driven document intelligence for heterogeneous healthcare claim documents.
 
-GOUTAMIND Document Intelligence transforms complex healthcare claim document bundles into structured, traceable, evidence-linked information while preserving source context and provenance.
+## What This Project Is
 
-The project is designed to become a foundational document intelligence layer for healthcare claim review, verification, and downstream claim intelligence.
+GOUTAMIND Document Intelligence is an evidence-driven document intelligence
+project for heterogeneous healthcare claim documents.
 
----
+It focuses on transforming complex healthcare document bundles into
+structured, traceable, evidence-linked information while preserving
+source context and provenance.
 
-## Why This Project Exists
-
-Healthcare claim documents are rarely uniform.
-
-A single claim may contain emergency records, inpatient notes, diagnostic reports, medication records, administrative documents, billing information, and claim outputs — often combined into heterogeneous PDF bundles from different hospitals.
-
-The challenge is not simply extracting text from PDFs.
-
-The real challenge is understanding:
-
-- what each document represents,
-- where one document starts and another ends,
-- what clinical facts are contained within it,
-- where each fact came from,
-- how facts relate temporally,
-- and how the resulting information can be trusted downstream.
-
-This project addresses that problem through an evidence-first architecture.
-
----
-
-## Core Architecture
-
-```text
 PDF / Document Bundle
         ↓
 Document Understanding
         ↓
-Canonical Clinical Claim
-        ↓
 Evidence
+        ↓
+Structured Facts
         ↓
 Clinical Timeline
         ↓
 Narrative
         ↓
 Claim Intelligence
+
+
+# Project Identity
+
+## Project Name
+
+GOUTAMIND Document Intelligence
+
+## Short Description
+
+Evidence-driven document intelligence for heterogeneous healthcare claim
+documents.
+
+## Tagline
+
+From healthcare documents to evidence-linked claim intelligence.
+
+## Purpose
+
+This project investigates and develops an evidence-driven architecture for
+understanding heterogeneous healthcare claim documents.
+
+## Primary Problem
+
+Healthcare claim documents often arrive as heterogeneous PDF bundles containing
+multiple logical documents, layouts, representations, and levels of clinical
+detail.
+
+The project focuses on reliably identifying document structure, extracting
+facts and events, preserving evidence provenance, and maintaining traceability
+from derived information back to source documents.
+
+## Primary Output
+
+Structured, evidence-linked information derived from healthcare documents.
+
+## Core Semantic Flow
+
+Document Bundle
+→ Document
+→ Section
+→ Chunk
+→ Fact / Event
+→ Evidence
+
+## Target Architecture
+
+Document Understanding
+→ Canonical Clinical Claim
+→ Evidence
+→ Clinical Timeline
+→ Narrative
+→ Claim Intelligence
+
+## Current Maturity
+
+Early Architecture / First Vertical Slice
+
+## Current Focus
+
+- document representation
+- document segmentation
+- evidence provenance
+- deterministic fact extraction
+- deterministic event extraction
+- temporal precision
+- explicit missingness
+- layout-aware document understanding
+
+## Non-Goals
+
+This repository is not currently:
+
+- a production claim verification system
+- a fraud detection engine
+- an LLM chatbot
+- a RAG system
+- a production OCR platform
+- a replacement for human claim reviewers
+
+## Positioning
+
+This repository provides a document intelligence foundation for downstream
+healthcare claim review and claim intelligence systems.
