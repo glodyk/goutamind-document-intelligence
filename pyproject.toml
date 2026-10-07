@@ -1,0 +1,45 @@
+[project]
+name = "goutamind-document-intelligence"
+version = "0.1.0"
+description = "Claim document intelligence: from heterogeneous claim PDFs to a canonical, evidence-linked representation."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "pypdf>=4.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "ruff>=0.5",
+    "mypy>=1.10",
+]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["app*", "pipeline*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"
+
+[tool.ruff]
+line-length = 110
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "SIM"]
+
+[tool.mypy]
+python_version = "3.12"
+strict_optional = true
+warn_unused_ignores = true
+check_untyped_defs = true
+files = ["app", "pipeline"]
+
+[[tool.mypy.overrides]]
+module = ["pypdf.*"]
+ignore_missing_imports = true
