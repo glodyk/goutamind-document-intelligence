@@ -137,8 +137,10 @@ class EvidenceRegistry:
             )
         )
 
-    def from_image_page(self, page: Page, purpose: str, refs: SemanticRefs) -> Evidence:
-        """Non-textual evidence: the page region itself, with no source_text."""
+    def from_page_region(
+        self, page: Page, purpose: str, refs: SemanticRefs, content_kind: ContentKind
+    ) -> Evidence:
+        """Evidence for a whole page with no text representation (no source_text)."""
         images = [e for e in page.elements if e.text is None]
         return self._add(
             Evidence(
@@ -147,7 +149,7 @@ class EvidenceRegistry:
                 page_id=page.page_id,
                 page_number=page.page_number,
                 extraction_method=page.extraction_method,
-                content_kind=ContentKind.IMAGE_REGION,
+                content_kind=content_kind,
                 purpose=purpose,
                 element_id=images[0].element_id if images else None,
                 document_id=refs.document_id,

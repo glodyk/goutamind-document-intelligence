@@ -14,6 +14,10 @@ Pages without text are handled before these rules: a BLANK page belongs to
 no document and ends the current one; an image-only or failed page becomes
 its own UNKNOWN document, because nothing on it can be classified.
 
+Every page membership records its rule (``PageRef.basis``) and the Evidence
+the rule used (``PageRef.evidence_ref``), so a weak assignment such as
+CONTINUATION stays visible downstream instead of looking like a fact.
+
 The result is deliberately conservative: when the evidence is weak the
 document type is UNKNOWN rather than a guess.
 """
@@ -32,7 +36,7 @@ from app.document.rules import (
 from app.evidence.models import EvidenceRegistry, SemanticRefs
 from app.extraction.models import DocumentElement, Page, SourceFile
 from app.ids import IdFactory
-from app.vocabulary import BoundaryBasis, DocumentType, PageKind, TextStatus
+from app.vocabulary import AssignmentBasis, ContentKind, DocumentType, PageKind, TextStatus
 
 
 @dataclass(frozen=True, slots=True)
@@ -93,33 +97,46 @@ class Segmenter:
         self,
         page: Page,
         document_type: DocumentType,
-        basis: BoundaryBasis,
+        basis: AssignmentBasis,
         basis_element: DocumentElement | None,
     ) -> Document:
         document = Document(
             document_id=self._ids.next("doc"),
             document_type=document_type,
             document_role=list(DOCUMENT_ROLES.get(document_type, ())),
-            document_title=basis_element.text if basis is BoundaryBasis.TITLE and basis_element else None,
+            document_title=basis_element.text if basis is AssignmentBasis.TITLE and basis_element else None,
             page_refs=[],
-            boundary_basis=basis,
         )
-        refs = SemanticRefs(document.document_id, document.document_type)
-        if basis_element is not None:
-            ev = self._evidence.from_text_element(
-                basis_element, page.source_file_id, "document_boundary", refs
-            )
-            document.evidence_refs.append(ev.evidence_id)
-        elif basis is BoundaryBasis.IMAGE_PAGE:
-            ev = self._evidence.from_image_page(page, "document_boundary", refs)
-            document.evidence_refs.append(ev.evidence_id)
-        self._attach(document, page, basis)
+        ref = self._attach(document, page, basis, basis_element)
+        document.evidence_refs.append(ref.evidence_ref)
         return document
 
-    @staticmethod
-    def _attach(document: Document, page: Page, basis: BoundaryBasis) -> None:
-        document.page_refs.append(PageRef(page.source_file_id, page.page_number, page.page_id))
-        document.page_bases[page.page_number] = basis
+    def _attach(
+        self,
+        document: Document,
+        page: Page,
+        basis: AssignmentBasis,
+        element: DocumentElement | None,
+    ) -> PageRef:
+        """Add a page membership together with the Evidence its rule used.
+
+        TITLE / MARKER / PAGE_COUNTER cite the matching line. IMAGE_PAGE cites
+        the page region. CONTINUATION and UNTITLED_START have no positive
+        signal, so they cite the page's first line: what the page starts with,
+        which matched no rule.
+        """
+        refs = SemanticRefs(document.document_id, document.document_type)
+        purpose = "page_membership"
+        if basis is AssignmentBasis.IMAGE_PAGE:
+            evidence = self._evidence.from_page_region(page, purpose, refs, ContentKind.IMAGE_REGION)
+        elif basis is AssignmentBasis.EXTRACTION_FAILED:
+            evidence = self._evidence.from_page_region(page, purpose, refs, ContentKind.OTHER)
+        else:
+            cited = element or page.text_lines[0]
+            evidence = self._evidence.from_text_element(cited, page.source_file_id, purpose, refs)
+        ref = PageRef(page.source_file_id, page.page_number, page.page_id, basis, evidence.evidence_id)
+        document.page_refs.append(ref)
+        return ref
 
     def segment(self, source_file: SourceFile) -> list[Document]:
         documents: list[Document] = []
@@ -130,9 +147,12 @@ class Segmenter:
                 current = None
                 continue
             if page.text_status is not TextStatus.EXTRACTED:
-                documents.append(
-                    self._new_document(page, DocumentType.UNKNOWN, BoundaryBasis.IMAGE_PAGE, None)
+                basis = (
+                    AssignmentBasis.EXTRACTION_FAILED
+                    if page.text_status is TextStatus.FAILED
+                    else AssignmentBasis.IMAGE_PAGE
                 )
+                documents.append(self._new_document(page, DocumentType.UNKNOWN, basis, None))
                 current = None
                 continue
 
@@ -142,23 +162,24 @@ class Segmenter:
             marker = find_marker(lines)
 
             if counter and counter.k > 1 and current is not None:
-                self._attach(current, page, BoundaryBasis.PAGE_COUNTER)
+                self._attach(current, page, AssignmentBasis.PAGE_COUNTER, counter.element)
             elif title:
-                current = self._new_document(page, title.document_type, BoundaryBasis.TITLE, title.element)
+                current = self._new_document(page, title.document_type, AssignmentBasis.TITLE, title.element)
                 documents.append(current)
             elif counter and counter.k == 1:
+                # The counter decides the boundary; a marker, if present, decides the type.
                 doc_type = marker.document_type if marker else DocumentType.UNKNOWN
-                current = self._new_document(
-                    page, doc_type, BoundaryBasis.PAGE_COUNTER, marker.element if marker else counter.element
-                )
+                current = self._new_document(page, doc_type, AssignmentBasis.PAGE_COUNTER, counter.element)
                 documents.append(current)
             elif marker and (current is None or current.document_type is not marker.document_type):
-                current = self._new_document(page, marker.document_type, BoundaryBasis.MARKER, marker.element)
+                current = self._new_document(
+                    page, marker.document_type, AssignmentBasis.MARKER, marker.element
+                )
                 documents.append(current)
             elif current is not None:
-                self._attach(current, page, BoundaryBasis.CONTINUATION)
+                self._attach(current, page, AssignmentBasis.CONTINUATION, None)
             else:
-                current = self._new_document(page, DocumentType.UNKNOWN, BoundaryBasis.UNTITLED_START, None)
+                current = self._new_document(page, DocumentType.UNKNOWN, AssignmentBasis.UNTITLED_START, None)
                 documents.append(current)
 
             if counter is not None and current is not None:

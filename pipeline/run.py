@@ -5,8 +5,9 @@ Usage::
 
     python -m pipeline.run path/to/bundle.pdf [--out outputs/] [--numeric-date-order DMY]
 
-Writes ``<name>.bundle.json`` and ``<name>.inspection.txt`` to ``--out``
-(default ``outputs/``, which is git-ignored).
+Writes ``<name>.bundle.json``, ``<name>.inspection.txt`` and
+``<name>.page_assignment.txt`` to ``--out`` (default ``outputs/``, which is
+git-ignored).
 """
 
 import argparse
@@ -26,7 +27,7 @@ from app.extraction.pdf_reader import read_pdf
 from app.ids import IdFactory
 from app.temporal import NumericOrder
 from app.vocabulary import IngestionStatus
-from pipeline.report import render_inspection
+from pipeline.report import render_inspection, render_page_assignment
 from pipeline.serialize import to_json_dict
 
 SCHEMA_VERSION = "0.1-r1-slice"
@@ -97,8 +98,11 @@ def main(argv: list[str] | None = None) -> int:
     json_path = args.out / f"{stem}.bundle.json"
     report_path = args.out / f"{stem}.inspection.txt"
     json_path.write_text(json.dumps(to_json_dict(bundle), indent=2, ensure_ascii=False), "utf-8")
-    report_path.write_text(render_inspection(bundle, show_source_text=not args.no_source_text), "utf-8")
-    print(f"wrote {json_path} and {report_path}")
+    pages_path = args.out / f"{stem}.page_assignment.txt"
+    show_text = not args.no_source_text
+    report_path.write_text(render_inspection(bundle, show_source_text=show_text), "utf-8")
+    pages_path.write_text(render_page_assignment(bundle, show_source_text=show_text), "utf-8")
+    print(f"wrote {json_path}, {report_path} and {pages_path}")
     return 0 if bundle.source_files[0].ingestion_status is IngestionStatus.INGESTED else 1
 
 

@@ -40,10 +40,14 @@ class ExtractionMethod(StrEnum):
 
 
 class TextStatus(StrEnum):
-    """IMPLEMENTATION: outcome of the text-extraction attempt on a page.
+    """Availability of a text representation for a page (ADR-REQ-004, decided).
 
-    Kept separate from ``extraction_method`` so that "no text was obtained"
-    is never confused with "the content is non-textual" (``NO_TEXT``).
+    ``extraction_method`` says how a representation was obtained;
+    ``text_status`` says whether a text representation exists. An image-only
+    page without OCR is ``extraction_method = UNKNOWN`` and
+    ``text_status = NOT_AVAILABLE``: nothing is concluded about whether its
+    content is textual. ``NO_TEXT`` is reserved for content known to be
+    non-textual and is not assigned by this slice.
     """
 
     EXTRACTED = "EXTRACTED"
@@ -74,9 +78,9 @@ class ElementType(StrEnum):
 class DocumentType(StrEnum):
     """DATA_MODEL 7 ``document_type``.
 
-    ``UNKNOWN`` is an IMPLEMENTATION addition: ``OTHER`` means "recognised,
-    but not one of the listed types", whereas ``UNKNOWN`` means "not
-    classified". The data model list has no value for the second case.
+    ``UNKNOWN`` (ADR-REQ-002, decided): the type could not be classified.
+    ``OTHER``: the document was recognised, but its type is not in the list.
+    ``OTHER`` is never a fallback for "not classified".
     """
 
     SEP = "SEP"
@@ -110,14 +114,19 @@ class DocumentRole(StrEnum):
     SUPPORTING = "SUPPORTING"
 
 
-class BoundaryBasis(StrEnum):
-    """IMPLEMENTATION: why a page was attached to a Document."""
+class AssignmentBasis(StrEnum):
+    """Why a page was assigned to a Document (ADR-REQ-001, decided).
+
+    This is provenance, not confidence: it names the rule that placed the
+    page, and each membership also points to the Evidence the rule used.
+    """
 
     TITLE = "TITLE"
     MARKER = "MARKER"
     PAGE_COUNTER = "PAGE_COUNTER"
     CONTINUATION = "CONTINUATION"
     IMAGE_PAGE = "IMAGE_PAGE"
+    EXTRACTION_FAILED = "EXTRACTION_FAILED"
     UNTITLED_START = "UNTITLED_START"
 
 
@@ -203,7 +212,12 @@ class FactType(StrEnum):
 
 
 class EventType(StrEnum):
-    """Subset of DATA_MODEL 13 ``event_type`` examples used in this slice."""
+    """Subset of DATA_MODEL 13 ``event_type`` examples used in this slice.
+
+    ``ADMISSION`` means inpatient admission (ADR-REQ-003, decided). The slice
+    cannot establish that a stay was inpatient, so it never emits ADMISSION
+    or DISCHARGE events; a printed "Tanggal Masuk" alone is not enough.
+    """
 
     PATIENT_ARRIVAL = "PATIENT_ARRIVAL"
     ADMISSION = "ADMISSION"

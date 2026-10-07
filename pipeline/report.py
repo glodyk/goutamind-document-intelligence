@@ -27,6 +27,33 @@ def _preview(text: str | None) -> str:
     return text if len(text) <= TEXT_PREVIEW else text[: TEXT_PREVIEW - 1] + "…"
 
 
+def page_assignment_lines(bundle: ClaimDocumentBundle, show_source_text: bool = True) -> list[str]:
+    """Why each page sits where it does (ADR-REQ-001): page -> document -> basis -> evidence."""
+    membership = {ref.page_id: (d, ref) for d in bundle.documents for ref in d.page_refs}
+    evidence = {e.evidence_id: e for e in bundle.evidence}
+    lines = ["Page assignment:"]
+    for source in bundle.source_files:
+        for page in source.pages:
+            lines.append(f"  Page {page.page_number}")
+            if page.page_id not in membership:
+                lines.append("    Document: NONE")
+                lines.append(f"    Reason: {page.page_kind}")
+                continue
+            document, ref = membership[page.page_id]
+            lines.append(f"    Document: {document.document_id}")
+            lines.append(f"    Type: {document.document_type}")
+            lines.append(f"    Basis: {ref.basis}")
+            lines.append(f"    Evidence: {ref.evidence_ref}")
+            cited = evidence[ref.evidence_ref].source_text
+            if show_source_text and cited:
+                lines.append(f'    Cited: "{_preview(cited)}"')
+    return lines
+
+
+def render_page_assignment(bundle: ClaimDocumentBundle, show_source_text: bool = True) -> str:
+    return "\n".join(page_assignment_lines(bundle, show_source_text)) + "\n"
+
+
 def render_inspection(bundle: ClaimDocumentBundle, show_source_text: bool = True) -> str:
     out: list[str] = []
     add = out.append
@@ -57,7 +84,7 @@ def render_inspection(bundle: ClaimDocumentBundle, show_source_text: bool = True
         roles = ",".join(document.document_role) or "-"
         add(f"  {n}. {document.document_type}  ({document.document_id})")
         add(f"     pages: {document.page_range}   roles: {roles}   basis: {document.boundary_basis}")
-        bases = ", ".join(f"p{k}={v}" for k, v in document.page_bases.items())
+        bases = ", ".join(f"p{ref.page_number}={ref.basis}" for ref in document.page_refs)
         add(f"     page basis: {bases}")
         if document.page_counters:
             add(f"     printed page counters: {', '.join(document.page_counters)}")
@@ -67,7 +94,11 @@ def render_inspection(bundle: ClaimDocumentBundle, show_source_text: bool = True
         sections = ", ".join(f"{s.section_type}[{len(s.chunks)}]" for s in document.sections)
         add(f"     sections[chunks]: {sections or '(none: no text)'}")
         for tv in document.dates:
-            add(f"     date {tv.date_role:<12} {_tv(tv)}")
+            label = f' label="{tv.source_label}"' if tv.source_label else ""
+            add(f"     date {tv.date_role:<12} {_tv(tv)}{label}")
+    add("")
+
+    out.extend(page_assignment_lines(bundle, show_source_text))
     add("")
 
     add("Evidence:")

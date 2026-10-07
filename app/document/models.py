@@ -8,16 +8,22 @@ references back to the physical elements they came from.
 from dataclasses import dataclass, field
 
 from app.temporal import TemporalValue
-from app.vocabulary import Availability, BoundaryBasis, DocumentRole, DocumentType
+from app.vocabulary import AssignmentBasis, Availability, DocumentRole, DocumentType
 
 
 @dataclass(slots=True, frozen=True)
 class PageRef:
-    """DATA_MODEL 7 ``page_refs[]`` entry."""
+    """DATA_MODEL 7 ``page_refs[]`` entry: one page's membership in a Document.
+
+    ``basis`` and ``evidence_ref`` (ADR-REQ-001, decided) say why the page was
+    assigned here and which Evidence the assignment rule used.
+    """
 
     source_file_id: str
     page_number: int
-    page_id: str  # IMPLEMENTATION: direct link to the Page object
+    page_id: str
+    basis: AssignmentBasis
+    evidence_ref: str
 
 
 @dataclass(slots=True)
@@ -52,8 +58,6 @@ class Document:
     document_role: list[DocumentRole]
     document_title: str | None
     page_refs: list[PageRef]
-    boundary_basis: BoundaryBasis  # IMPLEMENTATION: how the first page was recognised
-    page_bases: dict[int, BoundaryBasis] = field(default_factory=dict)  # page_number -> basis
     source_facility: Availability = Availability.UNKNOWN  # not extracted in this slice
     document_date: TemporalValue | None = None  # left empty: no date role is documented as "the" date
     dates: list[TemporalValue] = field(default_factory=list)
@@ -62,7 +66,12 @@ class Document:
     classification_confidence: float | None = None  # rule-based: no calibrated score exists
     duplicate_of: str | None = None  # not detected in this slice (ADR-07)
     sections: list[Section] = field(default_factory=list)
-    evidence_refs: list[str] = field(default_factory=list)
+    evidence_refs: list[str] = field(default_factory=list)  # evidence for the first page's assignment
+
+    @property
+    def boundary_basis(self) -> AssignmentBasis:
+        """How the document's first page was recognised."""
+        return self.page_refs[0].basis
 
     @property
     def page_numbers(self) -> list[int]:
