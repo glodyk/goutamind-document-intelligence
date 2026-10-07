@@ -61,7 +61,9 @@ def test_raw_text_is_preserved():
 def test_date_roles_come_from_the_label_before_the_date():
     dates = labelled_dates("Tgl. Order : 19/08/2024 09:30 Tgl. Periksa : 19/08/2024 10:05")
     assert [d.date_role for d in dates] == [DateRole.ORDER, DateRole.UNKNOWN]
-    assert labelled_dates("Tgl KRS : 5 Februari 2025")[0].date_role is DateRole.DISCHARGE
+    krs = labelled_dates("Tgl KRS : 5 Februari 2025")[0]
+    # "Keluar"/"KRS"/"Masuk" do not prove an inpatient stay (ADR-REQ-003): no role, label kept.
+    assert (krs.date_role, krs.source_label) == (DateRole.UNKNOWN, "Tgl KRS")
     assert labelled_dates("Kota Contoh, 9 April 2024")[0].date_role is DateRole.UNKNOWN
 
 

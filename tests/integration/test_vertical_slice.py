@@ -6,7 +6,7 @@ from pathlib import Path
 from app.bundle import ClaimDocumentBundle
 from app.evidence.models import Evidence, Fact
 from app.vocabulary import (
-    BoundaryBasis,
+    AssignmentBasis,
     ContentKind,
     DocumentType,
     EventType,
@@ -79,17 +79,20 @@ def test_documents_reference_pages_not_contain_them(synthetic_bundle: ClaimDocum
 
 def test_boundary_rules(synthetic_bundle: ClaimDocumentBundle):
     by_first_page = {d.page_numbers[0]: d for d in synthetic_bundle.documents}
-    assert by_first_page[2].boundary_basis is BoundaryBasis.MARKER  # untitled SEP
+    assert by_first_page[2].boundary_basis is AssignmentBasis.MARKER  # untitled SEP
     # p4 starts with "RESEP" but its printed counter says "2 of 2".
-    assert by_first_page[3].page_bases == {3: BoundaryBasis.TITLE, 4: BoundaryBasis.PAGE_COUNTER}
+    assert [r.basis for r in by_first_page[3].page_refs] == [
+        AssignmentBasis.TITLE,
+        AssignmentBasis.PAGE_COUNTER,
+    ]
     # Two lab reports in a row are split by the "1 of 1" counter.
-    assert by_first_page[10].boundary_basis is BoundaryBasis.PAGE_COUNTER
-    assert by_first_page[11].page_bases[12] is BoundaryBasis.CONTINUATION
+    assert by_first_page[10].boundary_basis is AssignmentBasis.PAGE_COUNTER
+    assert by_first_page[11].page_refs[1].basis is AssignmentBasis.CONTINUATION
 
 
 def test_uncertain_classification_stays_unknown(synthetic_bundle: ClaimDocumentBundle):
     unknown = [d for d in synthetic_bundle.documents if d.document_type is DocumentType.UNKNOWN]
-    assert [d.boundary_basis for d in unknown] == [BoundaryBasis.IMAGE_PAGE, BoundaryBasis.UNTITLED_START]
+    assert [d.boundary_basis for d in unknown] == [AssignmentBasis.IMAGE_PAGE, AssignmentBasis.UNTITLED_START]
     assert all(d.document_role == [] for d in unknown)
     triage = next(d for d in synthetic_bundle.documents if d.document_type is DocumentType.OTHER)
     assert triage.document_title == "TRIASE"
@@ -163,7 +166,7 @@ def test_evidence_does_not_become_a_fact(synthetic_bundle: ClaimDocumentBundle):
     cited |= {ref for e in synthetic_bundle.events for ref in e.evidence_refs}
     uncited = [e for e in synthetic_bundle.evidence if e.evidence_id not in cited]
     # Boundary and image evidence exist without any Fact built on them.
-    assert uncited and {e.purpose for e in uncited} == {"document_boundary"}
+    assert uncited and {e.purpose for e in uncited} == {"page_membership"}
     assert not any(isinstance(e, Fact) for e in synthetic_bundle.evidence)
     assert not any(isinstance(f, Evidence) for f in synthetic_bundle.facts)
 
@@ -222,8 +225,6 @@ def test_events_only_from_clinical_documents(synthetic_bundle: ClaimDocumentBund
         for e in synthetic_bundle.events
     ]
     assert events == [
-        (EventType.ADMISSION, DocumentType.MEDICAL_RESUME, TemporalPrecision.EXACT_DATETIME),
-        (EventType.DISCHARGE, DocumentType.MEDICAL_RESUME, TemporalPrecision.DATE),
         (EventType.PATIENT_ARRIVAL, DocumentType.ASSESSMENT, TemporalPrecision.DATE),
         (EventType.PATIENT_ARRIVAL, DocumentType.OTHER, TemporalPrecision.EXACT_DATETIME),
     ]
@@ -232,9 +233,11 @@ def test_events_only_from_clinical_documents(synthetic_bundle: ClaimDocumentBund
 
 def test_claim_anchor_dates_stay_document_metadata(synthetic_bundle: ClaimDocumentBundle):
     inacbg = synthetic_bundle.documents[0]
-    roles = {d.date_role.value: d for d in inacbg.dates}
-    assert roles["ADMISSION"].precision is TemporalPrecision.UNKNOWN  # "03/02/2025" is ambiguous
-    assert roles["ADMISSION"].raw_text == "03/02/2025"
+    labelled = {d.source_label: d for d in inacbg.dates}
+    masuk = labelled["Tanggal Masuk"]
+    assert masuk.precision is TemporalPrecision.UNKNOWN  # "03/02/2025" is ambiguous
+    assert masuk.raw_text == "03/02/2025"
+    assert masuk.date_role.value == "UNKNOWN"  # not ADMISSION (ADR-REQ-003)
     assert not any(e.document_id == inacbg.document_id for e in synthetic_bundle.events)
 
 
@@ -257,6 +260,7 @@ def test_cli_writes_json_and_report(synthetic_pdf_path: Path, tmp_path: Path):
     assert len(data["documents"]) == 10
     assert data["canonical_claim"] is None and data["timeline"] == []
     assert (out / "synthetic_bundle.inspection.txt").read_text("utf-8").startswith("SourceFile:")
+    assert (out / "synthetic_bundle.page_assignment.txt").read_text("utf-8").startswith("Page assignment:")
 
 
 def test_cli_reports_failure_for_bad_pdf(tmp_path: Path):
