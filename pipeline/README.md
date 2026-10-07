@@ -22,9 +22,11 @@ nothing overwrites an earlier one (DATA_MODEL 42).
   separator page look the same to the reader.
 - `modality`: `DIGITAL_TEXT` when a text layer exists, otherwise `UNKNOWN`
   (a scan and a photo cannot be told apart without image analysis).
-- `extraction_method`: `NATIVE_TEXT` when text was read, otherwise `UNKNOWN`.
-  `NO_TEXT` is not used because it asserts the content *is* non-textual,
-  which the reader cannot know.
+- `extraction_method` (how a representation was obtained): `NATIVE_TEXT` when
+  text was read, otherwise `UNKNOWN`. `text_status` (whether a text
+  representation exists): `EXTRACTED`, `NOT_AVAILABLE` or `FAILED`
+  (ADR-REQ-004). `NO_TEXT` is never assigned because it asserts the content
+  *is* non-textual, which the reader cannot know.
 - Each non-empty text line becomes a `TEXT` element; each image XObject an
   `IMAGE` element. `bbox` is not provided.
 - `source_file_id` is derived from the SHA-256 of the bytes, so the same file
@@ -38,7 +40,8 @@ A Document *references* pages; it does not contain them. For each page, in
 order (first rule that applies wins):
 
 1. `BLANK` page: belongs to no document and ends the current one.
-2. Image-only or failed page: its own `UNKNOWN` document.
+2. Image-only page (`IMAGE_PAGE`) or page whose extraction failed
+   (`EXTRACTION_FAILED`): its own `UNKNOWN` document.
 3. Printed counter "Halaman k of n" / "Halaman k" with k > 1: continues the
    current document. This outranks a title, because a counter belongs to the
    page's own document (a resume's last page can start with "RESEP").
@@ -51,11 +54,17 @@ order (first rule that applies wins):
 Rules are data in `app/document/rules.py`: generic Indonesian/English form
 titles and labels, not a hospital layout. Short generic words such as
 "RADIOLOGI" count as a title only on a page's first line, because they also
-appear as headings inside bills. Each document records why each page was
-attached (`page_bases`) and keeps the title or marker line as evidence.
+appear as headings inside bills.
 
-`document_type` gets `UNKNOWN` when nothing matched and `OTHER` when a
-title was recognised but has no type in DATA_MODEL 7 (for example triage).
+Every `page_refs` entry records `basis` (the rule above that placed the page)
+and `evidence_ref` (ADR-REQ-001). The evidence is the title, marker or counter
+line, the image region, or, for `CONTINUATION` / `UNTITLED_START`, the line
+the page starts with. A weak assignment therefore stays visible downstream;
+it is not a confidence score.
+
+`document_type` gets `UNKNOWN` when the type could not be classified and
+`OTHER` only when a title was recognised but has no type in DATA_MODEL 7
+(for example triage). `OTHER` is never a fallback (ADR-REQ-002).
 `document_role` follows the examples in DOCUMENT_TAXONOMY 9; types without
 an example there are marked "assumed" in the rules file, and `OTHER`,
 `UNKNOWN` and `REFERRAL` get no role. `classification_confidence`,
@@ -81,7 +90,9 @@ Every date on a document's lines is parsed into a Temporal Value
 ("September 2025" stays `MONTH`), and numeric dates where both parts are
 <= 12 stay `UNKNOWN` unless `--numeric-date-order` is given. The `date_role`
 comes only from a label just before the date on the same line; otherwise it is
-`UNKNOWN`. Birth dates are recognised and skipped (personal data, ADR-08).
+`UNKNOWN`. The printed label is kept in `source_label`. "Tanggal Masuk /
+Keluar / Pulang" and "Tgl KRS" keep role `UNKNOWN`: `ADMISSION` means
+inpatient admission, which a label cannot establish (ADR-REQ-003). Birth dates are recognised and skipped (personal data, ADR-08).
 
 ## 5. Facts and events
 
@@ -95,8 +106,9 @@ Deterministic and deliberately narrow (`app/extraction/facts.py`):
   `availability_status = NOT_DOCUMENTED`.
 - MEDICATION: whole "R/ ..." lines, unparsed (`medication_context` and
   `item_category` are ADR-06).
-- Events: admission, discharge and arrival dates on clinical documents only.
-  Claim anchors (SEP, INA-CBG, billing, service recap) never produce events.
+- Events: arrival dates ("Waktu Datang") on clinical documents only. Claim
+  anchors (SEP, INA-CBG, billing, service recap) never produce events. No
+  ADMISSION or DISCHARGE event is produced (ADR-REQ-003).
   `care_pathway` and `care_stage` stay `UNKNOWN`.
 
 Every Fact and Event is a `SOURCE_FACT` with one Evidence item pointing at the
@@ -108,5 +120,8 @@ Fact (document boundaries, image pages), so Evidence never implies a Fact.
 
 - `<name>.bundle.json`: every layer, plus empty placeholders for the layers
   not built yet (`canonical_claim`, `timeline`, ...). Not a JSON Schema.
-- `<name>.inspection.txt`: pages, documents, evidence, facts and events, with
-  the chain Fact -> Evidence -> page -> source file.
+- `<name>.inspection.txt`: pages, documents, page assignment, evidence, facts
+  and events, with the chain Fact -> Evidence -> page -> source file.
+- `<name>.page_assignment.txt`: for every page, its document, type, basis and
+  evidence, or `Document: NONE` with the reason (for example `BLANK`).
+  `--no-source-text` drops the cited line.

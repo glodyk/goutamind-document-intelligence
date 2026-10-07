@@ -42,8 +42,9 @@ python -m pytest
 python -m pipeline.run examples/golden_claim/synthetic_claim_bundle.pdf
 ```
 
-The run writes `<name>.bundle.json` (all layers) and `<name>.inspection.txt`
-(human-readable check of documents, evidence and facts). See
+The run writes `<name>.bundle.json` (all layers), `<name>.inspection.txt`
+(human-readable check of documents, evidence and facts) and
+`<name>.page_assignment.txt` (why each page sits in its document). See
 [`examples/golden_claim/`](examples/golden_claim/) for the committed synthetic
 example.
 

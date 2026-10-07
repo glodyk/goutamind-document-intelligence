@@ -1,0 +1,87 @@
+Page assignment:
+  Page 1
+    Document: doc-001
+    Type: INA_CBG_OUTPUT
+    Basis: TITLE
+    Evidence: evidence-001
+    Cited: "Berkas Klaim Individual Pasien 06/02/2025"
+  Page 2
+    Document: doc-002
+    Type: SEP
+    Basis: MARKER
+    Evidence: evidence-002
+    Cited: "No.SEP : 0000SINTETIS0001"
+  Page 3
+    Document: doc-003
+    Type: MEDICAL_RESUME
+    Basis: TITLE
+    Evidence: evidence-003
+    Cited: "RESUME MEDIS"
+  Page 4
+    Document: doc-003
+    Type: MEDICAL_RESUME
+    Basis: PAGE_COUNTER
+    Evidence: evidence-004
+    Cited: "Halaman 2 of 2"
+  Page 5
+    Document: NONE
+    Reason: BLANK
+  Page 6
+    Document: doc-004
+    Type: UNKNOWN
+    Basis: IMAGE_PAGE
+    Evidence: evidence-005
+  Page 7
+    Document: NONE
+    Reason: BLANK
+  Page 8
+    Document: doc-005
+    Type: LABORATORY
+    Basis: PAGE_COUNTER
+    Evidence: evidence-006
+    Cited: "Halaman 1 of 2"
+  Page 9
+    Document: doc-005
+    Type: LABORATORY
+    Basis: PAGE_COUNTER
+    Evidence: evidence-007
+    Cited: "Halaman 2 of 2"
+  Page 10
+    Document: doc-006
+    Type: LABORATORY
+    Basis: PAGE_COUNTER
+    Evidence: evidence-008
+    Cited: "Halaman 1 of 1"
+  Page 11
+    Document: doc-007
+    Type: ASSESSMENT
+    Basis: TITLE
+    Evidence: evidence-009
+    Cited: "ASESMEN AWAL GAWAT DARURAT"
+  Page 12
+    Document: doc-007
+    Type: ASSESSMENT
+    Basis: CONTINUATION
+    Evidence: evidence-010
+    Cited: "Nyeri tekan McBurney (+)"
+  Page 13
+    Document: doc-008
+    Type: SERVICE_RECAP
+    Basis: TITLE
+    Evidence: evidence-011
+    Cited: "NOTA REKAP PELAYANAN"
+  Page 14
+    Document: doc-009
+    Type: OTHER
+    Basis: TITLE
+    Evidence: evidence-012
+    Cited: "TRIASE"
+  Page 15
+    Document: NONE
+    Reason: BLANK
+  Page 16
+    Document: doc-010
+    Type: UNKNOWN
+    Basis: UNTITLED_START
+    Evidence: evidence-013
+    Cited: "Catatan tambahan tanpa judul"

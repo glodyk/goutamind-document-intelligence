@@ -16,6 +16,7 @@ device on a prescription line.
 | `synthetic_claim_bundle.pdf` | the input |
 | `synthetic_claim_bundle.inspection.txt` | human-readable result: pages, documents, evidence, facts, events |
 | `synthetic_claim_bundle.bundle.json` | the full output of every layer |
+| `synthetic_claim_bundle.page_assignment.txt` | per page: document, type, assignment basis, evidence |
 
 `tests/integration/test_vertical_slice.py::test_golden_example_is_up_to_date`
 fails when the pipeline's output changes, so behaviour changes are always

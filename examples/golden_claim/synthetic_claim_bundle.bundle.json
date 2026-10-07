@@ -931,13 +931,11 @@
         {
           "source_file_id": "file-aa9d7c3ab22c",
           "page_number": 1,
-          "page_id": "page-001"
+          "page_id": "page-001",
+          "basis": "TITLE",
+          "evidence_ref": "evidence-001"
         }
       ],
-      "boundary_basis": "TITLE",
-      "page_bases": {
-        "1": "TITLE"
-      },
       "source_facility": "UNKNOWN",
       "document_date": null,
       "dates": [
@@ -947,23 +945,26 @@
           "raw_text": "06/02/2025",
           "date_role": "UNKNOWN",
           "timezone": null,
-          "ambiguity": "AMBIGUOUS_DAY_MONTH_ORDER"
+          "ambiguity": "AMBIGUOUS_DAY_MONTH_ORDER",
+          "source_label": null
         },
         {
           "value": null,
           "precision": "UNKNOWN",
           "raw_text": "03/02/2025",
-          "date_role": "ADMISSION",
+          "date_role": "UNKNOWN",
           "timezone": null,
-          "ambiguity": "AMBIGUOUS_DAY_MONTH_ORDER"
+          "ambiguity": "AMBIGUOUS_DAY_MONTH_ORDER",
+          "source_label": "Tanggal Masuk"
         },
         {
           "value": null,
           "precision": "UNKNOWN",
           "raw_text": "05/02/2025",
-          "date_role": "DISCHARGE",
+          "date_role": "UNKNOWN",
           "timezone": null,
-          "ambiguity": "AMBIGUOUS_DAY_MONTH_ORDER"
+          "ambiguity": "AMBIGUOUS_DAY_MONTH_ORDER",
+          "source_label": "Tanggal Keluar"
         }
       ],
       "completeness_status": "UNKNOWN",
@@ -1028,13 +1029,11 @@
         {
           "source_file_id": "file-aa9d7c3ab22c",
           "page_number": 2,
-          "page_id": "page-002"
+          "page_id": "page-002",
+          "basis": "MARKER",
+          "evidence_ref": "evidence-002"
         }
       ],
-      "boundary_basis": "MARKER",
-      "page_bases": {
-        "2": "MARKER"
-      },
       "source_facility": "UNKNOWN",
       "document_date": null,
       "dates": [
@@ -1044,7 +1043,8 @@
           "raw_text": "2025-02-03",
           "date_role": "UNKNOWN",
           "timezone": null,
-          "ambiguity": null
+          "ambiguity": null,
+          "source_label": null
         }
       ],
       "completeness_status": "UNKNOWN",
@@ -1098,19 +1098,18 @@
         {
           "source_file_id": "file-aa9d7c3ab22c",
           "page_number": 3,
-          "page_id": "page-003"
+          "page_id": "page-003",
+          "basis": "TITLE",
+          "evidence_ref": "evidence-003"
         },
         {
           "source_file_id": "file-aa9d7c3ab22c",
           "page_number": 4,
-          "page_id": "page-004"
+          "page_id": "page-004",
+          "basis": "PAGE_COUNTER",
+          "evidence_ref": "evidence-004"
         }
       ],
-      "boundary_basis": "TITLE",
-      "page_bases": {
-        "3": "TITLE",
-        "4": "PAGE_COUNTER"
-      },
       "source_facility": "UNKNOWN",
       "document_date": null,
       "dates": [
@@ -1118,17 +1117,19 @@
           "value": "2025-02-03T08:15",
           "precision": "EXACT_DATETIME",
           "raw_text": "3 Februari 2025 08:15 WIB",
-          "date_role": "ADMISSION",
+          "date_role": "UNKNOWN",
           "timezone": "WIB",
-          "ambiguity": null
+          "ambiguity": null,
+          "source_label": "Tanggal Masuk"
         },
         {
           "value": "2025-02-05",
           "precision": "DATE",
           "raw_text": "5 Februari 2025",
-          "date_role": "DISCHARGE",
+          "date_role": "UNKNOWN",
           "timezone": null,
-          "ambiguity": null
+          "ambiguity": null,
+          "source_label": "Tanggal Keluar"
         },
         {
           "value": "2025-09",
@@ -1136,7 +1137,8 @@
           "raw_text": "September 2025",
           "date_role": "UNKNOWN",
           "timezone": null,
-          "ambiguity": null
+          "ambiguity": null,
+          "source_label": null
         }
       ],
       "completeness_status": "UNKNOWN",
@@ -1171,10 +1173,7 @@
                 "el-019"
               ],
               "fact_refs": [],
-              "event_refs": [
-                "event-001",
-                "event-002"
-              ]
+              "event_refs": []
             }
           ]
         },
@@ -1304,13 +1303,11 @@
         {
           "source_file_id": "file-aa9d7c3ab22c",
           "page_number": 6,
-          "page_id": "page-006"
+          "page_id": "page-006",
+          "basis": "IMAGE_PAGE",
+          "evidence_ref": "evidence-005"
         }
       ],
-      "boundary_basis": "IMAGE_PAGE",
-      "page_bases": {
-        "6": "IMAGE_PAGE"
-      },
       "source_facility": "UNKNOWN",
       "document_date": null,
       "dates": [],
@@ -1320,7 +1317,7 @@
       "duplicate_of": null,
       "sections": [],
       "evidence_refs": [
-        "evidence-004"
+        "evidence-005"
       ],
       "page_range": "6"
     },
@@ -1335,19 +1332,18 @@
         {
           "source_file_id": "file-aa9d7c3ab22c",
           "page_number": 8,
-          "page_id": "page-008"
+          "page_id": "page-008",
+          "basis": "PAGE_COUNTER",
+          "evidence_ref": "evidence-006"
         },
         {
           "source_file_id": "file-aa9d7c3ab22c",
           "page_number": 9,
-          "page_id": "page-009"
+          "page_id": "page-009",
+          "basis": "PAGE_COUNTER",
+          "evidence_ref": "evidence-007"
         }
       ],
-      "boundary_basis": "PAGE_COUNTER",
-      "page_bases": {
-        "8": "PAGE_COUNTER",
-        "9": "PAGE_COUNTER"
-      },
       "source_facility": "UNKNOWN",
       "document_date": null,
       "dates": [
@@ -1357,7 +1353,8 @@
           "raw_text": "03/02/2025 09:00",
           "date_role": "ORDER",
           "timezone": null,
-          "ambiguity": "AMBIGUOUS_DAY_MONTH_ORDER"
+          "ambiguity": "AMBIGUOUS_DAY_MONTH_ORDER",
+          "source_label": "Tgl. Order"
         }
       ],
       "completeness_status": "UNKNOWN",
@@ -1447,7 +1444,7 @@
         }
       ],
       "evidence_refs": [
-        "evidence-005"
+        "evidence-006"
       ],
       "page_range": "8-9"
     },
@@ -1462,13 +1459,11 @@
         {
           "source_file_id": "file-aa9d7c3ab22c",
           "page_number": 10,
-          "page_id": "page-010"
+          "page_id": "page-010",
+          "basis": "PAGE_COUNTER",
+          "evidence_ref": "evidence-008"
         }
       ],
-      "boundary_basis": "PAGE_COUNTER",
-      "page_bases": {
-        "10": "PAGE_COUNTER"
-      },
       "source_facility": "UNKNOWN",
       "document_date": null,
       "dates": [],
@@ -1531,7 +1526,7 @@
         }
       ],
       "evidence_refs": [
-        "evidence-006"
+        "evidence-008"
       ],
       "page_range": "10"
     },
@@ -1546,19 +1541,18 @@
         {
           "source_file_id": "file-aa9d7c3ab22c",
           "page_number": 11,
-          "page_id": "page-011"
+          "page_id": "page-011",
+          "basis": "TITLE",
+          "evidence_ref": "evidence-009"
         },
         {
           "source_file_id": "file-aa9d7c3ab22c",
           "page_number": 12,
-          "page_id": "page-012"
+          "page_id": "page-012",
+          "basis": "CONTINUATION",
+          "evidence_ref": "evidence-010"
         }
       ],
-      "boundary_basis": "TITLE",
-      "page_bases": {
-        "11": "TITLE",
-        "12": "CONTINUATION"
-      },
       "source_facility": "UNKNOWN",
       "document_date": null,
       "dates": [
@@ -1568,7 +1562,8 @@
           "raw_text": "3 Februari 2025",
           "date_role": "SERVICE",
           "timezone": null,
-          "ambiguity": null
+          "ambiguity": null,
+          "source_label": "Waktu Datang"
         }
       ],
       "completeness_status": "UNKNOWN",
@@ -1598,7 +1593,7 @@
               ],
               "fact_refs": [],
               "event_refs": [
-                "event-003"
+                "event-001"
               ]
             }
           ]
@@ -1669,7 +1664,7 @@
         }
       ],
       "evidence_refs": [
-        "evidence-007"
+        "evidence-009"
       ],
       "page_range": "11-12"
     },
@@ -1684,13 +1679,11 @@
         {
           "source_file_id": "file-aa9d7c3ab22c",
           "page_number": 13,
-          "page_id": "page-013"
+          "page_id": "page-013",
+          "basis": "TITLE",
+          "evidence_ref": "evidence-011"
         }
       ],
-      "boundary_basis": "TITLE",
-      "page_bases": {
-        "13": "TITLE"
-      },
       "source_facility": "UNKNOWN",
       "document_date": null,
       "dates": [
@@ -1698,9 +1691,10 @@
           "value": "2025-02-05",
           "precision": "DATE",
           "raw_text": "5 Februari 2025",
-          "date_role": "DISCHARGE",
+          "date_role": "UNKNOWN",
           "timezone": null,
-          "ambiguity": null
+          "ambiguity": null,
+          "source_label": "Tgl KRS"
         }
       ],
       "completeness_status": "UNKNOWN",
@@ -1740,7 +1734,7 @@
         }
       ],
       "evidence_refs": [
-        "evidence-008"
+        "evidence-011"
       ],
       "page_range": "13"
     },
@@ -1753,13 +1747,11 @@
         {
           "source_file_id": "file-aa9d7c3ab22c",
           "page_number": 14,
-          "page_id": "page-014"
+          "page_id": "page-014",
+          "basis": "TITLE",
+          "evidence_ref": "evidence-012"
         }
       ],
-      "boundary_basis": "TITLE",
-      "page_bases": {
-        "14": "TITLE"
-      },
       "source_facility": "UNKNOWN",
       "document_date": null,
       "dates": [
@@ -1769,7 +1761,8 @@
           "raw_text": "3 Februari 2025, 07:55 WIB",
           "date_role": "SERVICE",
           "timezone": "WIB",
-          "ambiguity": null
+          "ambiguity": null,
+          "source_label": "Waktu Datang"
         }
       ],
       "completeness_status": "UNKNOWN",
@@ -1799,14 +1792,14 @@
               ],
               "fact_refs": [],
               "event_refs": [
-                "event-004"
+                "event-002"
               ]
             }
           ]
         }
       ],
       "evidence_refs": [
-        "evidence-009"
+        "evidence-012"
       ],
       "page_range": "14"
     },
@@ -1819,13 +1812,11 @@
         {
           "source_file_id": "file-aa9d7c3ab22c",
           "page_number": 16,
-          "page_id": "page-016"
+          "page_id": "page-016",
+          "basis": "UNTITLED_START",
+          "evidence_ref": "evidence-013"
         }
       ],
-      "boundary_basis": "UNTITLED_START",
-      "page_bases": {
-        "16": "UNTITLED_START"
-      },
       "source_facility": "UNKNOWN",
       "document_date": null,
       "dates": [],
@@ -1860,7 +1851,9 @@
           ]
         }
       ],
-      "evidence_refs": [],
+      "evidence_refs": [
+        "evidence-013"
+      ],
       "page_range": "16"
     }
   ],
@@ -1872,7 +1865,7 @@
       "page_number": 1,
       "extraction_method": "NATIVE_TEXT",
       "content_kind": "TEXT",
-      "purpose": "document_boundary",
+      "purpose": "page_membership",
       "document_id": "doc-001",
       "document_type": "INA_CBG_OUTPUT",
       "section_id": null,
@@ -1891,7 +1884,7 @@
       "page_number": 2,
       "extraction_method": "NATIVE_TEXT",
       "content_kind": "TEXT",
-      "purpose": "document_boundary",
+      "purpose": "page_membership",
       "document_id": "doc-002",
       "document_type": "SEP",
       "section_id": null,
@@ -1910,7 +1903,7 @@
       "page_number": 3,
       "extraction_method": "NATIVE_TEXT",
       "content_kind": "TEXT",
-      "purpose": "document_boundary",
+      "purpose": "page_membership",
       "document_id": "doc-003",
       "document_type": "MEDICAL_RESUME",
       "section_id": null,
@@ -1925,11 +1918,30 @@
     {
       "evidence_id": "evidence-004",
       "source_file_id": "file-aa9d7c3ab22c",
+      "page_id": "page-004",
+      "page_number": 4,
+      "extraction_method": "NATIVE_TEXT",
+      "content_kind": "TEXT",
+      "purpose": "page_membership",
+      "document_id": "doc-003",
+      "document_type": "MEDICAL_RESUME",
+      "section_id": null,
+      "chunk_id": null,
+      "element_id": "el-031",
+      "source_text": "Halaman 2 of 2",
+      "bbox": null,
+      "confidence": null,
+      "sensitivity": "UNKNOWN",
+      "redaction_state": "ORIGINAL"
+    },
+    {
+      "evidence_id": "evidence-005",
+      "source_file_id": "file-aa9d7c3ab22c",
       "page_id": "page-006",
       "page_number": 6,
       "extraction_method": "UNKNOWN",
       "content_kind": "IMAGE_REGION",
-      "purpose": "document_boundary",
+      "purpose": "page_membership",
       "document_id": "doc-004",
       "document_type": "UNKNOWN",
       "section_id": null,
@@ -1942,38 +1954,19 @@
       "redaction_state": "ORIGINAL"
     },
     {
-      "evidence_id": "evidence-005",
+      "evidence_id": "evidence-006",
       "source_file_id": "file-aa9d7c3ab22c",
       "page_id": "page-008",
       "page_number": 8,
       "extraction_method": "NATIVE_TEXT",
       "content_kind": "TEXT",
-      "purpose": "document_boundary",
+      "purpose": "page_membership",
       "document_id": "doc-005",
       "document_type": "LABORATORY",
       "section_id": null,
       "chunk_id": null,
-      "element_id": "el-035",
-      "source_text": "Pemeriksaan Hasil Satuan Nilai Rujukan",
-      "bbox": null,
-      "confidence": null,
-      "sensitivity": "UNKNOWN",
-      "redaction_state": "ORIGINAL"
-    },
-    {
-      "evidence_id": "evidence-006",
-      "source_file_id": "file-aa9d7c3ab22c",
-      "page_id": "page-010",
-      "page_number": 10,
-      "extraction_method": "NATIVE_TEXT",
-      "content_kind": "TEXT",
-      "purpose": "document_boundary",
-      "document_id": "doc-006",
-      "document_type": "LABORATORY",
-      "section_id": null,
-      "chunk_id": null,
-      "element_id": "el-042",
-      "source_text": "Pemeriksaan Hasil Satuan Nilai Rujukan",
+      "element_id": "el-037",
+      "source_text": "Halaman 1 of 2",
       "bbox": null,
       "confidence": null,
       "sensitivity": "UNKNOWN",
@@ -1982,11 +1975,49 @@
     {
       "evidence_id": "evidence-007",
       "source_file_id": "file-aa9d7c3ab22c",
+      "page_id": "page-009",
+      "page_number": 9,
+      "extraction_method": "NATIVE_TEXT",
+      "content_kind": "TEXT",
+      "purpose": "page_membership",
+      "document_id": "doc-005",
+      "document_type": "LABORATORY",
+      "section_id": null,
+      "chunk_id": null,
+      "element_id": "el-040",
+      "source_text": "Halaman 2 of 2",
+      "bbox": null,
+      "confidence": null,
+      "sensitivity": "UNKNOWN",
+      "redaction_state": "ORIGINAL"
+    },
+    {
+      "evidence_id": "evidence-008",
+      "source_file_id": "file-aa9d7c3ab22c",
+      "page_id": "page-010",
+      "page_number": 10,
+      "extraction_method": "NATIVE_TEXT",
+      "content_kind": "TEXT",
+      "purpose": "page_membership",
+      "document_id": "doc-006",
+      "document_type": "LABORATORY",
+      "section_id": null,
+      "chunk_id": null,
+      "element_id": "el-044",
+      "source_text": "Halaman 1 of 1",
+      "bbox": null,
+      "confidence": null,
+      "sensitivity": "UNKNOWN",
+      "redaction_state": "ORIGINAL"
+    },
+    {
+      "evidence_id": "evidence-009",
+      "source_file_id": "file-aa9d7c3ab22c",
       "page_id": "page-011",
       "page_number": 11,
       "extraction_method": "NATIVE_TEXT",
       "content_kind": "TEXT",
-      "purpose": "document_boundary",
+      "purpose": "page_membership",
       "document_id": "doc-007",
       "document_type": "ASSESSMENT",
       "section_id": null,
@@ -1999,13 +2030,32 @@
       "redaction_state": "ORIGINAL"
     },
     {
-      "evidence_id": "evidence-008",
+      "evidence_id": "evidence-010",
+      "source_file_id": "file-aa9d7c3ab22c",
+      "page_id": "page-012",
+      "page_number": 12,
+      "extraction_method": "NATIVE_TEXT",
+      "content_kind": "TEXT",
+      "purpose": "page_membership",
+      "document_id": "doc-007",
+      "document_type": "ASSESSMENT",
+      "section_id": null,
+      "chunk_id": null,
+      "element_id": "el-049",
+      "source_text": "Nyeri tekan McBurney (+)",
+      "bbox": null,
+      "confidence": null,
+      "sensitivity": "UNKNOWN",
+      "redaction_state": "ORIGINAL"
+    },
+    {
+      "evidence_id": "evidence-011",
       "source_file_id": "file-aa9d7c3ab22c",
       "page_id": "page-013",
       "page_number": 13,
       "extraction_method": "NATIVE_TEXT",
       "content_kind": "TEXT",
-      "purpose": "document_boundary",
+      "purpose": "page_membership",
       "document_id": "doc-008",
       "document_type": "SERVICE_RECAP",
       "section_id": null,
@@ -2018,13 +2068,13 @@
       "redaction_state": "ORIGINAL"
     },
     {
-      "evidence_id": "evidence-009",
+      "evidence_id": "evidence-012",
       "source_file_id": "file-aa9d7c3ab22c",
       "page_id": "page-014",
       "page_number": 14,
       "extraction_method": "NATIVE_TEXT",
       "content_kind": "TEXT",
-      "purpose": "document_boundary",
+      "purpose": "page_membership",
       "document_id": "doc-009",
       "document_type": "OTHER",
       "section_id": null,
@@ -2037,7 +2087,26 @@
       "redaction_state": "ORIGINAL"
     },
     {
-      "evidence_id": "evidence-010",
+      "evidence_id": "evidence-013",
+      "source_file_id": "file-aa9d7c3ab22c",
+      "page_id": "page-016",
+      "page_number": 16,
+      "extraction_method": "NATIVE_TEXT",
+      "content_kind": "TEXT",
+      "purpose": "page_membership",
+      "document_id": "doc-010",
+      "document_type": "UNKNOWN",
+      "section_id": null,
+      "chunk_id": null,
+      "element_id": "el-061",
+      "source_text": "Catatan tambahan tanpa judul",
+      "bbox": null,
+      "confidence": null,
+      "sensitivity": "UNKNOWN",
+      "redaction_state": "ORIGINAL"
+    },
+    {
+      "evidence_id": "evidence-014",
       "source_file_id": "file-aa9d7c3ab22c",
       "page_id": "page-001",
       "page_number": 1,
@@ -2056,7 +2125,7 @@
       "redaction_state": "ORIGINAL"
     },
     {
-      "evidence_id": "evidence-011",
+      "evidence_id": "evidence-015",
       "source_file_id": "file-aa9d7c3ab22c",
       "page_id": "page-001",
       "page_number": 1,
@@ -2075,7 +2144,7 @@
       "redaction_state": "ORIGINAL"
     },
     {
-      "evidence_id": "evidence-012",
+      "evidence_id": "evidence-016",
       "source_file_id": "file-aa9d7c3ab22c",
       "page_id": "page-001",
       "page_number": 1,
@@ -2094,7 +2163,7 @@
       "redaction_state": "ORIGINAL"
     },
     {
-      "evidence_id": "evidence-013",
+      "evidence_id": "evidence-017",
       "source_file_id": "file-aa9d7c3ab22c",
       "page_id": "page-001",
       "page_number": 1,
@@ -2113,7 +2182,7 @@
       "redaction_state": "ORIGINAL"
     },
     {
-      "evidence_id": "evidence-014",
+      "evidence_id": "evidence-018",
       "source_file_id": "file-aa9d7c3ab22c",
       "page_id": "page-002",
       "page_number": 2,
@@ -2132,45 +2201,7 @@
       "redaction_state": "ORIGINAL"
     },
     {
-      "evidence_id": "evidence-015",
-      "source_file_id": "file-aa9d7c3ab22c",
-      "page_id": "page-003",
-      "page_number": 3,
-      "extraction_method": "NATIVE_TEXT",
-      "content_kind": "TEXT",
-      "purpose": "fact",
-      "document_id": "doc-003",
-      "document_type": "MEDICAL_RESUME",
-      "section_id": "section-003",
-      "chunk_id": "chunk-003",
-      "element_id": "el-018",
-      "source_text": "Tanggal Masuk : 3 Februari 2025 08:15 WIB",
-      "bbox": null,
-      "confidence": null,
-      "sensitivity": "UNKNOWN",
-      "redaction_state": "ORIGINAL"
-    },
-    {
-      "evidence_id": "evidence-016",
-      "source_file_id": "file-aa9d7c3ab22c",
-      "page_id": "page-003",
-      "page_number": 3,
-      "extraction_method": "NATIVE_TEXT",
-      "content_kind": "TEXT",
-      "purpose": "fact",
-      "document_id": "doc-003",
-      "document_type": "MEDICAL_RESUME",
-      "section_id": "section-003",
-      "chunk_id": "chunk-003",
-      "element_id": "el-019",
-      "source_text": "Tanggal Keluar : 5 Februari 2025",
-      "bbox": null,
-      "confidence": null,
-      "sensitivity": "UNKNOWN",
-      "redaction_state": "ORIGINAL"
-    },
-    {
-      "evidence_id": "evidence-017",
+      "evidence_id": "evidence-019",
       "source_file_id": "file-aa9d7c3ab22c",
       "page_id": "page-003",
       "page_number": 3,
@@ -2189,7 +2220,7 @@
       "redaction_state": "ORIGINAL"
     },
     {
-      "evidence_id": "evidence-018",
+      "evidence_id": "evidence-020",
       "source_file_id": "file-aa9d7c3ab22c",
       "page_id": "page-003",
       "page_number": 3,
@@ -2208,7 +2239,7 @@
       "redaction_state": "ORIGINAL"
     },
     {
-      "evidence_id": "evidence-019",
+      "evidence_id": "evidence-021",
       "source_file_id": "file-aa9d7c3ab22c",
       "page_id": "page-004",
       "page_number": 4,
@@ -2227,7 +2258,7 @@
       "redaction_state": "ORIGINAL"
     },
     {
-      "evidence_id": "evidence-020",
+      "evidence_id": "evidence-022",
       "source_file_id": "file-aa9d7c3ab22c",
       "page_id": "page-004",
       "page_number": 4,
@@ -2246,7 +2277,7 @@
       "redaction_state": "ORIGINAL"
     },
     {
-      "evidence_id": "evidence-021",
+      "evidence_id": "evidence-023",
       "source_file_id": "file-aa9d7c3ab22c",
       "page_id": "page-011",
       "page_number": 11,
@@ -2265,7 +2296,7 @@
       "redaction_state": "ORIGINAL"
     },
     {
-      "evidence_id": "evidence-022",
+      "evidence_id": "evidence-024",
       "source_file_id": "file-aa9d7c3ab22c",
       "page_id": "page-014",
       "page_number": 14,
@@ -2293,7 +2324,7 @@
       "value": "K35.8",
       "provenance": "SOURCE_FACT",
       "evidence_refs": [
-        "evidence-010"
+        "evidence-014"
       ],
       "availability_status": "PRESENT",
       "raw_value_text": "K35.8",
@@ -2315,7 +2346,7 @@
       "value": null,
       "provenance": "SOURCE_FACT",
       "evidence_refs": [
-        "evidence-011"
+        "evidence-015"
       ],
       "availability_status": "NOT_DOCUMENTED",
       "raw_value_text": "-",
@@ -2337,7 +2368,7 @@
       "value": "47.09",
       "provenance": "SOURCE_FACT",
       "evidence_refs": [
-        "evidence-012"
+        "evidence-016"
       ],
       "availability_status": "PRESENT",
       "raw_value_text": "47.09",
@@ -2359,7 +2390,7 @@
       "value": "99.21",
       "provenance": "SOURCE_FACT",
       "evidence_refs": [
-        "evidence-013"
+        "evidence-017"
       ],
       "availability_status": "PRESENT",
       "raw_value_text": "99.21",
@@ -2381,7 +2412,7 @@
       "value": "R10.4",
       "provenance": "SOURCE_FACT",
       "evidence_refs": [
-        "evidence-014"
+        "evidence-018"
       ],
       "availability_status": "PRESENT",
       "raw_value_text": "R10.4",
@@ -2403,7 +2434,7 @@
       "value": "K35.8",
       "provenance": "SOURCE_FACT",
       "evidence_refs": [
-        "evidence-017"
+        "evidence-019"
       ],
       "availability_status": "PRESENT",
       "raw_value_text": "K35.8",
@@ -2425,7 +2456,7 @@
       "value": "47.09",
       "provenance": "SOURCE_FACT",
       "evidence_refs": [
-        "evidence-018"
+        "evidence-020"
       ],
       "availability_status": "PRESENT",
       "raw_value_text": "47.09",
@@ -2447,7 +2478,7 @@
       "value": "CEFTRIAXONE 1 g INJEKSI 2x1",
       "provenance": "SOURCE_FACT",
       "evidence_refs": [
-        "evidence-019"
+        "evidence-021"
       ],
       "availability_status": "PRESENT",
       "raw_value_text": "CEFTRIAXONE 1 g INJEKSI 2x1",
@@ -2469,7 +2500,7 @@
       "value": "DISPOSABLE SYRINGE 5 ml",
       "provenance": "SOURCE_FACT",
       "evidence_refs": [
-        "evidence-020"
+        "evidence-022"
       ],
       "availability_status": "PRESENT",
       "raw_value_text": "DISPOSABLE SYRINGE 5 ml",
@@ -2487,52 +2518,6 @@
   "events": [
     {
       "event_id": "event-001",
-      "event_type": "ADMISSION",
-      "description": "ADMISSION date stated in MEDICAL_RESUME",
-      "temporal_value": {
-        "value": "2025-02-03T08:15",
-        "precision": "EXACT_DATETIME",
-        "raw_text": "3 Februari 2025 08:15 WIB",
-        "date_role": "ADMISSION",
-        "timezone": "WIB",
-        "ambiguity": null
-      },
-      "provenance": "SOURCE_FACT",
-      "evidence_refs": [
-        "evidence-015"
-      ],
-      "care_pathway": "UNKNOWN",
-      "care_stage": "UNKNOWN",
-      "document_id": "doc-003",
-      "chunk_id": "chunk-003",
-      "derived_from_refs": [],
-      "inference_basis_refs": []
-    },
-    {
-      "event_id": "event-002",
-      "event_type": "DISCHARGE",
-      "description": "DISCHARGE date stated in MEDICAL_RESUME",
-      "temporal_value": {
-        "value": "2025-02-05",
-        "precision": "DATE",
-        "raw_text": "5 Februari 2025",
-        "date_role": "DISCHARGE",
-        "timezone": null,
-        "ambiguity": null
-      },
-      "provenance": "SOURCE_FACT",
-      "evidence_refs": [
-        "evidence-016"
-      ],
-      "care_pathway": "UNKNOWN",
-      "care_stage": "UNKNOWN",
-      "document_id": "doc-003",
-      "chunk_id": "chunk-003",
-      "derived_from_refs": [],
-      "inference_basis_refs": []
-    },
-    {
-      "event_id": "event-003",
       "event_type": "PATIENT_ARRIVAL",
       "description": "PATIENT_ARRIVAL date stated in ASSESSMENT",
       "temporal_value": {
@@ -2541,11 +2526,12 @@
         "raw_text": "3 Februari 2025",
         "date_role": "SERVICE",
         "timezone": null,
-        "ambiguity": null
+        "ambiguity": null,
+        "source_label": "Waktu Datang"
       },
       "provenance": "SOURCE_FACT",
       "evidence_refs": [
-        "evidence-021"
+        "evidence-023"
       ],
       "care_pathway": "UNKNOWN",
       "care_stage": "UNKNOWN",
@@ -2555,7 +2541,7 @@
       "inference_basis_refs": []
     },
     {
-      "event_id": "event-004",
+      "event_id": "event-002",
       "event_type": "PATIENT_ARRIVAL",
       "description": "PATIENT_ARRIVAL date stated in OTHER",
       "temporal_value": {
@@ -2564,11 +2550,12 @@
         "raw_text": "3 Februari 2025, 07:55 WIB",
         "date_role": "SERVICE",
         "timezone": "WIB",
-        "ambiguity": null
+        "ambiguity": null,
+        "source_label": "Waktu Datang"
       },
       "provenance": "SOURCE_FACT",
       "evidence_refs": [
-        "evidence-022"
+        "evidence-024"
       ],
       "care_pathway": "UNKNOWN",
       "care_stage": "UNKNOWN",

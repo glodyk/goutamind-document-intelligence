@@ -1,8 +1,13 @@
 # Vertical slice 1: findings from execution
 
-**Status:** report of what running the first vertical slice showed. It does
-not change `DATA_MODEL.md` or `DOCUMENT_TAXONOMY.md`; every proposed change
-below waits for the architecture owner.
+**Status:** report of what running the first vertical slice showed.
+
+- **Iteration 1** (initial PR #1) raised ADR-REQ-001 to 004.
+- **Iteration 2** (PR #1 review): the owner accepted all four. They are
+  applied in code and as small additive notes in `DATA_MODEL.md`
+  (`[S1]`, Appendix C). See "Decision status" and "Iteration 2 results"
+  below. Earlier observations are kept unchanged as the evidence for the
+  decisions.
 
 Identifiers in this file (`OBS-`, `GAP-`, `IMPL-`, `ADR-REQ-`, `TECH-`) are
 local to slice 1. Where a finding touches an existing open decision, the
@@ -120,6 +125,12 @@ this slice; the counting rule is noted for the future `DERIVED_FACT`.
 the next page becomes two chunks. Provenance stays simple; semantic
 coherence across the break is lost.
 
+**OBS-017: an emergency visit prints "Tanggal Masuk" / "Tanggal Keluar".**
+In Sample E (an emergency visit that the SEP and INA-CBG declare as
+outpatient) the resume prints date-in and date-out labels. Iteration 1
+turned them into ADMISSION and DISCHARGE events. This is the evidence for
+ADR-REQ-003.
+
 ## Gaps
 
 **GAP-001: `document_type` has no value for "not classified".** `OTHER`
@@ -139,7 +150,34 @@ missing pages, but `PRESENT | NOT_FOUND | ...` cannot express "complete" or
 without OCR, `NO_TEXT` would wrongly claim the content is non-textual and
 `modality` cannot say scan vs photo. See ADR-REQ-004.
 
-## Architecture decisions required
+## Decision status
+
+**DECIDED** (PR #1 review, applied in iteration 2):
+
+| Decision | Accepted option | Applied as |
+|---|---|---|
+| ADR-REQ-001 page membership provenance | B | `PageRef.basis` + `PageRef.evidence_ref` on every `page_refs` entry; page-assignment diagnostic |
+| ADR-REQ-002 unclassified type | A | `DocumentType.UNKNOWN`, distinct from `OTHER` |
+| ADR-REQ-003 ADMISSION semantics | B | ADMISSION = inpatient admission; "Masuk/Keluar" dates keep `date_role = UNKNOWN` plus the printed label; no ADMISSION/DISCHARGE events |
+| ADR-REQ-004 extraction status | B | `text_status` beside `extraction_method`; `NO_TEXT` never assigned |
+
+**STILL OPEN**
+
+- ADR-01: a page in several documents; a document starting mid-page.
+- ADR-05: a `date_role` / event for encounter start and end of any
+  visit. ADR-REQ-003 only says what ADMISSION is *not*.
+- ADR-03: how an inpatient stay is established (declared service type vs
+  clinical evidence). Until then the slice emits no ADMISSION event at all.
+- ADR-14 / GAP-002: types for triage, admission order, single-clinician
+  medication order (typed `OTHER` today).
+- GAP-003: `completeness_status` vocabulary.
+- ADR-11 remainder: per-component confidence; meaning of `MIXED`.
+- ADR-04, 06, 07, 08, 09: unchanged; new evidence in OBS-007, 009, 010, 011, 014.
+
+## Architecture decisions required (iteration 1, now decided)
+
+The text below is the original request, kept as the record of why each
+decision was made.
 
 **ADR-REQ-001: page-to-document assignment has no provenance.**
 (related: ADR-01)
@@ -219,7 +257,7 @@ retrieval is designed.
 |---|---|---|
 | IMPL-001 | `document_type = UNKNOWN` added (ADR-REQ-002). | Needed by the brief and by image-only pages. |
 | IMPL-002 | `text_status` on Page and `ingestion_status` on SourceFile. | Failure must be explicit without misusing `extraction_method`. |
-| IMPL-003 | `boundary_basis`, `page_bases`, `page_counters` and boundary evidence on Document. | Makes segmentation inspectable (ADR-REQ-001). |
+| IMPL-003 | `page_counters` on Document; in iteration 1 also `page_bases`, replaced in iteration 2 by `PageRef.basis` / `evidence_ref` (ADR-REQ-001). | Makes segmentation inspectable. |
 | IMPL-004 | Evidence has `purpose` and `chunk_id`. | Shows that evidence exists without a fact; the brief asks for a chunk reference. |
 | IMPL-005 | Fact has `source_label` (printed label, e.g. "Diagnosa Awal"). | `diagnosis_role` / `diagnosis_context` are open (ADR-04); the label must not be lost. |
 | IMPL-006 | Temporal Value has `ambiguity`. | DATA_MODEL 17A allows "flagged"; this is the flag. |
@@ -233,6 +271,52 @@ retrieval is designed.
 | IMPL-014 | `sensitivity = UNKNOWN`, `redaction_state = ORIGINAL` on all evidence. | ADR-08 open; the slice cannot classify text. |
 | IMPL-015 | `classification_confidence`, `bbox`, `confidence` left empty. | No calibrated score or coordinates exist (DATA_MODEL 34). |
 | IMPL-016 | stdlib dataclasses; one runtime dependency (`pypdf`). | Small, pure Python; Pydantic not needed until schemas exist. |
+
+Added in iteration 2:
+
+| ID | Decision | Why |
+|---|---|---|
+| IMPL-017 | `AssignmentBasis` gains `EXTRACTION_FAILED` for pages whose text extraction raised an error. | Calling them `IMAGE_PAGE` would misstate what is known. |
+| IMPL-018 | `CONTINUATION` and `UNTITLED_START` cite the page's first text line as evidence. | They have no positive signal; the first line shows what the page starts with, which matched no rule. |
+| IMPL-019 | Temporal Value keeps `source_label` (the printed label before the date). | "Tanggal Masuk" is preserved without claiming a role (ADR-REQ-003). |
+| IMPL-020 | The run also writes `<name>.page_assignment.txt`; the inspection report includes the same block. | Page assignment is the largest error source; reviewers need to see each page's basis and evidence. |
+
+## Iteration 2 results
+
+Same inputs, same code paths except for the four decisions.
+
+| | Sample E iter 1 | Sample E iter 2 | Sample I iter 1 | Sample I iter 2 |
+|---|---|---|---|---|
+| Pages | 18 | 18 | 38 | 38 |
+| Documents | 9 | 9 | 14 | 14 |
+| UNKNOWN documents | 0 | 0 | 4 | 4 |
+| Pages without document | 0 | 0 | 3 (blank) | 3 (blank) |
+| Facts | 6 | 6 | 49 | 49 |
+| Events | 4 | 2 | 0 | 0 |
+| Evidence | 19 | 26 | 63 | 84 |
+
+- **Page assignment did not change.** No page moved to another document or
+  type in either sample. The decisions add provenance; they do not fix
+  segmentation, and no improvement in assignment is claimed.
+- **The suspected wrong assignments are now explicit.** In Sample I the nine
+  pages after the CPPT and the last page are each shown as
+  `Basis: CONTINUATION` with the cited first line as evidence. Before, the
+  same pages were attached silently.
+- **A basis alone does not separate right from wrong.** Of the 18
+  `CONTINUATION` pages in Sample I, about 10 are the suspected wrong ones and
+  about 8 look right (summary, CPPT and billing continuation pages). Telling
+  them apart needs another signal (layout, header/footer), not a different
+  basis value.
+- **Events:** Sample E lost its ADMISSION and DISCHARGE events (OBS-017);
+  the two arrival events remain. The dates stay on the resume with
+  `date_role = UNKNOWN` and labels "Tanggal Masuk" / "Tanggal Pulang".
+  Billing and INA-CBG date-out labels ("Tgl Keluar", "Tgl KRS") are now
+  `UNKNOWN` too, as they were never events (claim anchors).
+- **Evidence** now has one item per page membership instead of one per
+  document: +9 in Sample E (minus 2 for the removed events) and +21 in
+  Sample I.
+
+No new architecture decision was exposed by iteration 2.
 
 ## Technical debt
 
@@ -253,6 +337,9 @@ retrieval is designed.
 - **TECH-009** Logging is minimal (a few structured warnings).
 
 ## Next recommended step
+
+*(Written after iteration 1. After iteration 2 the work stops here and
+waits for architecture review; nothing below has been started.)*
 
 The errors in this run came from two places: weak page-to-document
 attachment (OBS-003/004) and loss of layout (OBS-008/009/010). Both are
