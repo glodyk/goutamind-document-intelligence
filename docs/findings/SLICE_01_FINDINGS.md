@@ -58,10 +58,18 @@ single-clinician medication/order printouts, each with its own header block,
 but nothing in their text layer names them.
 
 **OBS-004: a wrong boundary moves facts to the wrong document type.** The
-last page of Sample I (an inpatient admission order without a title in the
-text layer) was attached to the preceding service recap. A diagnosis field
-on it became a Fact whose document is a `SERVICE_RECAP`. Provenance to the
-page is still correct; the document attribution is not.
+last page of Sample I (an inpatient plan letter, *surat rencana inap*) was
+attached to the preceding service recap. Its title is printed at the bottom
+of the page, outside the top lines the title rule reads, so no title was
+recognised. A diagnosis field on it became a Fact whose document is a
+`SERVICE_RECAP`. Provenance to the page is still correct; the document
+attribution is not. The letter is `document_type = OTHER`: no listed type
+fits it (GAP-002).
+
+*Corrected after the Phase 2 logical-document review: iteration 1 described
+this page as "an inpatient admission order without a title in the text
+layer". The title is in the text layer, at the bottom of the page, and the
+document is an inpatient plan letter.*
 
 **OBS-005: blank separator pages alternate with photographed documents.**
 Sample I has 4 image-only pages each followed by a blank page. They are kept
@@ -137,7 +145,8 @@ ADR-REQ-003.
 means a known type outside the list. The slice needs both. See ADR-REQ-002.
 
 **GAP-002: no `document_type` for forms seen in both samples:** triage,
-inpatient admission request/order, single-clinician medication orders. They
+inpatient admission request, inpatient plan letter, single-clinician
+medication orders. They
 are typed `OTHER` with the title kept.
 
 **GAP-003: `completeness_status` uses the availability vocabulary.** Printed
@@ -168,8 +177,8 @@ without OCR, `NO_TEXT` would wrongly claim the content is non-textual and
   visit. ADR-REQ-003 only says what ADMISSION is *not*.
 - ADR-03: how an inpatient stay is established (declared service type vs
   clinical evidence). Until then the slice emits no ADMISSION event at all.
-- ADR-14 / GAP-002: types for triage, admission order, single-clinician
-  medication order (typed `OTHER` today).
+- ADR-14 / GAP-002: types for triage, admission request, inpatient plan
+  letter, single-clinician medication order (typed `OTHER` today).
 - GAP-003: `completeness_status` vocabulary.
 - ADR-11 remainder: per-component confidence; meaning of `MIXED`.
 - ADR-04, 06, 07, 08, 09: unchanged; new evidence in OBS-007, 009, 010, 011, 014.
