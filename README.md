@@ -2,111 +2,54 @@
 
 > **From healthcare documents to evidence-linked claim intelligence.**
 
-Evidence-driven document intelligence for heterogeneous healthcare claim documents.
+**GOUTAMIND Document Intelligence** is an evidence-driven document intelligence project for understanding heterogeneous healthcare claim documents.
 
-## What This Project Is
+Healthcare claims rarely arrive as clean, structured data. A single claim may contain emergency records, inpatient notes, diagnostic reports, medication records, administrative documents, billing information, and claim outputs — often combined into heterogeneous PDF bundles from different hospitals.
 
-GOUTAMIND Document Intelligence is an evidence-driven document intelligence
-project for heterogeneous healthcare claim documents.
+The challenge is not simply extracting text from PDFs.
 
-It focuses on transforming complex healthcare document bundles into
-structured, traceable, evidence-linked information while preserving
-source context and provenance.
+The challenge is to understand **what each document represents, where information came from, how facts relate to clinical events, and how every derived insight can remain traceable to its source evidence.**
 
-PDF / Document Bundle
-        ↓
-Document Understanding
-        ↓
-Evidence
-        ↓
-Structured Facts
-        ↓
-Clinical Timeline
-        ↓
-Narrative
-        ↓
-Claim Intelligence
+---
 
+## The Problem
 
-# Project Identity
+A healthcare claim document bundle may contain:
 
-## Project Name
+- multiple logical documents inside a single PDF;
+- different document layouts between hospitals;
+- scanned and digitally generated pages;
+- tables, forms, handwritten or image-based content;
+- clinical and administrative information mixed together;
+- repeated information with different levels of temporal precision;
+- documents whose physical order does not represent clinical event order.
 
-GOUTAMIND Document Intelligence
+Therefore:
 
-## Short Description
+> **PDF extraction is not the same as document understanding.**
 
-Evidence-driven document intelligence for heterogeneous healthcare claim
-documents.
+A reliable intelligence layer needs to preserve the relationship between the original document and every piece of information derived from it.
 
-## Tagline
+---
 
-From healthcare documents to evidence-linked claim intelligence.
+## The Approach
 
-## Purpose
+This project follows an **evidence-first architecture**.
 
-This project investigates and develops an evidence-driven architecture for
-understanding heterogeneous healthcare claim documents.
-
-## Primary Problem
-
-Healthcare claim documents often arrive as heterogeneous PDF bundles containing
-multiple logical documents, layouts, representations, and levels of clinical
-detail.
-
-The project focuses on reliably identifying document structure, extracting
-facts and events, preserving evidence provenance, and maintaining traceability
-from derived information back to source documents.
-
-## Primary Output
-
-Structured, evidence-linked information derived from healthcare documents.
-
-## Core Semantic Flow
-
-Document Bundle
-→ Document
-→ Section
-→ Chunk
-→ Fact / Event
-→ Evidence
-
-## Target Architecture
-
-Document Understanding
-→ Canonical Clinical Claim
-→ Evidence
-→ Clinical Timeline
-→ Narrative
-→ Claim Intelligence
-
-## Current Maturity
-
-Early Architecture / First Vertical Slice
-
-## Current Focus
-
-- document representation
-- document segmentation
-- evidence provenance
-- deterministic fact extraction
-- deterministic event extraction
-- temporal precision
-- explicit missingness
-- layout-aware document understanding
-
-## Non-Goals
-
-This repository is not currently:
-
-- a production claim verification system
-- a fraud detection engine
-- an LLM chatbot
-- a RAG system
-- a production OCR platform
-- a replacement for human claim reviewers
-
-## Positioning
-
-This repository provides a document intelligence foundation for downstream
-healthcare claim review and claim intelligence systems.
+```text
+Healthcare Claim Document Bundle
+                │
+                ▼
+      Document Understanding
+                │
+                ▼
+        Document Structure
+                │
+                ▼
+      Facts / Events / Evidence
+                │
+                ▼
+       Clinical Interpretation
+                │
+                ▼
+        Claim Intelligence
